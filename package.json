@@ -1,0 +1,21 @@
+{
+  "name": "@pognetwork/wallet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "snowstorm dev",
+    "start": "snowstorm start",
+    "export": "snowstorm export",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@snowstorm/cli": "0.2.1",
+    "@snowstorm/core": "0.2.1",
+    "@types/react": "^17.0.27",
+    "react": "18.0.0-alpha-f2c381131-20211004",
+    "react-dom": "18.0.0-alpha-f2c381131-20211004"
+  }
+}
