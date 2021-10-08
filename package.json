@@ -17,5 +17,10 @@
     "@types/react": "^17.0.27",
     "react": "18.0.0-alpha-f2c381131-20211004",
     "react-dom": "18.0.0-alpha-f2c381131-20211004"
+  },
+  "devDependencies": {
+    "@explodingcamera/eslint-config": "^19.1.0",
+    "eslint": "^7.32.0",
+    "prettier": "^2.4.1"
   }
 }
