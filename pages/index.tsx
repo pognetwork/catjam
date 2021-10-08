@@ -1,5 +1,7 @@
+import { Layout } from './../components/layout';
+
 export const Index = () => (
-	<div>
-		<h1>Hello World</h1>
-	</div>
+	<Layout>
+		<h1>MyPOG</h1>
+	</Layout>
 );

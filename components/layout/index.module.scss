@@ -1,0 +1,33 @@
+.layout {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, Helvetica, Arial,
+    sans-serif;
+}
+
+.sidebar {
+  width: 4rem;
+  background: linear-gradient(166deg, #05a091, #054387);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.4rem;
+}
+
+.main {
+  margin-left: 4rem;
+  padding: 1rem 1.8rem;
+}
+
+.logo {
+  height: 3.2rem;
+  width: 3.2rem;
+
+  cursor: pointer;
+  transition: 0.2s;
+  opacity: 1;
+  &:hover {
+    opacity: 0.7;
+  }
+}
