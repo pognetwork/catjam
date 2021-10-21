@@ -4,6 +4,10 @@ import buttonStyles from './../components/button.module.scss';
 import { Layout } from './../components/layout';
 import styles from './index.module.scss';
 
+import pogchan from './../assets/pogchan.png';
+import shiba from './../assets/shiba.png';
+import astronaut from './../assets/astronaut.png';
+
 export const Index = () => (
 	<Layout className={styles.layout}>
 		<div className={styles.content}>
@@ -30,7 +34,9 @@ export const Index = () => (
 			</div>
 		</div>
 		<div className={styles.hero}>
-			<img src="https://i.imgur.com/holg3bP.png" />
+			{/* <img src={`${pogchan}`} /> */}
+			{/* <img src={`${shiba}`} /> */}
+			<img src={`${astronaut}`} />
 		</div>
 	</Layout>
 );

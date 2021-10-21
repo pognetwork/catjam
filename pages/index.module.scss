@@ -20,8 +20,16 @@
 
 .hero {
   > img {
-    margin-top: 5rem;
-    max-width: 50rem;
+    width: 50rem;
+    max-width: calc(100vw - 10rem);
+
+    @media screen and (min-width: 90rem) {
+      margin-top: 5rem;
+    }
+
+    @media screen and (max-width: 40rem) {
+      display: none;
+    }
   }
 }
 
