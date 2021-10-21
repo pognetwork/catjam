@@ -1,0 +1,22 @@
+button.button {
+  transition: all 0.3s ease-in-out;
+
+  box-shadow: 2px 4px 9px 0px rgb(0 0 0 / 31%), 0 0 2rem 4px rgb(0 0 0 / 7%);
+  color: white;
+  padding: 0.8rem 1.4rem;
+  border: none;
+  background: linear-gradient(166deg, #cdc0ff, #4077b3);
+  margin-top: 3rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+
+  &.active {
+    background: linear-gradient(166deg, #8e6fff, #054387);
+  }
+
+  &:hover {
+    box-shadow: 2px 4px 9px 0px rgb(0 0 0 / 11%),
+      1px 6px 1rem 4px rgb(0 0 0 / 34%);
+  }
+}

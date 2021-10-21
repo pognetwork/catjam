@@ -6,6 +6,8 @@
 }
 
 .sidebar {
+  box-shadow: 2px 4px 9px 0px rgba(0, 0, 0, 0.048),
+    1px 6px 1rem 4px rgba(0, 0, 0, 0.199);
   width: 4rem;
   background: linear-gradient(166deg, #8e6fff, #054387);
   height: 100%;
@@ -31,7 +33,7 @@
 
 .main {
   margin-left: 4rem;
-  padding: 1rem 1.8rem;
+  padding: 1rem 1.8rem 0 1.8rem;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -61,5 +63,14 @@
     &:hover {
       opacity: 0.7;
     }
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  a {
+    color: black;
   }
 }

@@ -1,3 +1,6 @@
+import { Link } from '@snowstorm/core';
+
+import buttonStyles from './../components/button.module.scss';
 import { Layout } from './../components/layout';
 import styles from './index.module.scss';
 
@@ -10,13 +13,20 @@ export const Index = () => (
 				This client-side app allows you to open and generate wallets and much
 				more!
 			</p>
-			<div>
-				<button type="button" className={`${styles.button} ${styles.active}`}>
-					Create a new wallet
-				</button>
-				<button type="button" className={styles.button}>
-					Access my wallet
-				</button>
+			<div className={styles.buttons}>
+				<Link href="/create">
+					<button
+						type="button"
+						className={`${buttonStyles.button} ${buttonStyles.active}`}
+					>
+						Create a new wallet
+					</button>
+				</Link>
+				<Link href="/access">
+					<button type="button" className={buttonStyles.button}>
+						Access my wallet
+					</button>
+				</Link>
 			</div>
 		</div>
 		<div className={styles.hero}>
