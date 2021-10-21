@@ -30,7 +30,17 @@ body {
   min-height: fill-available;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(312deg, #fdf5ff, #daeeff);
 }
+
+#app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 a:not([class]) {
   text-decoration-skip-ink: auto;
 }
