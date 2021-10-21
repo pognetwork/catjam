@@ -4,8 +4,8 @@ import buttonStyles from './../components/button.module.scss';
 import { Layout } from './../components/layout';
 import styles from './index.module.scss';
 
-import pogchan from './../assets/pogchan.png';
-import shiba from './../assets/shiba.png';
+// import pogchan from './../assets/pogchan.png';
+// import shiba from './../assets/shiba.png';
 import astronaut from './../assets/astronaut.png';
 
 export const Index = () => (
