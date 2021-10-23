@@ -3,6 +3,11 @@
     sans-serif;
   flex: 1;
   display: flex;
+
+  .children {
+    margin-top: 1rem;
+    display: flex;
+  }
 }
 
 .sidebar {
@@ -45,7 +50,15 @@
 
     color: white;
     font-size: 0.67rem;
-    margin: 1rem 0;
+
+    @media screen and (max-width: 90rem) {
+      margin: 0 0.4rem;
+    }
+
+    @media screen and (max-width: 40rem) {
+      display: none;
+    }
+
     text-align: center;
     text-decoration: none;
 
@@ -65,7 +78,7 @@
       font-weight: 900;
     }
 
-    .sidebarIcon {
+    > svg {
       height: 2rem;
       width: 2rem;
       color: white;
@@ -80,6 +93,10 @@
   }
 
   .sidebarTop {
+    @media screen and (max-width: 90rem) {
+      flex-direction: row;
+      margin-top: 0;
+    }
     margin-top: 1rem;
     display: flex;
     flex-direction: column;
@@ -88,7 +105,6 @@
 
 .main {
   margin-left: 4rem;
-  padding: 1rem 1.8rem 0 1.8rem;
   display: flex;
   flex-direction: column;
   flex: 1;

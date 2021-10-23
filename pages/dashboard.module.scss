@@ -1,0 +1,85 @@
+.layout {
+  flex-direction: row;
+  flex: 1;
+  justify-content: center;
+  align-content: flex-start;
+  max-width: 70rem;
+  margin: 0 auto;
+
+  flex-wrap: wrap;
+
+  @media screen and (min-width: 90rem) {
+    padding-top: 10rem;
+  }
+}
+
+.box {
+  box-shadow: 2px 4px 9px 0px rgb(0 0 0 / 5%), 1px 6px 1rem 4px rgb(0 0 0 / 2%);
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 0 0.5rem;
+  max-width: calc(100vw - 2rem);
+}
+
+.box.box {
+  @media screen and (max-width: 70rem) {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+.rightstuff {
+  width: 20rem;
+  height: 12rem;
+}
+
+.bigstuff {
+  width: 100%;
+  height: 20rem;
+  width: 61rem;
+  margin-top: 1rem;
+}
+
+.overview {
+  background: linear-gradient(166deg, #8e6fff, #054387);
+
+  width: 40rem;
+  height: 12rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .ballance {
+    color: white;
+    font-weight: 900;
+    font-size: 2rem;
+  }
+
+  .ballanceSmall {
+    color: white;
+    font-size: 1.6rem;
+  }
+}
+
+.actions {
+  display: flex;
+  margin-top: 1rem;
+  .action {
+    svg {
+      margin-right: 0.5rem;
+    }
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    padding: 0.6rem 0.5rem;
+    border-radius: 0.5rem;
+    margin: 0.2rem;
+    color: black;
+    cursor: pointer;
+    background: linear-gradient(12deg, #ffffff, #d2d2d2);
+  }
+}
