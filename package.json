@@ -10,18 +10,20 @@
   "author": "<mail@henrygressmann.de>",
   "license": "MIT",
   "dependencies": {
-    "@snowstorm/cli": "0.3.3--canary.18c2cff.0",
-    "@snowstorm/core": "0.3.3--canary.18c2cff.0",
+    "@pognetwork/champ-proto": "^0.1.0-d15c488",
+    "@pognetwork/champ-wasm": "^0.0.8",
+    "@snowstorm/cli": "0.4.0",
+    "@snowstorm/core": "0.4.0",
     "@types/react": "^17.0.31",
     "react": "18.0.0-alpha-f2c381131-20211004",
     "react-dom": "18.0.0-alpha-f2c381131-20211004",
-    "sass": "^1.43.2",
+    "sass": "^1.43.3",
     "vite-plugin-fonts": "^0.2.2",
     "wouter": "2.7.5"
   },
   "devDependencies": {
-    "@explodingcamera/eslint-config": "^19.1.0",
-    "eslint": "^7.32.0",
+    "@explodingcamera/eslint-config": "^20.0.0",
+    "eslint": "^8.1.0",
     "prettier": "^2.4.1"
   }
 }

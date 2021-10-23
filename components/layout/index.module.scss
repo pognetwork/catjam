@@ -8,7 +8,7 @@
 .sidebar {
   box-shadow: 2px 4px 9px 0px rgba(0, 0, 0, 0.048),
     1px 6px 1rem 4px rgba(0, 0, 0, 0.199);
-  width: 4rem;
+  width: 4.5rem;
   background: linear-gradient(166deg, #8e6fff, #054387);
   height: 100%;
   left: 0;
@@ -36,6 +36,53 @@
     &:hover {
       opacity: 0.7;
     }
+  }
+
+  .sidebarLink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: white;
+    font-size: 0.67rem;
+    margin: 1rem 0;
+    text-align: center;
+    text-decoration: none;
+
+    opacity: 0.6;
+
+    transition: all 0.3s ease-in-out;
+    &.active {
+      opacity: 1;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    p {
+      margin-top: 0.5rem;
+      font-weight: 900;
+    }
+
+    .sidebarIcon {
+      height: 2rem;
+      width: 2rem;
+      color: white;
+    }
+  }
+
+  .sidebarHr {
+    background-color: white;
+    margin: 0.5rem auto;
+    width: 80%;
+    height: 0.1rem;
+  }
+
+  .sidebarTop {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
   }
 }
 
