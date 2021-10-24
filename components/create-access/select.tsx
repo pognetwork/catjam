@@ -1,7 +1,7 @@
 import { WALLET_TYPES } from '../../utils/types';
 
 import { Link } from '@snowstorm/core';
-import styles from '../../components/create-access/styles.module.scss';
+import styles from './styles.module.scss';
 
 export const SelectType = ({
 	select,

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { WALLET_TYPES } from '../utils/types';
 
-import styles from '../../components/create-access/styles.module.scss';
-import { Layout } from './../components/layout';
+import styles from '../components/create-access/styles.module.scss';
+import { Layout } from '../components/layout';
 import { SelectType } from '../components/create-access/select';
 
 const CreateLulw = () => <div />;
