@@ -6,7 +6,7 @@ specifiers:
   '@pognetwork/champ-wasm': ^0.0.8
   '@snowstorm/cli': 0.4.0
   '@snowstorm/core': 0.4.0
-  '@types/react': ^17.0.31
+  '@types/react': ^17.0.32
   eslint: ^8.1.0
   prettier: ^2.4.1
   react: 18.0.0-alpha-3c4c1c470-20211021
@@ -20,7 +20,7 @@ dependencies:
   '@pognetwork/champ-wasm': 0.0.8
   '@snowstorm/cli': 0.4.0_a6febc1ae834be5005f480092c602f9b
   '@snowstorm/core': 0.4.0_a6febc1ae834be5005f480092c602f9b
-  '@types/react': 17.0.31
+  '@types/react': 17.0.32
   react: 18.0.0-alpha-3c4c1c470-20211021
   react-dom: 18.0.0-alpha-3c4c1c470-20211021_2fae0a0c89c2df0459360cd45f728ca2
   sass: 1.43.3
@@ -521,8 +521,8 @@ packages:
     resolution: {integrity: sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==}
     dev: false
 
-  /@types/react/17.0.31:
-    resolution: {integrity: sha512-MQSR5EL4JZtdWRvqDgz9kXhSDDoy2zMTYyg7UhP+FZ5ttUOocWyxiqFJiI57sUG0BtaEX7WDXYQlkCYkb3X9vQ==}
+  /@types/react/17.0.32:
+    resolution: {integrity: sha512-hAm1pmwA3oZWbkB985RFwNvBRMG0F3KWSiC4/hNmanigKZMiKQoH5Q6etNw8HIDztTGfvXyOjPvdNnvBUCuaPg==}
     dependencies:
       '@types/prop-types': 15.7.4
       '@types/scheduler': 0.16.2

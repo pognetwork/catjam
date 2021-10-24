@@ -1,28 +1,26 @@
-import { Link } from '@snowstorm/core';
+import { useState } from 'react';
+import { WALLET_TYPES } from '../utils/types';
 
+import styles from '../../components/create-access/styles.module.scss';
 import { Layout } from './../components/layout';
-import styles from './access-create.module.scss';
+import { SelectType } from '../components/create-access/select';
 
-export const Create = () => (
-	<Layout className={styles.layout}>
-		<div className={styles.content}>
-			<h2>
-				Please select a method to create a new Wallet.
-				<br />
-				Already have a wallet? <Link href="/access">Access Wallet</Link>
-			</h2>
-			<div className={styles.methods}>
-				<div>
-					<h2>Wallet File (Software)</h2>
-					<p>
-						(This should only be used by experienced users in an offline
-						setting)
-					</p>
-				</div>
-				<div className={styles.inactive}>
-					<h2>More to follow soon</h2>
-				</div>
-			</div>
-		</div>
-	</Layout>
-);
+const CreateLulw = () => <div />;
+
+export const Create = () => {
+	const [type, setType] = useState<WALLET_TYPES | undefined>();
+	const select = (type: WALLET_TYPES) => () => {
+		setType(type);
+	};
+
+	let component = <SelectType type="create" select={select} />;
+	if (type === WALLET_TYPES.LULW_FILE) {
+		component = <CreateLulw />;
+	}
+
+	return (
+		<Layout className={styles.layout}>
+			<div className={styles.content}>{component}</div>
+		</Layout>
+	);
+};

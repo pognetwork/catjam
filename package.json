@@ -14,7 +14,7 @@
     "@pognetwork/champ-wasm": "^0.0.8",
     "@snowstorm/cli": "0.4.0",
     "@snowstorm/core": "0.4.0",
-    "@types/react": "^17.0.31",
+    "@types/react": "^17.0.32",
     "react": "18.0.0-alpha-3c4c1c470-20211021",
     "react-dom": "18.0.0-alpha-3c4c1c470-20211021",
     "sass": "^1.43.3",
