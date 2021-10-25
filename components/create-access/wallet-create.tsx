@@ -62,15 +62,15 @@ export const WalletCreate = () => {
 
 const Steps = ({ step }: { step: STEPS }) => (
 	<div className={styles.steps}>
-		<div className={step === 'PASSWORD' && styles.active}>
+		<div className={(step === 'PASSWORD' && styles.active) || undefined}>
 			<div>1</div>
 			<p>Step 1. Create password</p>
 		</div>
-		<div className={step === 'DOWNLOAD' && styles.active}>
+		<div className={(step === 'DOWNLOAD' && styles.active) || undefined}>
 			<div>2</div>
 			<p>Step 2. Download Wallet File</p>
 		</div>
-		<div className={step === 'DONE' && styles.active}>
+		<div className={(step === 'DONE' && styles.active) || undefined}>
 			<div>3</div>
 			<p>Step 3. Verify Wallet</p>
 		</div>

@@ -49,7 +49,7 @@ export const Layout: FC<{ className: string }> = ({ children, className }) => {
 						<Link
 							key={sidebar.name}
 							className={`${styles.sidebarLink} ${
-								loc.endsWith(sidebar.url) && styles.active
+								(loc.endsWith(sidebar.url) && styles.active) || ''
 							}`}
 							href={sidebar.url}
 						>
@@ -60,7 +60,7 @@ export const Layout: FC<{ className: string }> = ({ children, className }) => {
 					<div className={styles.sidebarHr} />
 					<Link
 						className={`${styles.sidebarLink} ${
-							loc.endsWith('settings') && styles.active
+							(loc.endsWith('settings') && styles.active) || ''
 						}`}
 						href="/settings"
 					>
