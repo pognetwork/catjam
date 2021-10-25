@@ -1,0 +1,47 @@
+.wrapper {
+  input {
+    margin: 0.3rem 0;
+  }
+
+  > div {
+    > p {
+      padding: 1rem 0;
+    }
+    > button {
+      width: 100%;
+      margin: 1.5rem 0 0 0;
+    }
+  }
+}
+
+.steps {
+  display: flex;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 1rem;
+
+    > p {
+      font-size: 1rem;
+      text-align: center;
+      width: 9rem;
+    }
+
+    > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 2rem;
+      height: 2rem;
+      color: white;
+      border-radius: 100%;
+      background-color: #c7cbfa;
+    }
+
+    &.active > div {
+      background-color: #525ccb;
+    }
+  }
+}

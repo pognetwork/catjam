@@ -22,7 +22,7 @@
     "wouter": "2.7.5"
   },
   "devDependencies": {
-    "@explodingcamera/eslint-config": "^20.0.0",
+    "@explodingcamera/eslint-config": "^20.1.0",
     "eslint": "^8.1.0",
     "prettier": "^2.4.1"
   }

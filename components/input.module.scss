@@ -6,4 +6,22 @@
   margin-top: 1rem;
   transition: all 0.3s ease-in-out;
   box-shadow: 2px 4px 9px 0px rgb(0 0 0 / 31%), 0 0 2rem 4px rgb(0 0 0 / 7%);
+  margin-top: 0;
+}
+
+.wrapper {
+  position: relative;
+  .eye {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    cursor: pointer;
+  }
+  input {
+    width: 100%;
+  }
 }

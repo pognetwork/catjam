@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@explodingcamera/eslint-config': ^20.0.0
+  '@explodingcamera/eslint-config': ^20.1.0
   '@pognetwork/champ-proto': ^0.1.0-d15c488
   '@pognetwork/champ-wasm': ^0.0.8
   '@snowstorm/cli': 0.4.0
@@ -28,7 +28,7 @@ dependencies:
   wouter: 2.7.5_2fae0a0c89c2df0459360cd45f728ca2
 
 devDependencies:
-  '@explodingcamera/eslint-config': 20.0.0_eslint@8.1.0
+  '@explodingcamera/eslint-config': 20.1.0_eslint@8.1.0
   eslint: 8.1.0
   prettier: 2.4.1
 
@@ -110,7 +110,7 @@ packages:
       '@babel/compat-data': 7.15.0
       '@babel/core': 7.15.8
       '@babel/helper-validator-option': 7.14.5
-      browserslist: 4.17.4
+      browserslist: 4.17.5
       semver: 6.3.0
 
   /@babel/helper-function-name/7.15.4:
@@ -293,8 +293,8 @@ packages:
       - supports-color
     dev: true
 
-  /@explodingcamera/eslint-config/20.0.0_eslint@8.1.0:
-    resolution: {integrity: sha512-QwJYuq844DzuvsUKUiVJamOXhx0DMm5Ev677rlR04OkwoqWbtYAgXaHN21oBxK712VbDkk+Y9x0L1tOamnxv3w==}
+  /@explodingcamera/eslint-config/20.1.0_eslint@8.1.0:
+    resolution: {integrity: sha512-5hICL6t6nfp45k+1GXM0d8Ahwz22BzzDqSzgJRK+y7GLQWk+YhAWNFJWfgC/Q3n6vOv+JCQvCS7HzR+0lwQ6gA==}
     peerDependencies:
       eslint: ^7.0.0
     dependencies:
@@ -796,8 +796,8 @@ packages:
     resolution: {integrity: sha512-CA9hsySZVo9371qEHjHZtYxV2cFtVj5Wj/ZHi8ooEsrtm4vOnl9Y9HmyYWk9q+05d7K3rdoAE0j3MVEFVvtQtg==}
     dev: false
 
-  /browserslist/4.17.4:
-    resolution: {integrity: sha512-Zg7RpbZpIJRW3am9Lyckue7PLytvVxxhJj1CaJVlCWENsGEAOlnlt8X0ZxGRPp7Bt9o8tIRM5SEXy4BCPMJjLQ==}
+  /browserslist/4.17.5:
+    resolution: {integrity: sha512-I3ekeB92mmpctWBoLXe0d5wPS2cBuRvvW0JyyJHMrk9/HmP2ZjrTboNAZ8iuGqaEIlKguljbQY32OkOJIRrgoA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
@@ -1368,7 +1368,7 @@ packages:
       array.prototype.flatmap: 1.2.5
       doctrine: 2.1.0
       eslint: 8.1.0
-      estraverse: 5.2.0
+      estraverse: 5.3.0
       jsx-ast-utils: 3.2.1
       minimatch: 3.0.4
       object.entries: 1.1.5
@@ -1429,7 +1429,7 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
       esrecurse: 4.3.0
-      estraverse: 5.2.0
+      estraverse: 5.3.0
     dev: true
 
   /eslint-template-visitor/2.3.2_eslint@8.1.0:
@@ -1533,14 +1533,14 @@ packages:
     resolution: {integrity: sha512-cCDispWt5vHHtwMY2YrAQ4ibFkAL8RbH5YGBnZBc90MolvvfkkQcJro/aZiAQUlQ3qgrYS6D6v8Gc5G5CQsc9w==}
     engines: {node: '>=0.10'}
     dependencies:
-      estraverse: 5.2.0
+      estraverse: 5.3.0
     dev: true
 
   /esrecurse/4.3.0:
     resolution: {integrity: sha512-KmfKL3b6G+RXvP8N1vr3Tq1kL/oCFgn2NYXEtqP8/L3pKapUA4G8cFVaoF3SU323CD4XypR/ffioHmkti6/Tag==}
     engines: {node: '>=4.0'}
     dependencies:
-      estraverse: 5.2.0
+      estraverse: 5.3.0
     dev: true
 
   /estraverse/4.3.0:
@@ -1548,8 +1548,8 @@ packages:
     engines: {node: '>=4.0'}
     dev: true
 
-  /estraverse/5.2.0:
-    resolution: {integrity: sha512-BxbNGGNm0RyRYvUdHpIwv9IWzeM9XClbOxwoATuFdOE7ZE6wHL+HQ5T8hoPM+zHvmKzzsEqhgy0GrQ5X13afiQ==}
+  /estraverse/5.3.0:
+    resolution: {integrity: sha512-MMdARuVEQziNTeJD8DgMqmhwR11BRQ/cBP+pLtYdSTnf3MIO8fFeiINEbX36ZdNlfU/7A9f3gUw49B3oQsvwBA==}
     engines: {node: '>=4.0'}
     dev: true
 
