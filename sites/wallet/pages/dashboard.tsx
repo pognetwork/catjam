@@ -1,5 +1,5 @@
-import { arrowDownIcon, moneyIcon, sendIcon } from '../components/icons';
-import { Layout } from './../components/layout';
+import { arrowDownIcon, moneyIcon, sendIcon } from '../../../components/icons';
+import { Layout } from '../../../components/layout'; 
 import styles from './dashboard.module.scss';
 
 export const Dashboard = () => (

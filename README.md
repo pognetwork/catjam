@@ -1,3 +1,8 @@
+# catJAM
+
+The catJAM project contains all react applications used across all pog.network core projects.
+Currently, this is the official Wallet and Node Webinterface (Specificaly for our `champ` node implementation).
+
 ## Getting Started
 
 ### 1. Install Requirements

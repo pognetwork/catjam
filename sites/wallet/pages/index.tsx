@@ -1,11 +1,11 @@
 import { Link } from '@snowstorm/core';
 
-import buttonStyles from './../components/button.module.scss';
-import { Layout } from './../components/layout';
+import buttonStyles from './../../../components/button.module.scss';
+import { Layout } from '../../../components/layout';
 import styles from './index.module.scss';
 
-// import pogchan from './../assets/pogchan.png';
-// import shiba from './../assets/shiba.png';
+import pogchan from './../assets/pogchan.png';
+import shiba from './../assets/shiba.png';
 import astronaut from './../assets/astronaut.png';
 
 export const Index = () => (
@@ -19,23 +19,21 @@ export const Index = () => (
 			</p>
 			<div className={styles.buttons}>
 				<Link href="/create">
-					<button
+					{/* <button
 						type="button"
 						className={`${buttonStyles.button} ${buttonStyles.active}`}
 					>
 						Create a new wallet
-					</button>
+					</button> */}
 				</Link>
 				<Link href="/access">
-					<button type="button" className={buttonStyles.button}>
+					{/* <button type="button" className={buttonStyles.button}>
 						Access my wallet
-					</button>
+					</button> */}
 				</Link>
 			</div>
 		</div>
 		<div className={styles.hero}>
-			{/* <img src={`${pogchan}`} /> */}
-			{/* <img src={`${shiba}`} /> */}
 			<img src={`${astronaut}`} />
 		</div>
 	</Layout>

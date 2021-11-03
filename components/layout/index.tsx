@@ -35,7 +35,7 @@ const sidebarLinks = [
 	},
 ];
 
-export const Layout: FC<{ className: string }> = ({ children, className }) => {
+export const Layout: FC<{ className?: string }> = ({ children, className }) => {
 	const [loc] = useLocation();
 
 	return (
