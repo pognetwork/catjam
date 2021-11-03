@@ -1,12 +1,19 @@
-# catJAM
+<h1>
+<img align="left" width="60" src="https://cdn.betterttv.net/emote/5f1b0186cf6d2144653d2970/3x">
+ &nbsp;catJAM
+</h1>
+<br/>
 
-The catJAM project contains all react applications used across all pog.network core projects.
-Currently, this is the official Wallet and Node Webinterface (Specificaly for our `champ` node implementation).
-|project|folder|development url|
-|---|---|-|
-|[shared components](#)|`./components`|`localhost:2020`|
-|[wallet](./sites/wallet/README.md)|`./sites/wallet`|`wallet.localhost:2020`|
-|[admin](./sites/admin/README.md)|`./sites/admin`|`admin.localhost:2020`|
+> The catJAM project contains all JAM Stack based (Javascript-API-Markup) `React` applications used across all pog.network core projects.
+> Currently, this is the official Wallet and Node Webinterface (Specifically for our `champ` node implementation).
+
+| project                            | folder           | development url         |
+| ---------------------------------- | ---------------- | ----------------------- |
+| [shared components](#)             | `./components`   | `localhost:2020`        |
+| [wallet](./sites/wallet/README.md) | `./sites/wallet` | `wallet.localhost:2020` |
+| [admin](./sites/admin/README.md)   | `./sites/admin`  | `admin.localhost:2020`  |
+
+For more information about a specific project, click its name.
 
 ## Getting Started
 
