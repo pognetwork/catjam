@@ -1,0 +1,179 @@
+.layout {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, Helvetica, Arial,
+    sans-serif;
+  flex: 1;
+  display: flex;
+  background: #383a59;
+
+  .children {
+    margin-top: 1rem;
+    display: flex;
+  }
+}
+
+.sidebar {
+  width: 5rem;
+  background: #282a36;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.4rem;
+
+  @media screen and (max-width: 90rem) {
+    width: 100%;
+    height: 4.6rem;
+    flex-direction: row;
+    padding-top: 0;
+    padding-left: 0.4rem;
+  }
+
+  .logo {
+    height: 3.2rem;
+    width: 3.2rem;
+
+    cursor: pointer;
+    transition: 0.2s;
+    opacity: 1;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  .sidebarLink {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 0.67rem;
+
+    @media screen and (max-width: 90rem) {
+      margin: 0 0.8rem;
+    }
+
+    @media screen and (min-width: 90rem) {
+      margin: 0.8rem 0;
+    }
+
+    @media screen and (max-width: 40rem) {
+      display: none;
+    }
+
+    text-align: center;
+    text-decoration: none;
+
+    opacity: 0.6;
+
+    transition: all 0.3s ease-in-out;
+    &.active {
+      opacity: 1;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    p {
+      margin-top: 0.5rem;
+      font-weight: 900;
+    }
+
+    > svg {
+      height: 2rem;
+      width: 2rem;
+      color: white;
+    }
+  }
+
+  .sidebarTop {
+    @media screen and (max-width: 90rem) {
+      flex-direction: row;
+      margin-top: 0;
+    }
+
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 1rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logout {
+    width: 3rem;
+    height: 3rem;
+    background: #50fa7b;
+    color: black;
+    justify-content: center;
+    font-size: 1rem;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 90rem) {
+      margin-left: auto;
+      padding: 0.5rem;
+    }
+
+    @media screen and (min-width: 90rem) {
+      margin-bottom: 1rem;
+      margin-top: auto;
+    }
+
+    svg {
+      color: black;
+      margin-top: 0.5rem;
+      height: 1rem;
+      width: 1rem;
+    }
+  }
+}
+
+.main {
+  margin-left: 5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  color: white;
+
+  @media screen and (max-width: 90rem) {
+    margin-top: 4rem;
+    margin-left: 0rem;
+    padding-bottom: 3rem;
+  }
+}
+
+.header {
+  @media screen and (max-width: 90rem) {
+    display: none;
+  }
+
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+  h1 {
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  .logo {
+    height: 2.6rem;
+    width: 2.6rem;
+
+    cursor: pointer;
+    transition: 0.2s;
+    opacity: 1;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

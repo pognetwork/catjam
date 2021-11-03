@@ -1,9 +1,9 @@
 import { Layout } from "../components/layout";
 
-export const Index = () => (
+export const Wallets = () => (
   <Layout>
     <div>
-      <h1>Dashboard</h1>
+      <h1>Wallets</h1>
     </div>
   </Layout>
 );

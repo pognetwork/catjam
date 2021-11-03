@@ -1,6 +1,6 @@
 import { useState, DetailedHTMLProps } from 'react';
 import styles from './input.module.scss';
-
+ 
 const eyeOff = (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"

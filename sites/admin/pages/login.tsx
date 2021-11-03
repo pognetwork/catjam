@@ -1,9 +1,9 @@
 import { Layout } from "../components/layout";
 
-export const Index = () => (
+export const Login = () => (
   <Layout>
     <div>
-      <h1>Dashboard</h1>
+      <h1>Login</h1>
     </div>
   </Layout>
 );

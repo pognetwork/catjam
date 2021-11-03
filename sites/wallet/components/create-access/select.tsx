@@ -1,4 +1,4 @@
-import { WALLET_TYPES } from '../../utils/types';
+import { WALLET_TYPES } from '../../../../utils/types';
 
 import { Link } from '@snowstorm/core';
 import styles from './styles.module.scss';
