@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "@pognetwork/champ-proto": "^0.1.0-38a209b",
-    "@pognetwork/champ-wasm": "^0.0.8",
+    "champ-wasm": "0.0.8-alpha.13",
     "@snowstorm/cli": "0.4.1",
     "@snowstorm/core": "0.4.1",
     "@types/react": "^17.0.34",
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@explodingcamera/eslint-config": "^20.1.0",
     "eslint": "^8.1.0",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "vite-plugin-wasm-pack": "^0.1.7"
   }
 }

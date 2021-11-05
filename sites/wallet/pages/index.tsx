@@ -4,9 +4,18 @@ import buttonStyles from './../../../components/button.module.scss';
 import { Layout } from '../components/layout';
 import styles from './index.module.scss';
 
+import astronaut from './../assets/astronaut.png';
+
+import init, { Wallet } from 'champ-wasm';
+
+if (!import.meta.env.SSR) {
+	void init().then(x => {
+		console.log(Wallet.generate('test'));
+	});
+}
+
 // import pogchan from './../assets/pogchan.png';
 // import shiba from './../assets/shiba.png';
-import astronaut from './../assets/astronaut.png';
 
 export const Index = () => (
 	<Layout className={styles.layout}>

@@ -3,24 +3,25 @@ lockfileVersion: 5.3
 specifiers:
   '@explodingcamera/eslint-config': ^20.1.0
   '@pognetwork/champ-proto': ^0.1.0-38a209b
-  '@pognetwork/champ-wasm': ^0.0.8
   '@snowstorm/cli': 0.4.1
   '@snowstorm/core': 0.4.1
   '@types/react': ^17.0.34
+  champ-wasm: 0.0.8-alpha.13
   eslint: ^8.1.0
   prettier: ^2.4.1
   react: 18.0.0-alpha-3c4c1c470-20211021
   react-dom: 18.0.0-alpha-3c4c1c470-20211021
   sass: ^1.43.4
   vite-plugin-fonts: ^0.2.2
+  vite-plugin-wasm-pack: ^0.1.7
   wouter: 2.7.5
 
 dependencies:
   '@pognetwork/champ-proto': 0.1.0-38a209b
-  '@pognetwork/champ-wasm': 0.0.8
   '@snowstorm/cli': 0.4.1_0d2ec4bf56092673dd921256e796a1c8
   '@snowstorm/core': 0.4.1_0d2ec4bf56092673dd921256e796a1c8
   '@types/react': 17.0.34
+  champ-wasm: 0.0.8-alpha.13
   react: 18.0.0-alpha-3c4c1c470-20211021
   react-dom: 18.0.0-alpha-3c4c1c470-20211021_2fae0a0c89c2df0459360cd45f728ca2
   sass: 1.43.4
@@ -31,6 +32,7 @@ devDependencies:
   '@explodingcamera/eslint-config': 20.1.0_eslint@8.1.0
   eslint: 8.1.0
   prettier: 2.4.1
+  vite-plugin-wasm-pack: 0.1.7
 
 packages:
 
@@ -374,10 +376,6 @@ packages:
       protobufjs: 6.11.2
     transitivePeerDependencies:
       - google-protobuf
-    dev: false
-
-  /@pognetwork/champ-wasm/0.0.8:
-    resolution: {integrity: sha512-X9eOLHO65dDCpwCN4NYAaJRirBJlijlL+AW8G8zJWbzsuWpyC1aaakAq3LnbMloVT867JslcfKu5xDlke7X/9g==}
     dev: false
 
   /@protobufjs/aspromise/1.1.2:
@@ -861,6 +859,10 @@ packages:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
     dev: true
+
+  /champ-wasm/0.0.8-alpha.13:
+    resolution: {integrity: sha512-oHHLMBsC1/0gE3aQOMSrC3uIwtKBlDNs7Gzt/CpcURPNK/XMgRFJKHXdRHsNpNEe/HQ9vir1eep0kzgmzVgfkw==}
+    dev: false
 
   /chokidar/3.5.2:
     resolution: {integrity: sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ==}
@@ -1659,6 +1661,15 @@ packages:
     resolution: {integrity: sha512-JaTY/wtrcSyvXJl4IMFHPKyFur1sE9AUqc0QnhOaJ0CxHtAoIV8pYDzeEfAaNEtGkOfq4gr3LBFmdXW5mOQFnA==}
     dev: true
 
+  /fs-extra/10.0.0:
+    resolution: {integrity: sha512-C5owb14u9eJwizKGdchcDUQeFtlSHHthBk8pbX9Vc1PFZrLombudjDnNns88aYslCyF6IY5SUw3Roz6xShcEIQ==}
+    engines: {node: '>=12'}
+    dependencies:
+      graceful-fs: 4.2.8
+      jsonfile: 6.1.0
+      universalify: 2.0.0
+    dev: true
+
   /fs.realpath/1.0.0:
     resolution: {integrity: sha1-FQStJSMVjKpA20onh8sBQRmU6k8=}
     dev: true
@@ -1748,6 +1759,10 @@ packages:
       ignore: 5.1.9
       merge2: 1.4.1
       slash: 3.0.0
+    dev: true
+
+  /graceful-fs/4.2.8:
+    resolution: {integrity: sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==}
     dev: true
 
   /hard-rejection/2.1.0:
@@ -2033,6 +2048,14 @@ packages:
     dependencies:
       minimist: 1.2.5
 
+  /jsonfile/6.1.0:
+    resolution: {integrity: sha512-5dgndWOriYSm5cnYaJNhalLNDKOqFwyDB/rr1E9ZsGciGvKPs8R2xYGCacuf3z6K1YKDz182fd+fY3cn3pMqXQ==}
+    dependencies:
+      universalify: 2.0.0
+    optionalDependencies:
+      graceful-fs: 4.2.8
+    dev: true
+
   /jsx-ast-utils/3.2.1:
     resolution: {integrity: sha512-uP5vu8xfy2F9A6LGC22KO7e2/vGTS1MhP+18f++ZNlf0Ohaxbc9nIEwHAsejlJKyzfZzU5UIhe5ItYkitcZnZA==}
     engines: {node: '>=4.0'}
@@ -2202,6 +2225,10 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
     dev: false
+
+  /narrowing/1.4.0:
+    resolution: {integrity: sha512-TYkWGGMWqyiEhTx0KdGtf+dukZAc1fcY0sOpXWOFxvdBXsVpfdtYUnsfZtpPax3REgD7BxcBWkGByWgYrSkC9A==}
+    dev: true
 
   /natural-compare/1.4.0:
     resolution: {integrity: sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=}
@@ -2960,6 +2987,11 @@ packages:
       which-boxed-primitive: 1.0.2
     dev: true
 
+  /universalify/2.0.0:
+    resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
+    engines: {node: '>= 10.0.0'}
+    dev: true
+
   /uri-js/4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
     dependencies:
@@ -2981,6 +3013,14 @@ packages:
     peerDependencies:
       vite: ^2.0.0
     dev: false
+
+  /vite-plugin-wasm-pack/0.1.7:
+    resolution: {integrity: sha512-llt/d93IHI1LuDGjju6LsuXjBN/5PAEGBnC9ea4p5orFhdRzhenLkQHp/+/0c1APdCIbVqaRtSBM0AbVeLaH7g==}
+    dependencies:
+      chalk: 4.1.2
+      fs-extra: 10.0.0
+      narrowing: 1.4.0
+    dev: true
 
   /vite/2.6.13_sass@1.43.4:
     resolution: {integrity: sha512-+tGZ1OxozRirTudl4M3N3UTNJOlxdVo/qBl2IlDEy/ZpTFcskp+k5ncNjayR3bRYTCbqSOFz2JWGN1UmuDMScA==}
