@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { Input } from '../../../../components/input';
 import styles from './wallet-create.module.scss';
-import buttonStyles from './../button.module.scss';
+import buttonStyles from './../../../../components/button.module.scss';
 
 type STEPS = 'PASSWORD' | 'DOWNLOAD' | 'DONE';
 
