@@ -3,14 +3,22 @@
   border: 3px solid #0c458d;
   border-radius: 1rem;
   padding: 1rem;
-  margin-top: 1rem;
   transition: all 0.3s ease-in-out;
   box-shadow: 2px 4px 9px 0px rgb(0 0 0 / 31%), 0 0 2rem 4px rgb(0 0 0 / 7%);
-  margin-top: 0;
+
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+  outline: none;
+
+  &:focus {
+    border: 3px solid #4291f1;
+  }
 }
 
 .wrapper {
   position: relative;
+  color: black;
+
   .eye {
     position: absolute;
     right: 0;

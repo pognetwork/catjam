@@ -6,8 +6,49 @@
   background: #383a59;
 
   .children {
-    margin-top: 1rem;
+    @media screen and (max-width: 90rem) {
+      margin-top: 1rem;
+    }
+
     display: flex;
+    flex-direction: column;
+  }
+
+  :global(.__input) {
+    border-radius: 0.4rem;
+    border-color: #6272a4;
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem;
+    background: #44475a;
+    color: #f8f8f2;
+    outline: none;
+
+    &::placeholder {
+      color: #f8f8f2c0;
+    }
+
+    &:focus {
+      border-color: #8be9fd;
+    }
+  }
+
+  :global(.__input_wrapper) {
+    svg {
+      color: #f8f8f2;
+    }
+  }
+
+  button {
+    background-color: #6cff91b7;
+    border-radius: 0.4rem;
+    border: none;
+    padding: 1rem 0.8rem;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    &:hover {
+      background-color: #50fa7b;
+    }
   }
 }
 
@@ -148,6 +189,11 @@
     margin-left: 0rem;
     padding-bottom: 3rem;
   }
+}
+
+.children {
+  padding: 1rem 2rem;
+  flex: 1;
 }
 
 .header {

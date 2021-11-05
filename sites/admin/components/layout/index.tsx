@@ -57,7 +57,7 @@ export const Layout: FC<{ className?: string }> = ({ children, className }) => {
 						href="/login"
 					>
 						{logoutIcon}
-						<p></p>
+						<p />
 					</Link>
 				</div>
 			</div>

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Link, useLocation } from '@snowstorm/core';
 
-import  './../../../../assets/global.scss';
+import './../../../../assets/global.scss';
 import logo from './../../../../assets/pog.svg';
 import styles from './index.module.scss';
 import {

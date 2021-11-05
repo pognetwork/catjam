@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from 'react';
-import { Input } from '../input';
+import { Input } from '../../../../components/input';
 import styles from './wallet-create.module.scss';
 import buttonStyles from './../button.module.scss';
 

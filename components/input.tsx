@@ -1,6 +1,6 @@
 import { useState, DetailedHTMLProps } from 'react';
 import styles from './input.module.scss';
- 
+
 const eyeOff = (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +55,7 @@ export const Input = ({ password, ...props }: InputProps) => {
 
 	const component = (
 		<input
-			className={className}
+			className={`${className} __input`}
 			type={password && !visible ? 'password' : 'text'}
 			{...props}
 		/>
@@ -63,7 +63,7 @@ export const Input = ({ password, ...props }: InputProps) => {
 	if (!password) return component;
 
 	return (
-		<div className={styles.wrapper}>
+		<div className={`${styles.wrapper} __input_wrapper`}>
 			<div onClick={toggle} className={styles.eye}>
 				{visible ? eyeOff : eye}
 			</div>
