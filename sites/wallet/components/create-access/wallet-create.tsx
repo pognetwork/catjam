@@ -1,7 +1,8 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { Input } from '../../../../components/input';
 import styles from './wallet-create.module.scss';
 import buttonStyles from './../../../../components/button.module.scss';
+import { spinner } from '../../../../assets/icons';
 
 type STEPS = 'PASSWORD' | 'DOWNLOAD' | 'DONE';
 
@@ -9,20 +10,71 @@ export const WalletCreate = () => {
 	const [step, _setStep] = useState<STEPS>('PASSWORD');
 	const setStep = (step: STEPS) => () => _setStep(step);
 
+	// STEP: PASSWORD
 	const [password, setPassword] = useState('');
 	const [passwordConfirmation, setPasswordConfirmation] = useState('');
+	const passwordMatches = password === passwordConfirmation;
+	const passwordValid = password.length > 10;
+
+	// STEP: DOWNLOAD
+	const [downloadReady, setDownloadReady] = useState(false);
+	const [downloadedWallet, setDownloadedWallet] = useState(false);
+	const downloadWallet = () => {
+		setDownloadedWallet(true);
+	};
+
+	// STEP: DONE
+	const [decryptionPassword, setDecryptionPassword] = useState('');
+
+	useEffect(() => {
+		if (step !== 'DOWNLOAD') return;
+		const timeout = setTimeout(() => setDownloadReady(true), 1000);
+		return () => clearTimeout(timeout);
+	}, [step]);
 
 	const onChange =
 		(func: (str: string) => void) => (e: ChangeEvent<HTMLInputElement>) =>
 			func(e.target.value);
 
-	const passwordMatches = password === passwordConfirmation;
-	const passwordValid = password.length > 10;
-
 	return (
 		<div className={styles.wrapper}>
 			<h1>Create a new Wallet File</h1>
 			<Steps step={step} />
+			{step === 'DOWNLOAD' && (
+				<div className={styles.download}>
+					{downloadReady ? (
+						<>
+							<h3>
+								Never share this file with anyone! This is the only way to
+								recover your funds, so be sure to keep it secure.
+							</h3>
+							<div>
+								<button
+									className={buttonStyles.button}
+									type="button"
+									onClick={downloadWallet}
+								>
+									Download Encrypted Wallet File
+								</button>
+								<button
+									className={buttonStyles.button}
+									type="button"
+									onClick={setStep('DONE')}
+									disabled={!downloadedWallet}
+								>
+									Continue
+								</button>
+							</div>
+						</>
+					) : (
+						<>
+							{spinner}
+							<h2>Generating Wallet...</h2>
+						</>
+					)}
+				</div>
+			)}
+
 			{step === 'PASSWORD' && (
 				<div>
 					<h2>Create a password</h2>
@@ -53,6 +105,25 @@ export const WalletCreate = () => {
 							passwordMatches &&
 							' (Your Password is too insecure)'}
 						{!passwordMatches && " (Your Passwords don't match)"}
+					</button>
+				</div>
+			)}
+
+			{step === 'DONE' && (
+				<div>
+					<h2>You're done!</h2>
+					<p>
+						Please re-enter the password you chose earlier to access your
+						wallet.{' '}
+					</p>
+					<Input
+						password
+						value={decryptionPassword}
+						onChange={onChange(setDecryptionPassword)}
+						placeholder="Enter Password"
+					/>
+					<button className={buttonStyles.button} type="button">
+						Decrypt Wallet
 					</button>
 				</div>
 			)}
