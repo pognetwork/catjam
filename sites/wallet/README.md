@@ -1,12 +1,12 @@
 # Pog.network Wallet
 
-This folder contains the pog.network wallet application. The general pourpose of it is to let users interact with the pog.network crypocurrency by snding tokens to other users and interacting with decentralized applications.
+This folder contains the pog.network wallet application. The general purpose of it is to let users interact with the pog.network cryptocurrency by sending tokens to other users and interacting with decentralized applications.
 
 ## Basic Functionality
 
-The following contains a general overview, for more detailed explainations check out [pog.network/specification](https://pog.network/specification)
+The following contains a general overview, for more detailed explanations check out [pog.network/specification](https://pog.network/specification)
 
-The general process is comparable with the standard model of a website talking to a server, however in our case we don't actually trust the server. Since this application is sending around actuall currency, we can't afford to leak any sensiive information.
+The general process is comparable with the standard model of a website talking to a server, however in our case we don't actually trust the server. Since this application is sending around actual currency, we can't afford to leak any sensitive information.
 
 This is where the whole cryptocurrency aspect comes in: Your private key (you can think of this as your password) never actually leaves your computer and is send to someone, instead we use it with public/private key encryption to digitally sign messages.
 
@@ -24,10 +24,10 @@ Later, multiple other options to load and create a private key will be provided,
 
 ### Sending transactions
 
-Now comes he fun part. When the user wants to create a new transaction, we have to intereact with the rest of the network.
+Now comes he fun part. When the user wants to create a new transaction, we have to interact with the rest of the network.
 
-Here, we connect using a gRPC API to any node in the network - remember: we're never transmiting sensitive information to anyone - which will help us query the blockchain ("database") and send new transactions.
+Here, we connect using a gRPC API to any node in the network - remember: we're never transmitting sensitive information to anyone - which will help us query the blockchain ("database") and send new transactions.
 
-Using this API, we request the required data to generat a new block (e.g account height). Using this, we create a new block (using the pog protocol buffer schema) and cryptographically sign it with our private key.
+Using this API, we request the required data to generate a new block (e.g account height). Using this, we create a new block (using the pog protocol buffer schema) and cryptographically sign it with our private key.
 
-This block is then transmited to the node we're connected to which inturn will forward it to the rest of the network, which will then verify it and include it in your account chain.
+This block is then transmitted to the node we're connected to which inturn will forward it to the rest of the network, which will then verify it and include it in your account chain.
