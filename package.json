@@ -11,10 +11,10 @@
   "license": "MIT",
   "dependencies": {
     "@pognetwork/champ-proto": "^0.1.0-38a209b",
-    "champ-wasm": "0.0.8-alpha.13",
-    "@snowstorm/cli": "0.4.1",
-    "@snowstorm/core": "0.4.1",
+    "@snowstorm/cli": "0.5.0",
+    "@snowstorm/core": "0.5.0",
     "@types/react": "^17.0.34",
+    "champ-wasm": "0.0.9",
     "react": "18.0.0-alpha-3c4c1c470-20211021",
     "react-dom": "18.0.0-alpha-3c4c1c470-20211021",
     "sass": "^1.43.4",
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@explodingcamera/eslint-config": "^20.1.0",
-    "eslint": "^8.1.0",
+    "eslint": "^8.2.0",
     "prettier": "^2.4.1",
     "vite-plugin-wasm-pack": "^0.1.7"
   }
