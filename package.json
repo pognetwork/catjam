@@ -11,8 +11,8 @@
   "license": "MIT",
   "dependencies": {
     "@pognetwork/champ-proto": "^0.1.0-38a209b",
-    "@snowstorm/cli": "0.5.0",
-    "@snowstorm/core": "0.5.0",
+    "@snowstorm/cli": "0.5.1--canary.20.8bf3f6c.0",
+    "@snowstorm/core": "0.5.1--canary.20.8bf3f6c.0",
     "@types/react": "^17.0.34",
     "champ-wasm": "0.0.9",
     "react": "18.0.0-alpha-f6abf4b40-20211020",
@@ -25,6 +25,6 @@
     "@explodingcamera/eslint-config": "^20.1.0",
     "eslint": "^8.2.0",
     "prettier": "^2.4.1",
-    "vite-plugin-wasm-pack": "^0.1.7"
+    "@pognetwork/vite-plugin-wasm-pack": "^0.1.8"
   }
 }

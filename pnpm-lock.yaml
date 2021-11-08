@@ -3,36 +3,36 @@ lockfileVersion: 5.3
 specifiers:
   '@explodingcamera/eslint-config': ^20.1.0
   '@pognetwork/champ-proto': ^0.1.0-38a209b
-  '@snowstorm/cli': 0.5.0
-  '@snowstorm/core': 0.5.0
+  '@pognetwork/vite-plugin-wasm-pack': ^0.1.8
+  '@snowstorm/cli': 0.5.1--canary.20.8bf3f6c.0
+  '@snowstorm/core': 0.5.1--canary.20.8bf3f6c.0
   '@types/react': ^17.0.34
   champ-wasm: 0.0.9
   eslint: ^8.2.0
   prettier: ^2.4.1
-  react: 18.0.0-alpha-3c4c1c470-20211021
-  react-dom: 18.0.0-alpha-3c4c1c470-20211021
+  react: 18.0.0-alpha-f6abf4b40-20211020
+  react-dom: 18.0.0-alpha-f6abf4b40-20211020
   sass: ^1.43.4
   vite-plugin-fonts: ^0.2.2
-  vite-plugin-wasm-pack: ^0.1.7
   wouter: 2.7.5
 
 dependencies:
   '@pognetwork/champ-proto': 0.1.0-38a209b
-  '@snowstorm/cli': 0.5.0_0d2ec4bf56092673dd921256e796a1c8
-  '@snowstorm/core': 0.5.0_0d2ec4bf56092673dd921256e796a1c8
+  '@snowstorm/cli': 0.5.1--canary.20.8bf3f6c.0_42ede92b34be65e93a5bdae2db14af6f
+  '@snowstorm/core': 0.5.1--canary.20.8bf3f6c.0_42ede92b34be65e93a5bdae2db14af6f
   '@types/react': 17.0.34
   champ-wasm: 0.0.9
-  react: 18.0.0-alpha-3c4c1c470-20211021
-  react-dom: 18.0.0-alpha-3c4c1c470-20211021_2fae0a0c89c2df0459360cd45f728ca2
+  react: 18.0.0-alpha-f6abf4b40-20211020
+  react-dom: 18.0.0-alpha-f6abf4b40-20211020_c83590f482eb09d09737f3f1a7f6e69b
   sass: 1.43.4
   vite-plugin-fonts: 0.2.2
-  wouter: 2.7.5_2fae0a0c89c2df0459360cd45f728ca2
+  wouter: 2.7.5_c83590f482eb09d09737f3f1a7f6e69b
 
 devDependencies:
   '@explodingcamera/eslint-config': 20.1.0_eslint@8.2.0
+  '@pognetwork/vite-plugin-wasm-pack': 0.1.8
   eslint: 8.2.0
   prettier: 2.4.1
-  vite-plugin-wasm-pack: 0.1.7
 
 packages:
 
@@ -378,6 +378,14 @@ packages:
       - google-protobuf
     dev: false
 
+  /@pognetwork/vite-plugin-wasm-pack/0.1.8:
+    resolution: {integrity: sha512-DX26qBc6bKz+N6usQDNKxXaCtpVfLfWBhxeYn9jnH1wZSsQEU5QoTc6Lqd97JBqTs9OnRDO33fFuOtaGZrdtxg==}
+    dependencies:
+      chalk: 4.1.2
+      fs-extra: 10.0.0
+      narrowing: 1.4.0
+    dev: true
+
   /@protobufjs/aspromise/1.1.2:
     resolution: {integrity: sha1-m4sMxmPWaafY9vXQiToU00jzD78=}
     dev: false
@@ -429,11 +437,11 @@ packages:
       picomatch: 2.3.0
     dev: false
 
-  /@snowstorm/cli/0.5.0_0d2ec4bf56092673dd921256e796a1c8:
-    resolution: {integrity: sha512-VpljSI7Sc6TGW4XZQIgd+/RGRSEL+sFiQJamV4zKMaT7YeW7FO/bH7Hw47QtiZywWzoAHZwyrEq4W40Mi2xf4g==}
+  /@snowstorm/cli/0.5.1--canary.20.8bf3f6c.0_42ede92b34be65e93a5bdae2db14af6f:
+    resolution: {integrity: sha512-t6FAqENSP75aLSjhNheaUBfwWBptYB56HTFgXKp28Ixa5mwfZZAssNzxtaRvU1v0Q0JqkqOkzcs7qL0mmQm9hg==}
     hasBin: true
     dependencies:
-      '@snowstorm/core': 0.5.0_0d2ec4bf56092673dd921256e796a1c8
+      '@snowstorm/core': 0.5.1--canary.20.8bf3f6c.0_42ede92b34be65e93a5bdae2db14af6f
       meow: 10.1.1
       yargs: 17.2.1
     transitivePeerDependencies:
@@ -445,21 +453,21 @@ packages:
       - supports-color
     dev: false
 
-  /@snowstorm/core/0.5.0_0d2ec4bf56092673dd921256e796a1c8:
-    resolution: {integrity: sha512-0fqpXwkI28bjGtfReJI38TbI/q8p9JgvY++wdedAxodbIp11OloQjl3IB678Cn7y0lnSjs2voUrjMt5NxccGsw==}
+  /@snowstorm/core/0.5.1--canary.20.8bf3f6c.0_42ede92b34be65e93a5bdae2db14af6f:
+    resolution: {integrity: sha512-3w7n7lz3ubMkeyMx+ysz+2IZuthrd/isJvzMfb1zgQ91cM3Mi2yJRS82XCYrt9sfi1jlchbs77g1+BPA9Knj/A==}
     peerDependencies:
       react: 18.0.0-alpha-f6abf4b40-20211020
       react-dom: 18.0.0-alpha-f6abf4b40-20211020
     dependencies:
-      '@snowstorm/head': 0.5.0_407efa8c7e96a82429951a966560b5fa
-      '@snowstorm/serverprops': 0.5.0
+      '@snowstorm/head': 0.5.1--canary.20.8bf3f6c.0_80fece01532a6a88de2a5f2ea69a2a75
+      '@snowstorm/serverprops': 0.5.1--canary.20.8bf3f6c.0
       '@vitejs/plugin-react-refresh': 1.3.6
-      react: 18.0.0-alpha-3c4c1c470-20211021
-      react-dom: 18.0.0-alpha-3c4c1c470-20211021_2fae0a0c89c2df0459360cd45f728ca2
+      react: 18.0.0-alpha-f6abf4b40-20211020
+      react-dom: 18.0.0-alpha-f6abf4b40-20211020_c83590f482eb09d09737f3f1a7f6e69b
       tslog: 3.2.2
       typescript: 4.4.4
       vite: 2.6.13_sass@1.43.4
-      wouter: 2.7.5_2fae0a0c89c2df0459360cd45f728ca2
+      wouter: 2.7.5_c83590f482eb09d09737f3f1a7f6e69b
     transitivePeerDependencies:
       - less
       - sass
@@ -467,18 +475,18 @@ packages:
       - supports-color
     dev: false
 
-  /@snowstorm/head/0.5.0_407efa8c7e96a82429951a966560b5fa:
-    resolution: {integrity: sha512-fsOzu84w/JbM0LOWlyTmiX799hosL7u0z7qz+pG/Vz+Qrka+KXV33BFYxADVIOFzfc5TTuVrxVziy/syJkxutg==}
+  /@snowstorm/head/0.5.1--canary.20.8bf3f6c.0_80fece01532a6a88de2a5f2ea69a2a75:
+    resolution: {integrity: sha512-/P/LpWmaTK/wgSVD6LkG7z+ouSuYqWt+tCsOLAJwV5OqI6yRo4i4azK1DS/i3mlCVf9oUsgU9SUBKOLPeL88VQ==}
     peerDependencies:
       react: 18.0.0-alpha-f6abf4b40-20211020
       react-dom: 18.0.0-alpha-f6abf4b40-20211020
     dependencies:
-      react: 18.0.0-alpha-3c4c1c470-20211021
-      react-dom: 18.0.0-alpha-3c4c1c470-20211021_2fae0a0c89c2df0459360cd45f728ca2
+      react: 18.0.0-alpha-f6abf4b40-20211020
+      react-dom: 18.0.0-alpha-f6abf4b40-20211020_c83590f482eb09d09737f3f1a7f6e69b
     dev: false
 
-  /@snowstorm/serverprops/0.5.0:
-    resolution: {integrity: sha512-cSiuvEIPXZ6+LK8s77WXQH2Sy9fa5w56PEKhrG13cswfd/XqKo/l4MOiflP+jw8uDYwXuxM4fLiJjB302ljXdA==}
+  /@snowstorm/serverprops/0.5.1--canary.20.8bf3f6c.0:
+    resolution: {integrity: sha512-rTTIIf65GZx4UKNsVLVBrVHNKn2BUaz3woiphGwu9D0F9ud733XOqBSTfLuF04ETUwRE4hTkYQbC5+0XFmAnYw==}
     dev: false
 
   /@types/eslint/7.28.2:
@@ -2525,15 +2533,15 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-  /react-dom/18.0.0-alpha-3c4c1c470-20211021_2fae0a0c89c2df0459360cd45f728ca2:
-    resolution: {integrity: sha512-n3Y8YMlwZ48joxM9z2MnDVZeWdsyn+TgY7H8HjuB/Z3BDv3TH088azv2oVpQpfNz2iV0apw6rxzbEpoUuHzQyw==}
+  /react-dom/18.0.0-alpha-f6abf4b40-20211020_c83590f482eb09d09737f3f1a7f6e69b:
+    resolution: {integrity: sha512-cVxUFSFuHHtNaDSEPHOoX73RgWrgg5zGi4UTkLqKcsBEmP7tJR3dvjwwA/ZLnFcn9Ricisg2wPtXDfpVyW/SrQ==}
     peerDependencies:
-      react: 18.0.0-alpha-3c4c1c470-20211021
+      react: 18.0.0-alpha-f6abf4b40-20211020
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
-      react: 18.0.0-alpha-3c4c1c470-20211021
-      scheduler: 0.21.0-alpha-3c4c1c470-20211021
+      react: 18.0.0-alpha-f6abf4b40-20211020
+      scheduler: 0.21.0-alpha-f6abf4b40-20211020
     dev: false
 
   /react-is/16.13.1:
@@ -2545,8 +2553,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /react/18.0.0-alpha-3c4c1c470-20211021:
-    resolution: {integrity: sha512-uuwpd6i7/SJZ5YeADm9ZYXWE0YNucKhcXXHRpNwSkFrKD3OUIH6rNme82q+jsWXzjZ0fIMhRgsKTaLXpcVYjZw==}
+  /react/18.0.0-alpha-f6abf4b40-20211020:
+    resolution: {integrity: sha512-6WkY4d/U7+g8jq47urMfGm2egG1Thq1kz2aSpzHfBE5wZy56wDiune23RGB/hUv+VZTl3J6GkgBFoLGd9SBL3A==}
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
@@ -2695,8 +2703,8 @@ packages:
       chokidar: 3.5.2
     dev: false
 
-  /scheduler/0.21.0-alpha-3c4c1c470-20211021:
-    resolution: {integrity: sha512-G8N3UiaKIy5hGBY8Imy/fNHdslvMNK/7PbzrSS0BG2o2zFX6V/i9QBiEZ+PshVbMNH3OwihHO5LSrmAZHkwZoQ==}
+  /scheduler/0.21.0-alpha-f6abf4b40-20211020:
+    resolution: {integrity: sha512-aMT8gNvRXEyExtF6T73B4aKImeNRzUGIAjcwwaVw72bU0EpK6YaZZhv7qfchK0Xdq6kfkvwsrY5OIRt/BPdKBA==}
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
@@ -2990,14 +2998,6 @@ packages:
       vite: ^2.0.0
     dev: false
 
-  /vite-plugin-wasm-pack/0.1.7:
-    resolution: {integrity: sha512-llt/d93IHI1LuDGjju6LsuXjBN/5PAEGBnC9ea4p5orFhdRzhenLkQHp/+/0c1APdCIbVqaRtSBM0AbVeLaH7g==}
-    dependencies:
-      chalk: 4.1.2
-      fs-extra: 10.0.0
-      narrowing: 1.4.0
-    dev: true
-
   /vite/2.6.13_sass@1.43.4:
     resolution: {integrity: sha512-+tGZ1OxozRirTudl4M3N3UTNJOlxdVo/qBl2IlDEy/ZpTFcskp+k5ncNjayR3bRYTCbqSOFz2JWGN1UmuDMScA==}
     engines: {node: '>=12.2.0'}
@@ -3046,12 +3046,12 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /wouter/2.7.5_2fae0a0c89c2df0459360cd45f728ca2:
+  /wouter/2.7.5_c83590f482eb09d09737f3f1a7f6e69b:
     resolution: {integrity: sha512-TOI9gD1wa7a8wW+lh3rjg0C+MjYGKMV3eC+++6D+7n1z36ZJIBPWe2G9Hs1jYNPsV7oKiPTI3UFC5TGhZjQfrQ==}
     peerDependencies:
       react: '>=16.8.0'
     dependencies:
-      react: 18.0.0-alpha-3c4c1c470-20211021
+      react: 18.0.0-alpha-f6abf4b40-20211020
     dev: false
 
   /wrap-ansi/7.0.0:
