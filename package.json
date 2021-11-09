@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@explodingcamera/eslint-config": "^20.1.0",
-    "eslint": "^8.2.0",
+    "eslint": "^7",
     "prettier": "^2.4.1",
     "@pognetwork/vite-plugin-wasm-pack": "^0.1.8"
   }

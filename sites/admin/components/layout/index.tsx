@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { Link, useLocation } from '@snowstorm/core';
 
 import '../../../../assets/global.scss';
@@ -11,7 +11,6 @@ import {
 	sendIcon,
 	settingsIcon,
 } from './../../../../assets/icons';
-import { AdminProvider } from '../../hooks/admin';
 
 const sidebarLinks = [
 	{
@@ -31,43 +30,47 @@ const sidebarLinks = [
 	},
 ];
 
-export const Layout: FC<{ className?: string }> = ({ children, className }) => {
+export const Layout = ({
+	children,
+	className,
+}: {
+	className?: string;
+	children: ReactNode;
+}) => {
 	const [loc] = useLocation();
 
 	return (
-		<AdminProvider>
-			<div className={styles.layout}>
-				<div className={styles.sidebar}>
-					<Link href="/">
-						<img height="30" width="30" className={styles.logo} src={logo} />
-					</Link>
-					<div className={styles.sidebarTop}>
-						{sidebarLinks.map(sidebar => (
-							<Link
-								key={sidebar.name}
-								className={`${styles.sidebarLink} ${
-									(loc.endsWith(sidebar.url) && styles.active) || ''
-								}`}
-								href={sidebar.url}
-							>
-								{sidebar.icon}
-								<p>{sidebar.name}</p>
-							</Link>
-						))}
+		<div className={styles.layout}>
+			<div className={styles.sidebar}>
+				<Link href="/">
+					<img height="30" width="30" className={styles.logo} src={logo} />
+				</Link>
+				<div className={styles.sidebarTop}>
+					{sidebarLinks.map(sidebar => (
 						<Link
-							className={`${styles.sidebarLink} ${styles.logout}`}
-							href="/login"
+							key={sidebar.name}
+							className={`${styles.sidebarLink} ${
+								(loc.endsWith(sidebar.url) && styles.active) || ''
+							}`}
+							href={sidebar.url}
 						>
-							{logoutIcon}
-							<p />
+							{sidebar.icon}
+							<p>{sidebar.name}</p>
 						</Link>
-					</div>
-				</div>
-				<div className={styles.main}>
-					<div className={styles.header} />
-					<div className={`${styles.children} ${className}`}>{children}</div>
+					))}
+					<Link
+						className={`${styles.sidebarLink} ${styles.logout}`}
+						href="/login"
+					>
+						{logoutIcon}
+						<p />
+					</Link>
 				</div>
 			</div>
-		</AdminProvider>
+			<div className={styles.main}>
+				<div className={styles.header} />
+				<div className={`${styles.children} ${className}`}>{children}</div>
+			</div>
+		</div>
 	);
 };

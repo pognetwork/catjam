@@ -9,7 +9,7 @@ import astronaut from './../assets/astronaut.png';
 import init, { Wallet } from 'champ-wasm';
 
 if (!import.meta.env.SSR) {
-	void init().then(x => {
+	void init().then(_x => {
 		console.log(Wallet.generate('test'));
 	});
 }
