@@ -10,6 +10,7 @@ import {
 	useRef,
 	useState,
 } from 'react';
+import { useStateAsync } from '../../../utils/use-state-async';
 
 export type Status = 'loading' | 'logged-in' | 'unauthenticated';
 
@@ -17,16 +18,18 @@ export interface AdminState {
 	endpoint: string;
 	jwt: string;
 	status: Status;
-	login: (username: string, password: string) => void;
+	login: (username: string, password: string) => Promise<void>;
 	logout: () => void;
+	api: API;
 }
 
 const defaultContextValue: AdminState = {
 	endpoint: 'http://localhost:50051/',
 	jwt: undefined,
 	status: 'loading',
-	login: () => undefined,
+	login: async () => Promise.reject(new Error('endpoint not loaded')),
 	logout: () => undefined,
+	api: {},
 };
 
 interface API {
@@ -42,7 +45,7 @@ export const AdminProvider: FC = ({ children }) => {
 
 	const [jwt, setJwt] = useState<string | undefined>(undefined);
 	const [status, setStatus] = useState<Status>('loading');
-	const [endpoint] = useState('http://localhost:50051/');
+	const [endpoint] = useState('http://localhost:50051');
 	const api = useRef<API>({});
 
 	useEffect(() => {
@@ -68,18 +71,21 @@ export const AdminProvider: FC = ({ children }) => {
 		);
 	}, [endpoint, jwt]);
 
-	const login = useCallback((username, password) => {
-		console.log(username, password);
+	const login = useCallback(
+		async (username, password) => {
+			if (username === 'rick_astley' || password === '47ibFGy-w18') {
+				window.location.replace('https://www.youtube.com/watch?v=47ibFGy-w18');
+				return;
+			}
 
-		if (username === 'rick_astley' || password === '47ibFGy-w18') {
-			window.location.replace('https://www.youtube.com/watch?v=47ibFGy-w18');
-			return;
-		}
-
-		console.log('logging in', username, password);
-		setJwt('we logged in boys');
-		setStatus('logged-in');
-	}, []);
+			setStatus('loading');
+			return api.current.user?.Login({ password, username }).then(async jwt => {
+				setJwt(jwt.token);
+				return setStatus('logged-in');
+			});
+		},
+		[setStatus],
+	);
 
 	const logout = useCallback(() => {
 		setJwt(undefined);
@@ -93,6 +99,7 @@ export const AdminProvider: FC = ({ children }) => {
 			jwt,
 			login,
 			logout,
+			api: api.current,
 		}),
 		[jwt, status, login, logout, endpoint],
 	);
@@ -105,8 +112,4 @@ export const AdminProvider: FC = ({ children }) => {
 export const useAdmin = () => useContext(AdminContext);
 
 export const withAdmin = (Component: React.ComponentType) => () =>
-	(
-		<AdminProvider>
-			<Component />
-		</AdminProvider>
-	);
+	<Component />;

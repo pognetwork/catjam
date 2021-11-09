@@ -1,10 +1,9 @@
 import { Layout } from '../components/layout';
-import { withAdmin } from '../state';
 
-export const Settings = withAdmin(() => (
+export const Settings = () => (
 	<Layout>
 		<div>
 			<h1>Settings</h1>
 		</div>
 	</Layout>
-));
+);
