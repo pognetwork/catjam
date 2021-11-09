@@ -1,8 +1,10 @@
+import { ChangeEvent, useState } from 'react';
+
+import styles from './login.module.scss';
+import { useAdmin, withAdmin } from '../state';
+
 import { Input } from '../../../components/input';
 import { Layout } from '../components/layout';
-import styles from './login.module.scss';
-import { ChangeEvent, useState } from 'react';
-import { useAdmin, withAdmin } from '../hooks/admin';
 
 export const Login = withAdmin(() => {
 	const admin = useAdmin();
@@ -19,7 +21,7 @@ export const Login = withAdmin(() => {
 
 	return (
 		<Layout className={styles.layout}>
-			<div>
+			<form>
 				<h1>Login</h1>
 				<div className={styles.inputs}>
 					<Input
@@ -37,7 +39,7 @@ export const Login = withAdmin(() => {
 				<button onClick={onLogin} type="button">
 					Login
 				</button>
-			</div>
+			</form>
 		</Layout>
 	);
 });

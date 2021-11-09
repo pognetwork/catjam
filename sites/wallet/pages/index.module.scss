@@ -23,6 +23,7 @@
   > img {
     width: 50rem;
     max-width: calc(100vw - 10rem);
+    filter: drop-shadow(2px 51px 71px #2d50aa);
 
     @media screen and (min-width: 90rem) {
       margin-top: 5rem;

@@ -1,18 +1,20 @@
+import * as grpc from './../../../utils/grpc';
 import { useLocation } from '@snowstorm/core';
 import {
-	Component,
 	createContext,
 	FC,
 	useCallback,
 	useContext,
 	useEffect,
 	useMemo,
+	useRef,
 	useState,
 } from 'react';
 
 export type Status = 'loading' | 'logged-in' | 'unauthenticated';
 
 export interface AdminState {
+	endpoint: string;
 	jwt: string;
 	status: Status;
 	login: (username: string, password: string) => void;
@@ -20,11 +22,19 @@ export interface AdminState {
 }
 
 const defaultContextValue: AdminState = {
+	endpoint: 'http://localhost:50051/',
 	jwt: undefined,
 	status: 'loading',
 	login: () => undefined,
 	logout: () => undefined,
 };
+
+interface API {
+	user?: grpc.NodeUserClientImpl;
+	block?: grpc.BlockClientImpl;
+	nodeAdmin?: grpc.NodeAdminClientImpl;
+	nodeWalletManager?: grpc.NodeWalletManagerClientImpl;
+}
 
 const AdminContext = createContext<AdminState>(defaultContextValue);
 export const AdminProvider: FC = ({ children }) => {
@@ -32,6 +42,8 @@ export const AdminProvider: FC = ({ children }) => {
 
 	const [jwt, setJwt] = useState<string | undefined>(undefined);
 	const [status, setStatus] = useState<Status>('loading');
+	const [endpoint] = useState('http://localhost:50051/');
+	const api = useRef<API>({});
 
 	useEffect(() => {
 		if (loc !== '/login' && status === 'unauthenticated') setLoc('/login');
@@ -40,6 +52,21 @@ export const AdminProvider: FC = ({ children }) => {
 	useEffect(() => {
 		setStatus('unauthenticated');
 	}, []);
+
+	useEffect(() => {
+		api.current.block = grpc.createBlockClient(endpoint);
+		api.current.user = grpc.createUserClient(endpoint);
+	}, [endpoint]);
+
+	useEffect(() => {
+		if (!jwt) return;
+
+		api.current.nodeAdmin = grpc.createAdminClient(endpoint, jwt);
+		api.current.nodeWalletManager = grpc.createWalletManagerClient(
+			endpoint,
+			jwt,
+		);
+	}, [endpoint, jwt]);
 
 	const login = useCallback((username, password) => {
 		console.log(username, password);
@@ -61,12 +88,13 @@ export const AdminProvider: FC = ({ children }) => {
 
 	const value: AdminState = useMemo(
 		() => ({
+			endpoint,
 			status,
 			jwt,
 			login,
 			logout,
 		}),
-		[jwt, status, login, logout],
+		[jwt, status, login, logout, endpoint],
 	);
 
 	return (

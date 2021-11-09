@@ -20,7 +20,7 @@ const sidebarLinks = [
 	},
 	{
 		name: 'Transaction',
-		url: '/dashboard/send',
+		url: '/dashboard/tx',
 		icon: sendIcon,
 	},
 	{

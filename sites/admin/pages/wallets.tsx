@@ -1,5 +1,5 @@
 import { Layout } from '../components/layout';
-import { withAdmin } from '../hooks/admin';
+import { withAdmin } from '../state';
 
 export const Wallets = withAdmin(() => (
 	<Layout>

@@ -1,8 +1,8 @@
-import { arrowDownIcon, moneyIcon, sendIcon } from '../../../assets/icons';
-import { Layout } from '../components/layout';
-import styles from './dashboard.module.scss';
+import { arrowDownIcon, moneyIcon, sendIcon } from '../../../../assets/icons';
+import { Layout } from '../../components/layout';
+import styles from './index.module.scss';
 
-export const Dashboard = () => (
+export const Index = () => (
 	<Layout className={styles.layout}>
 		<div className={`${styles.overview} ${styles.box}`}>
 			<div className={styles.ballance}>10000 POG</div>

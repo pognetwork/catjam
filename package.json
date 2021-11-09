@@ -10,11 +10,14 @@
   "author": "<mail@henrygressmann.de>",
   "license": "MIT",
   "dependencies": {
-    "@pognetwork/champ-proto": "^0.1.0-38a209b",
-    "@snowstorm/cli": "0.5.1--canary.20.8bf3f6c.0",
-    "@snowstorm/core": "0.5.1--canary.20.8bf3f6c.0",
+    "@improbable-eng/grpc-web": "^0.15.0",
+    "@pognetwork/champ-proto": "^0.2.0-7870125",
+    "@snowstorm/cli": "0.5.1",
+    "@snowstorm/core": "0.5.1",
+    "@types/google-protobuf": "^3.15.5",
     "@types/react": "^17.0.34",
     "champ-wasm": "0.0.9",
+    "google-protobuf": "^3.19.1",
     "react": "18.0.0-alpha-f6abf4b40-20211020",
     "react-dom": "18.0.0-alpha-f6abf4b40-20211020",
     "sass": "^1.43.4",
@@ -23,8 +26,8 @@
   },
   "devDependencies": {
     "@explodingcamera/eslint-config": "^20.1.0",
+    "@pognetwork/vite-plugin-wasm-pack": "^0.1.8",
     "eslint": "^7",
-    "prettier": "^2.4.1",
-    "@pognetwork/vite-plugin-wasm-pack": "^0.1.8"
+    "prettier": "^2.4.1"
   }
 }
