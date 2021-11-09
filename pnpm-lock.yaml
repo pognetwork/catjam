@@ -3,15 +3,13 @@ lockfileVersion: 5.3
 specifiers:
   '@explodingcamera/eslint-config': ^20.1.0
   '@improbable-eng/grpc-web': ^0.15.0
-  '@pognetwork/champ-proto': ^0.2.0-7870125
+  '@pognetwork/proto': 0.2.0-alpha.5
   '@pognetwork/vite-plugin-wasm-pack': ^0.1.8
-  '@snowstorm/cli': 0.5.1
-  '@snowstorm/core': 0.5.1
-  '@types/google-protobuf': ^3.15.5
+  '@snowstorm/cli': 0.5.2--canary.21.aafcf41.0
+  '@snowstorm/core': 0.5.2--canary.21.aafcf41.0
   '@types/react': ^17.0.34
   champ-wasm: 0.0.9
   eslint: ^7
-  google-protobuf: ^3.19.1
   prettier: ^2.4.1
   react: 18.0.0-alpha-f6abf4b40-20211020
   react-dom: 18.0.0-alpha-f6abf4b40-20211020
@@ -20,14 +18,12 @@ specifiers:
   wouter: 2.7.5
 
 dependencies:
-  '@improbable-eng/grpc-web': 0.15.0_google-protobuf@3.19.1
-  '@pognetwork/champ-proto': 0.2.0-7870125_google-protobuf@3.19.1
-  '@snowstorm/cli': 0.5.1_42ede92b34be65e93a5bdae2db14af6f
-  '@snowstorm/core': 0.5.1_42ede92b34be65e93a5bdae2db14af6f
-  '@types/google-protobuf': 3.15.5
+  '@improbable-eng/grpc-web': 0.15.0
+  '@pognetwork/proto': 0.2.0-alpha.5
+  '@snowstorm/cli': 0.5.2--canary.21.aafcf41.0_42ede92b34be65e93a5bdae2db14af6f
+  '@snowstorm/core': 0.5.2--canary.21.aafcf41.0_42ede92b34be65e93a5bdae2db14af6f
   '@types/react': 17.0.34
   champ-wasm: 0.0.9
-  google-protobuf: 3.19.1
   react: 18.0.0-alpha-f6abf4b40-20211020
   react-dom: 18.0.0-alpha-f6abf4b40-20211020_c83590f482eb09d09737f3f1a7f6e69b
   sass: 1.43.4
@@ -351,22 +347,20 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@improbable-eng/grpc-web/0.14.1_google-protobuf@3.19.1:
+  /@improbable-eng/grpc-web/0.14.1:
     resolution: {integrity: sha512-XaIYuunepPxoiGVLLHmlnVminUGzBTnXr8Wv7khzmLWbNw4TCwJKX09GSMJlKhu/TRk6gms0ySFxewaETSBqgw==}
     peerDependencies:
       google-protobuf: ^3.14.0
     dependencies:
       browser-headers: 0.4.1
-      google-protobuf: 3.19.1
     dev: false
 
-  /@improbable-eng/grpc-web/0.15.0_google-protobuf@3.19.1:
+  /@improbable-eng/grpc-web/0.15.0:
     resolution: {integrity: sha512-ERft9/0/8CmYalqOVnJnpdDry28q+j+nAlFFARdjyxXDJ+Mhgv9+F600QC8BR9ygOfrXRlAk6CvST2j+JCpQPg==}
     peerDependencies:
       google-protobuf: ^3.14.0
     dependencies:
       browser-headers: 0.4.1
-      google-protobuf: 3.19.1
     dev: false
 
   /@nodelib/fs.scandir/2.1.5:
@@ -390,10 +384,10 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@pognetwork/champ-proto/0.2.0-7870125_google-protobuf@3.19.1:
-    resolution: {integrity: sha512-KOMjl0g+kPdOIvQdzqrhX3cixzN1655hISc0+SDfSMcTOzYtHn04+onwJK3e3SfSbfZ+Q8LBuiX1PikJAtchlg==}
+  /@pognetwork/proto/0.2.0-alpha.5:
+    resolution: {integrity: sha512-poB4JL+6LTff0Tp8J5z4z8U6zaC3lumE/aR20/6Ac9QTEfQgkzBMoOKEan258/e7DvDuw3ksuts33GJOv2VHSA==}
     dependencies:
-      '@improbable-eng/grpc-web': 0.14.1_google-protobuf@3.19.1
+      '@improbable-eng/grpc-web': 0.14.1
       browser-headers: 0.4.1
       long: 4.0.0
       protobufjs: 6.11.2
@@ -460,11 +454,11 @@ packages:
       picomatch: 2.3.0
     dev: false
 
-  /@snowstorm/cli/0.5.1_42ede92b34be65e93a5bdae2db14af6f:
-    resolution: {integrity: sha512-sQgKxJeoHZeo9aTod67T2RkyxnrfCrdL3Uypn/SVV/AmV2CH9SUQwlIau8vB+MEOiUgvAjTsX6cK8AwUARRlwA==}
+  /@snowstorm/cli/0.5.2--canary.21.aafcf41.0_42ede92b34be65e93a5bdae2db14af6f:
+    resolution: {integrity: sha512-7yrryYwKU61V643LzDjquqtldqbiZxwhiyhu+n2L1Gju8+VqubiigenYe5spUsIvCAYz1oDxTFajQGrHvMyvqw==}
     hasBin: true
     dependencies:
-      '@snowstorm/core': 0.5.1_42ede92b34be65e93a5bdae2db14af6f
+      '@snowstorm/core': 0.5.2--canary.21.aafcf41.0_42ede92b34be65e93a5bdae2db14af6f
       meow: 10.1.1
       yargs: 17.2.1
     transitivePeerDependencies:
@@ -476,14 +470,14 @@ packages:
       - supports-color
     dev: false
 
-  /@snowstorm/core/0.5.1_42ede92b34be65e93a5bdae2db14af6f:
-    resolution: {integrity: sha512-495V5vdOgAeMBcNLfJaWpUIHD3K4p60wEp+eWJZBXLLlavq+yXeAZ7A1vffGtfekMuzihG2qhkcO6e8syQgiuw==}
+  /@snowstorm/core/0.5.2--canary.21.aafcf41.0_42ede92b34be65e93a5bdae2db14af6f:
+    resolution: {integrity: sha512-1P2sePVaZoCWGJilb+iZDpuAQzcZBWwzVy/+Nlb6DDuBlD+hFGfR/6+af99Uh1SW/98Efks1m5aGRMaVo/c3Gw==}
     peerDependencies:
       react: 18.0.0-alpha-f6abf4b40-20211020
       react-dom: 18.0.0-alpha-f6abf4b40-20211020
     dependencies:
-      '@snowstorm/head': 0.5.1_80fece01532a6a88de2a5f2ea69a2a75
-      '@snowstorm/serverprops': 0.5.1
+      '@snowstorm/head': 0.5.2--canary.21.aafcf41.0_80fece01532a6a88de2a5f2ea69a2a75
+      '@snowstorm/serverprops': 0.5.2--canary.21.aafcf41.0
       '@vitejs/plugin-react-refresh': 1.3.6
       react: 18.0.0-alpha-f6abf4b40-20211020
       react-dom: 18.0.0-alpha-f6abf4b40-20211020_c83590f482eb09d09737f3f1a7f6e69b
@@ -498,8 +492,8 @@ packages:
       - supports-color
     dev: false
 
-  /@snowstorm/head/0.5.1_80fece01532a6a88de2a5f2ea69a2a75:
-    resolution: {integrity: sha512-8X3Ys7mTiyFt3FPbPYnd4ZlR3K/M0qv8VgXDs2o0kgmEk4S8GpagrbF9Fu3IKWM8x6ye5bree2KXRCgcAbfxMg==}
+  /@snowstorm/head/0.5.2--canary.21.aafcf41.0_80fece01532a6a88de2a5f2ea69a2a75:
+    resolution: {integrity: sha512-+uShE6mfCfZVcd4LOmaKhdARkHVdFjmSK0+zW6A6pynq+bHbqqxutI/7XLNiXWJadLpzyPPE8n/1Jw12uqwxIA==}
     peerDependencies:
       react: 18.0.0-alpha-f6abf4b40-20211020
       react-dom: 18.0.0-alpha-f6abf4b40-20211020
@@ -508,8 +502,8 @@ packages:
       react-dom: 18.0.0-alpha-f6abf4b40-20211020_c83590f482eb09d09737f3f1a7f6e69b
     dev: false
 
-  /@snowstorm/serverprops/0.5.1:
-    resolution: {integrity: sha512-VVZbS0LDntRC9CzAnf8x5nXQGy62GSbW5kS7IlulULYKuzNIploiogce7sBilLfFOwlv16E3R4T4v3EvRtuJZA==}
+  /@snowstorm/serverprops/0.5.2--canary.21.aafcf41.0:
+    resolution: {integrity: sha512-6jZoDVHUf5Ripq6hrafdQP9Q/rqg0IP2Nd8YT9ejyoTBqriiPQf28YzgrvgQA3lBMPWqzReZqymQ/ykUhq6WsA==}
     dev: false
 
   /@types/eslint/7.28.2:
@@ -522,10 +516,6 @@ packages:
   /@types/estree/0.0.50:
     resolution: {integrity: sha512-C6N5s2ZFtuZRj54k2/zyRhNDjJwwcViAM3Nbm8zjBpbqAdZ00mr0CFxvSKeO8Y/e03WVFLpQMdHYVfUd6SB+Hw==}
     dev: true
-
-  /@types/google-protobuf/3.15.5:
-    resolution: {integrity: sha512-6bgv24B+A2bo9AfzReeg5StdiijKzwwnRflA8RLd1V4Yv995LeTmo0z69/MPbBDFSiZWdZHQygLo/ccXhMEDgw==}
-    dev: false
 
   /@types/json-schema/7.0.9:
     resolution: {integrity: sha512-qcUXuemtEu+E5wZSJHNxUXeCZhAfXKQ41D+duX+VYPde7xyEVZci+/oXKJL13tnRs9lR2pr4fod59GT6/X1/yQ==}
@@ -1804,10 +1794,6 @@ packages:
       merge2: 1.4.1
       slash: 3.0.0
     dev: true
-
-  /google-protobuf/3.19.1:
-    resolution: {integrity: sha512-Isv1RlNC+IzZzilcxnlVSf+JvuhxmY7DaxYCBy+zPS9XVuJRtlTTIXR9hnZ1YL1MMusJn/7eSy2swCzZIomQSg==}
-    dev: false
 
   /graceful-fs/4.2.8:
     resolution: {integrity: sha512-qkIilPUYcNhJpd33n0GBXTB1MMPp14TxEsEs0pTrsSVucApsYzW5V+Q8Qxhik6KU3evy+qkAAowTByymK0avdg==}

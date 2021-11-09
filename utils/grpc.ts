@@ -1,12 +1,12 @@
 import { grpc } from '@improbable-eng/grpc-web';
 
-import {
-	GrpcWebImpl,
-	BlockClientImpl,
-} from '@pognetwork/champ-proto/rpc/block';
-import { NodeUserClientImpl } from '@pognetwork/champ-proto/rpc/node_user';
-import { NodeAdminClientImpl } from '@pognetwork/champ-proto/rpc/node_admin';
-import { NodeWalletManagerClientImpl } from '@pognetwork/champ-proto/rpc/node_wallet_manager';
+// we need this import since vite doesn't prebundle proto otherwise
+import '@pognetwork/proto';
+
+import { GrpcWebImpl, BlockClientImpl } from '@pognetwork/proto/node/rpc/block';
+import { NodeUserClientImpl } from '@pognetwork/proto/node/rpc/node_user';
+import { NodeAdminClientImpl } from '@pognetwork/proto/node/rpc/node_admin';
+import { NodeWalletManagerClientImpl } from '@pognetwork/proto/node/rpc/node_wallet_manager';
 
 const unauthenticatedRPC = (endpoint: string) =>
 	new GrpcWebImpl(endpoint, {
