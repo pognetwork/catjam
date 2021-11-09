@@ -11,6 +11,7 @@ import {
 	sendIcon,
 	settingsIcon,
 } from './../../../../assets/icons';
+import { AdminProvider } from '../../hooks/admin';
 
 const sidebarLinks = [
 	{
@@ -34,37 +35,39 @@ export const Layout: FC<{ className?: string }> = ({ children, className }) => {
 	const [loc] = useLocation();
 
 	return (
-		<div className={styles.layout}>
-			<div className={styles.sidebar}>
-				<Link href="/">
-					<img height="30" width="30" className={styles.logo} src={logo} />
-				</Link>
-				<div className={styles.sidebarTop}>
-					{sidebarLinks.map(sidebar => (
-						<Link
-							key={sidebar.name}
-							className={`${styles.sidebarLink} ${
-								(loc.endsWith(sidebar.url) && styles.active) || ''
-							}`}
-							href={sidebar.url}
-						>
-							{sidebar.icon}
-							<p>{sidebar.name}</p>
-						</Link>
-					))}
-					<Link
-						className={`${styles.sidebarLink} ${styles.logout}`}
-						href="/login"
-					>
-						{logoutIcon}
-						<p />
+		<AdminProvider>
+			<div className={styles.layout}>
+				<div className={styles.sidebar}>
+					<Link href="/">
+						<img height="30" width="30" className={styles.logo} src={logo} />
 					</Link>
+					<div className={styles.sidebarTop}>
+						{sidebarLinks.map(sidebar => (
+							<Link
+								key={sidebar.name}
+								className={`${styles.sidebarLink} ${
+									(loc.endsWith(sidebar.url) && styles.active) || ''
+								}`}
+								href={sidebar.url}
+							>
+								{sidebar.icon}
+								<p>{sidebar.name}</p>
+							</Link>
+						))}
+						<Link
+							className={`${styles.sidebarLink} ${styles.logout}`}
+							href="/login"
+						>
+							{logoutIcon}
+							<p />
+						</Link>
+					</div>
+				</div>
+				<div className={styles.main}>
+					<div className={styles.header} />
+					<div className={`${styles.children} ${className}`}>{children}</div>
 				</div>
 			</div>
-			<div className={styles.main}>
-				<div className={styles.header} />
-				<div className={`${styles.children} ${className}`}>{children}</div>
-			</div>
-		</div>
+		</AdminProvider>
 	);
 };
