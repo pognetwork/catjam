@@ -51,7 +51,10 @@
     padding: 1rem;
     margin-top: 1rem;
 
-    transition: all 0.3s ease-in-out;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    transition-property: box-shadow, background, border;
+
     box-shadow: 2px 4px 9px 0px rgb(0 0 0 / 31%), 0 0 2rem 4px rgb(0 0 0 / 7%);
 
     &:hover {

@@ -12,8 +12,8 @@
   "dependencies": {
     "@improbable-eng/grpc-web": "^0.15.0",
     "@pognetwork/proto": "0.2.0-alpha.5",
-    "@snowstorm/cli": "0.5.2--canary.21.aafcf41.0",
-    "@snowstorm/core": "0.5.2--canary.21.aafcf41.0",
+    "@snowstorm/cli": "0.6.0--canary.21.2dfa265.0",
+    "@snowstorm/core": "0.6.0--canary.21.2dfa265.0",
     "@types/react": "^17.0.34",
     "@visx/curve": "^2.1.0",
     "@visx/event": "^2.1.2",

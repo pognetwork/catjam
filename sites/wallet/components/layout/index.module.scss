@@ -73,7 +73,10 @@
 
     opacity: 0.6;
 
-    transition: all 0.3s ease-in-out;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    transition-property: opacity;
+
     &.active {
       opacity: 1;
     }

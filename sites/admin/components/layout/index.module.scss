@@ -45,7 +45,11 @@
     padding: 1rem 0.8rem;
     margin: 0.5rem 0;
     cursor: pointer;
-    transition: all 0.1s ease-in-out;
+
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    transition-property: background-color;
+
     &:hover {
       background-color: #50fa7b;
     }
@@ -109,7 +113,10 @@
 
     opacity: 0.6;
 
-    transition: all 0.3s ease-in-out;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.3s;
+    transition-property: opacity;
+
     &.active {
       opacity: 1;
     }

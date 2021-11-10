@@ -46,7 +46,7 @@ export const Layout: FC<{ className?: string }> = ({ children, className }) => {
 		<div className={styles.layout}>
 			<div className={styles.sidebar}>
 				<Link href="/">
-					<img height="30" width="30" className={styles.logo} src={logo} />
+					<img height="51" width="51" className={styles.logo} src={logo} />
 				</Link>
 				<div className={styles.sidebarTop}>
 					{sidebarLinks.map(sidebar => (
