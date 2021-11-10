@@ -5,12 +5,16 @@ specifiers:
   '@improbable-eng/grpc-web': ^0.15.0
   '@pognetwork/proto': 0.2.0-alpha.5
   '@pognetwork/vite-plugin-wasm-pack': ^0.1.8
+  '@protobufjs/base64': ^1.1.2
   '@snowstorm/cli': 0.5.2--canary.21.aafcf41.0
   '@snowstorm/core': 0.5.2--canary.21.aafcf41.0
   '@types/react': ^17.0.34
+  browser-headers: ^0.4.1
   champ-wasm: 0.0.9
   eslint: ^7
+  long: ^5.1.0
   prettier: ^2.4.1
+  protobufjs: ^6.11.2
   react: 18.0.0-alpha-f6abf4b40-20211020
   react-dom: 18.0.0-alpha-f6abf4b40-20211020
   sass: ^1.43.4
@@ -20,10 +24,14 @@ specifiers:
 dependencies:
   '@improbable-eng/grpc-web': 0.15.0
   '@pognetwork/proto': 0.2.0-alpha.5
+  '@protobufjs/base64': 1.1.2
   '@snowstorm/cli': 0.5.2--canary.21.aafcf41.0_42ede92b34be65e93a5bdae2db14af6f
   '@snowstorm/core': 0.5.2--canary.21.aafcf41.0_42ede92b34be65e93a5bdae2db14af6f
   '@types/react': 17.0.34
+  browser-headers: 0.4.1
   champ-wasm: 0.0.9
+  long: 5.1.0
+  protobufjs: 6.11.2
   react: 18.0.0-alpha-f6abf4b40-20211020
   react-dom: 18.0.0-alpha-f6abf4b40-20211020_c83590f482eb09d09737f3f1a7f6e69b
   sass: 1.43.4
@@ -2163,6 +2171,10 @@ packages:
 
   /long/4.0.0:
     resolution: {integrity: sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==}
+    dev: false
+
+  /long/5.1.0:
+    resolution: {integrity: sha512-eNc10JP6ezXp/qxXZlKS4OHAKNae3je9LUkjmXPDEa+Iidlz0n4nFi/9LT+GOgcayMWhykLoISN+v0THeOiWQQ==}
     dev: false
 
   /loose-envify/1.4.0:

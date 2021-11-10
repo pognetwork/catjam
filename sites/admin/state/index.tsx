@@ -10,18 +10,27 @@ import {
 	useRef,
 	useState,
 } from 'react';
-import { useStateAsync } from '../../../utils/use-state-async';
-import useSessionStorage from '../../../utils/use-session-storage';
+import { useSessionStorage } from '../../../utils/use-session-storage';
+import { parseJWT } from '../../../utils/jwt';
 
 export type Status = 'loading' | 'logged-in' | 'unauthenticated';
 
 export interface AdminState {
 	endpoint: string;
 	jwt: string;
+	jwtData?: JWT;
 	status: Status;
 	login: (username: string, password: string) => Promise<void>;
 	logout: () => void;
 	api: API;
+}
+
+export interface JWT {
+	exp: number;
+	ias: number;
+	iss: string;
+	sub: string;
+	username: string;
 }
 
 const defaultContextValue: AdminState = {
@@ -31,6 +40,7 @@ const defaultContextValue: AdminState = {
 	login: async () => Promise.reject(new Error('endpoint not loaded')),
 	logout: () => undefined,
 	api: {},
+	jwtData: undefined,
 };
 
 interface API {
@@ -94,6 +104,13 @@ export const AdminProvider: FC = ({ children }) => {
 		setStatus('unauthenticated');
 	}, [setJwt]);
 
+	const tokenContents = useMemo(() => {
+		const contents = parseJWT<JWT | undefined>(jwt);
+		// token expires in less than 5 minutes or is expired
+		if (contents && (contents.exp - 1000 * 5) * 1000 < Date.now()) logout();
+		return contents;
+	}, [jwt, logout]);
+
 	const value: AdminState = useMemo(
 		() => ({
 			endpoint,
@@ -102,8 +119,9 @@ export const AdminProvider: FC = ({ children }) => {
 			login,
 			logout,
 			api: api.current,
+			jwtData: tokenContents,
 		}),
-		[jwt, status, login, logout, endpoint],
+		[jwt, status, login, logout, endpoint, tokenContents],
 	);
 
 	return (
