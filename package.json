@@ -15,8 +15,18 @@
     "@snowstorm/cli": "0.5.2--canary.21.aafcf41.0",
     "@snowstorm/core": "0.5.2--canary.21.aafcf41.0",
     "@types/react": "^17.0.34",
+    "@visx/curve": "^2.1.0",
+    "@visx/event": "^2.1.2",
+    "@visx/gradient": "^2.1.0",
+    "@visx/grid": "^2.2.2",
+    "@visx/mock-data": "^2.1.2",
+    "@visx/scale": "^2.2.2",
+    "@visx/shape": "^2.2.2",
+    "@visx/tooltip": "^2.2.2",
     "browser-headers": "^0.4.1",
     "champ-wasm": "0.0.9",
+    "d3-array": "^3.1.1",
+    "d3-time-format": "^4.0.0",
     "long": "^5.1.0",
     "protobufjs": "^6.11.2",
     "react": "18.0.0-alpha-f6abf4b40-20211020",
@@ -28,6 +38,8 @@
   "devDependencies": {
     "@explodingcamera/eslint-config": "^20.1.0",
     "@pognetwork/vite-plugin-wasm-pack": "^0.1.8",
+    "@types/d3-array": "^3.0.2",
+    "@types/d3-time-format": "^4.0.0",
     "eslint": "^7",
     "prettier": "^2.4.1"
   }

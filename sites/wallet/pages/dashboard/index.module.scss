@@ -11,13 +11,17 @@
   @media screen and (min-width: 90rem) {
     padding-top: 10rem;
   }
+
+  @media screen and (max-width: 90rem) {
+    padding-top: 2rem;
+  }
 }
 
 .box {
   box-shadow: 2px 4px 9px 0px rgb(0 0 0 / 5%), 1px 6px 1rem 4px rgb(0 0 0 / 2%);
   background-color: white;
   border-radius: 1rem;
-  padding: 2rem;
+  padding: 1rem;
   margin: 0 0.5rem;
   max-width: calc(100vw - 2rem);
 }
@@ -32,36 +36,100 @@
 
 .rightstuff {
   width: 20rem;
-  height: 12rem;
+  height: 13rem;
 }
 
 .bigstuff {
   width: 100%;
-  height: 20rem;
+  min-height: 20rem;
   width: 61rem;
   margin-top: 1rem;
+}
+
+.balanceGraph {
+  height: 20rem;
+  padding: 0;
+  position: relative;
+
+  h1 {
+    position: absolute;
+    margin: 1rem;
+    z-index: 1;
+    color: white;
+  }
+}
+
+.stats {
+  background: linear-gradient(45deg, #915ec1, #aeaeff);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+
+  > table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+
+    tr {
+      height: 2.2rem;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.212);
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
+
+    td {
+      padding: 0.5rem 0;
+      padding-right: 0;
+      padding-left: 1rem;
+
+      &:last-of-type {
+        padding-right: 1rem;
+        padding-left: 0;
+        text-align: end;
+      }
+    }
+
+    td:first-of-type {
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+  }
 }
 
 .overview {
   background: linear-gradient(166deg, #8e6fff, #054387);
 
+  height: 13rem;
   width: 40rem;
-  height: 12rem;
-
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+
+  .address {
+    width: fit-content;
+    color: black;
+    background-color: white;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+  }
 
   .ballance {
     color: white;
     font-weight: 900;
-    font-size: 2rem;
-  }
+    font-size: 2.5rem;
 
-  .ballanceSmall {
-    color: white;
-    font-size: 1.6rem;
+    span {
+      color: #ffffffb3;
+      font-size: 1.6rem;
+    }
   }
 }
 
@@ -81,5 +149,57 @@
     color: black;
     cursor: pointer;
     background: linear-gradient(12deg, #ffffff, #d2d2d2);
+  }
+}
+
+.transactions {
+  padding: 0;
+
+  h1 {
+    padding-left: 1rem;
+    padding-top: 1rem;
+  }
+
+  > table {
+    width: 100%;
+    border-collapse: collapse;
+
+    tr,
+    thead {
+      border-bottom: 2px solid #0000005e;
+    }
+    tr:last-of-type {
+      border-bottom: none;
+    }
+
+    td {
+      padding: 0.5rem 0;
+      padding-right: 0;
+      padding-left: 1rem;
+
+      &:last-of-type {
+        padding-right: 1rem;
+      }
+    }
+  }
+
+  .txfrom {
+    > div:first-of-type {
+      margin-bottom: 0.1rem;
+      font-weight: bold;
+    }
+    > div:last-of-type {
+      max-width: 11rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      line-break: unset;
+      white-space: nowrap;
+
+      background: #323232;
+      padding: 0.2rem 0.3rem;
+      color: white;
+      font-size: 0.8rem;
+      border-radius: 0.3rem;
+    }
   }
 }
