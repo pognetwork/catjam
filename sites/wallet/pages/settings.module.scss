@@ -11,7 +11,7 @@
   padding: 2rem;
   margin: 1rem;
   flex: 1;
-  max-width: 50rem;
+  max-width: 40rem;
 
   h1 {
     margin-bottom: 1rem;
@@ -32,6 +32,20 @@
         display: flex;
         justify-content: end;
         align-items: flex-end;
+        margin-left: 1rem;
+      }
+
+      @media screen and (max-width: 40rem) {
+        flex-wrap: wrap;
+
+        select {
+          width: 100%;
+        }
+
+        > div:last-of-type {
+          flex-basis: 100%;
+          margin-left: 0rem;
+        }
       }
     }
   }

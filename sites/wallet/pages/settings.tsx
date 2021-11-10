@@ -1,3 +1,4 @@
+import { Select } from '../../../components/select';
 import { Layout } from '../components/layout';
 import styles from './settings.module.scss';
 
@@ -9,21 +10,28 @@ export const Settings = () => (
 				<li>
 					<div>
 						<h2>Chain</h2>
-						<p>Select which chain to use. Defaults to `dev`</p>
+						<p>
+							Select which chain to use. Defaults to <code>dev</code>
+						</p>
 					</div>
 					<div>
-						<p>Yeet</p>
+						<Select>
+							<option>Dev</option>
+						</Select>
 					</div>
 				</li>
 				<li>
 					<div>
-						<h2>Chain</h2>
+						<h2>Node</h2>
 						<p>
-							Select which node to connect to. Defaults to `node.pog.network`
+							Select which node to connect to. Defaults to{' '}
+							<code>node.pog.network</code>
 						</p>
 					</div>
 					<div>
-						<p>Yeet</p>
+						<Select>
+							<option>node.pog.network</option>
+						</Select>
 					</div>
 				</li>
 			</ul>
