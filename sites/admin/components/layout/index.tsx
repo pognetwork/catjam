@@ -11,6 +11,7 @@ import {
 	sendIcon,
 	settingsIcon,
 } from './../../../../assets/icons';
+import { useAdmin } from '../../state';
 
 const sidebarLinks = [
 	{
@@ -38,6 +39,7 @@ export const Layout = ({
 	children: ReactNode;
 }) => {
 	const [loc] = useLocation();
+	const { logout } = useAdmin();
 
 	return (
 		<div className={styles.layout}>
@@ -59,8 +61,9 @@ export const Layout = ({
 						</Link>
 					))}
 					<Link
-						className={`${styles.sidebarLink} ${styles.logout}`}
 						href="/login"
+						className={`${styles.sidebarLink} ${styles.logout}`}
+						onClick={logout}
 					>
 						{logoutIcon}
 						<p />

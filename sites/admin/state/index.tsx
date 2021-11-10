@@ -11,6 +11,7 @@ import {
 	useState,
 } from 'react';
 import { useStateAsync } from '../../../utils/use-state-async';
+import useSessionStorage from '../../../utils/use-session-storage';
 
 export type Status = 'loading' | 'logged-in' | 'unauthenticated';
 
@@ -43,7 +44,7 @@ const AdminContext = createContext<AdminState>(defaultContextValue);
 export const AdminProvider: FC = ({ children }) => {
 	const [loc, setLoc] = useLocation();
 
-	const [jwt, setJwt] = useState<string | undefined>(undefined);
+	const [jwt, setJwt] = useSessionStorage<string | undefined>('jwt');
 	const [status, setStatus] = useState<Status>('loading');
 	const [endpoint] = useState('http://localhost:50051');
 	const api = useRef<API>({});
@@ -53,8 +54,9 @@ export const AdminProvider: FC = ({ children }) => {
 	}, [loc, status, setLoc]);
 
 	useEffect(() => {
+		if (jwt) return setStatus('logged-in');
 		setStatus('unauthenticated');
-	}, []);
+	}, [jwt]);
 
 	useEffect(() => {
 		api.current.block = grpc.createBlockClient(endpoint);
@@ -84,13 +86,13 @@ export const AdminProvider: FC = ({ children }) => {
 				return setStatus('logged-in');
 			});
 		},
-		[setStatus],
+		[setStatus, setJwt],
 	);
 
 	const logout = useCallback(() => {
 		setJwt(undefined);
 		setStatus('unauthenticated');
-	}, []);
+	}, [setJwt]);
 
 	const value: AdminState = useMemo(
 		() => ({
