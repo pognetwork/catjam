@@ -90,11 +90,16 @@ export const AdminProvider: FC = ({ children }) => {
 				return;
 			}
 
-			setStatus('loading');
-			return api.current.user?.Login({ password, username }).then(async jwt => {
-				setJwt(jwt.token);
-				return setStatus('logged-in');
-			});
+			return api.current.user
+				?.Login({ password, username })
+				.then(async jwt => {
+					setStatus('loading');
+					setJwt(jwt.token);
+					return setStatus('logged-in');
+				})
+				.catch(e => {
+					setStatus('unauthenticated');
+				});
 		},
 		[setStatus, setJwt],
 	);
@@ -130,6 +135,3 @@ export const AdminProvider: FC = ({ children }) => {
 };
 
 export const useAdmin = () => useContext(AdminContext);
-
-export const withAdmin = (Component: React.ComponentType) => () =>
-	<Component />;

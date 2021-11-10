@@ -11,6 +11,7 @@
 }
 
 .sidebar {
+  z-index: 1;
   box-shadow: 2px 4px 9px 0px rgba(0, 0, 0, 0.048),
     1px 6px 1rem 4px rgba(0, 0, 0, 0.199);
   width: 4.5rem;
@@ -29,6 +30,12 @@
     flex-direction: row;
     padding-top: 0;
     padding-left: 0.4rem;
+  }
+
+  @media screen and (max-width: 40rem) {
+    justify-content: space-between;
+    padding: 0 0.6rem;
+    height: 5rem;
   }
 
   .logo {
@@ -55,8 +62,10 @@
       margin: 0 0.4rem;
     }
 
-    @media screen and (max-width: 40rem) {
-      display: none;
+    &:not(:global(.__show_sm)) {
+      @media screen and (max-width: 40rem) {
+        display: none;
+      }
     }
 
     text-align: center;
@@ -104,6 +113,7 @@
 }
 
 .main {
+  position: relative;
   margin-left: 4rem;
   display: flex;
   flex-direction: column;
@@ -113,6 +123,10 @@
     margin-top: 4rem;
     margin-left: 0rem;
     padding-bottom: 3rem;
+  }
+
+  @media screen and (max-width: 40rem) {
+    margin-top: 5rem;
   }
 }
 
@@ -148,9 +162,15 @@
 }
 
 .footer {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
+  opacity: 0.7;
+  box-shadow: 2px 4px 9px 0px rgb(0 0 0 / 5%), 1px 6px 1rem 4px rgb(0 0 0 / 13%);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #ffffff;
+  border-top-left-radius: 1rem;
+  padding: 0.4rem;
+  padding-left: 1rem;
   a {
     color: black;
   }

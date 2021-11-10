@@ -15,7 +15,8 @@ export const SelectType = ({
 			{type === 'access'
 				? 'Please select a method to access your Wallet.'
 				: 'Please select a method to create a new Wallet.'}
-			<br />
+		</h2>
+		<h3>
 			{type === 'access' ? (
 				<>
 					Already have a wallet? <Link href="/access">Access Wallet</Link>
@@ -25,7 +26,7 @@ export const SelectType = ({
 					Don't have a wallet? <Link href="/create">Create Wallet</Link>
 				</>
 			)}
-		</h2>
+		</h3>
 		<div className={styles.methods}>
 			<div onClick={select(WALLET_TYPES.LULW_FILE)}>
 				<h2>Wallet File (Software)</h2>

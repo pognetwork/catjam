@@ -41,8 +41,7 @@
   display: flex;
 
   > div {
-    flex: 1;
-
+    width: 33.3%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,6 +66,16 @@
 
     &.active > div {
       background-color: #525ccb;
+    }
+
+    @media screen and (max-width: 40rem) {
+      margin: 1rem 0;
+      padding: 0 0.5rem;
+      max-width: calc(100vw - 3rem);
+
+      > p {
+        width: auto;
+      }
     }
   }
 }

@@ -1,0 +1,38 @@
+.layout {
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+}
+
+.box {
+  box-shadow: 2px 4px 9px 0px rgb(0 0 0 / 5%), 1px 6px 1rem 4px rgb(0 0 0 / 2%);
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin: 1rem;
+  flex: 1;
+  max-width: 50rem;
+
+  h1 {
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 1rem;
+
+      > div:last-of-type {
+        flex: 1;
+        display: flex;
+        justify-content: end;
+        align-items: flex-end;
+      }
+    }
+  }
+}

@@ -14,6 +14,19 @@
     font-size: 1.5rem;
   }
 
+  @media screen and (max-width: 40rem) {
+    > h2 {
+      font-size: 1.2rem;
+    }
+
+    > h3 {
+      font-size: 1rem;
+    }
+
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
   background: white;
   padding: 2rem;
   border-radius: 2rem;
@@ -23,6 +36,13 @@
 .methods {
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: 40rem) {
+    h2 {
+      font-size: 1.2rem;
+    }
+  }
+
   > div {
     cursor: pointer;
     background: white;

@@ -17,21 +17,25 @@ const sidebarLinks = [
 		name: 'Dashboard',
 		url: '/dashboard',
 		icon: globeIcon,
+		mobile: true,
 	},
 	{
 		name: 'Transaction',
 		url: '/dashboard/tx',
 		icon: sendIcon,
+		mobile: false,
 	},
 	{
 		name: 'Messages',
 		url: '/dashboard/messages',
 		icon: messageIcon,
+		mobile: false,
 	},
 	{
 		name: 'Contracts',
 		url: '/dashboard/aacs',
 		icon: codeIcon,
+		mobile: false,
 	},
 ];
 
@@ -50,7 +54,7 @@ export const Layout: FC<{ className?: string }> = ({ children, className }) => {
 							key={sidebar.name}
 							className={`${styles.sidebarLink} ${
 								(loc.endsWith(sidebar.url) && styles.active) || ''
-							}`}
+							} ${(sidebar.mobile && `__show_sm`) || ''}`}
 							href={sidebar.url}
 						>
 							{sidebar.icon}
@@ -61,7 +65,7 @@ export const Layout: FC<{ className?: string }> = ({ children, className }) => {
 					<Link
 						className={`${styles.sidebarLink} ${
 							(loc.endsWith('settings') && styles.active) || ''
-						}`}
+						} __show_sm`}
 						href="/settings"
 					>
 						{settingsIcon}
@@ -72,16 +76,16 @@ export const Layout: FC<{ className?: string }> = ({ children, className }) => {
 			<div className={styles.main}>
 				<div className={styles.header} />
 				<div className={`${styles.children} ${className}`}>{children}</div>
-			</div>
-			<div className={styles.footer}>
-				<a
-					href="https://pog.network/impressum/"
-					target="_blank"
-					referrerPolicy="no-referrer"
-					rel="noreferrer"
-				>
-					legal notice/privacy policy
-				</a>
+				<div className={styles.footer}>
+					<a
+						href="https://pog.network/impressum/"
+						target="_blank"
+						referrerPolicy="no-referrer"
+						rel="noreferrer"
+					>
+						legal notice/privacy policy
+					</a>
+				</div>
 			</div>
 		</div>
 	);
