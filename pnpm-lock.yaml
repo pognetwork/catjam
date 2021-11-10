@@ -27,6 +27,7 @@ specifiers:
   prettier: ^2.4.1
   protobufjs: ^6.11.2
   react: 18.0.0-alpha-f6abf4b40-20211020
+  react-cool-dimensions: ^2.0.7
   react-dom: 18.0.0-alpha-f6abf4b40-20211020
   sass: ^1.43.4
   vite-plugin-fonts: ^0.2.2
@@ -53,6 +54,7 @@ dependencies:
   long: 5.1.0
   protobufjs: 6.11.2
   react: 18.0.0-alpha-f6abf4b40-20211020
+  react-cool-dimensions: 2.0.7_c83590f482eb09d09737f3f1a7f6e69b
   react-dom: 18.0.0-alpha-f6abf4b40-20211020_c83590f482eb09d09737f3f1a7f6e69b
   sass: 1.43.4
   vite-plugin-fonts: 0.2.2
@@ -2877,6 +2879,14 @@ packages:
   /quick-lru/5.1.1:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
     engines: {node: '>=10'}
+    dev: false
+
+  /react-cool-dimensions/2.0.7_c83590f482eb09d09737f3f1a7f6e69b:
+    resolution: {integrity: sha512-z1VwkAAJ5d8QybDRuYIXTE41RxGr5GYsv1bQhbOBE8cMfoZQZpcF0odL64vdgrQVzat2jayedj1GoYi80FWcbA==}
+    peerDependencies:
+      react: '>= 16.8.0'
+    dependencies:
+      react: 18.0.0-alpha-f6abf4b40-20211020
     dev: false
 
   /react-dom/18.0.0-alpha-f6abf4b40-20211020_c83590f482eb09d09737f3f1a7f6e69b:
