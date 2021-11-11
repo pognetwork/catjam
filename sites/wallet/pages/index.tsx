@@ -4,8 +4,7 @@ import buttonStyles from './../../../components/button.module.scss';
 import { Layout } from '../components/layout';
 import styles from './index.module.scss';
 
-import astronaut from './../assets/astronaut.png';
-
+import astronaut from './../assets/astronaut.webp';
 import init, { Wallet } from 'champ-wasm';
 
 if (!import.meta.env.SSR) {
