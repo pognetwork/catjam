@@ -5,8 +5,8 @@ specifiers:
   '@improbable-eng/grpc-web': ^0.15.0
   '@pognetwork/proto': 0.2.0-alpha.5
   '@pognetwork/vite-plugin-wasm-pack': ^0.1.8
-  '@snowstorm/cli': 0.6.1--canary.22.b2f462e.0
-  '@snowstorm/core': 0.6.1--canary.22.b2f462e.0
+  '@snowstorm/cli': 0.6.1--canary.22.d586580.0
+  '@snowstorm/core': 0.6.1--canary.22.d586580.0
   '@types/d3-array': ^3.0.2
   '@types/d3-time-format': ^4.0.0
   '@types/react': ^17.0.34
@@ -36,8 +36,8 @@ specifiers:
 dependencies:
   '@improbable-eng/grpc-web': 0.15.0
   '@pognetwork/proto': 0.2.0-alpha.5
-  '@snowstorm/cli': 0.6.1--canary.22.b2f462e.0_42ede92b34be65e93a5bdae2db14af6f
-  '@snowstorm/core': 0.6.1--canary.22.b2f462e.0_42ede92b34be65e93a5bdae2db14af6f
+  '@snowstorm/cli': 0.6.1--canary.22.d586580.0_42ede92b34be65e93a5bdae2db14af6f
+  '@snowstorm/core': 0.6.1--canary.22.d586580.0_42ede92b34be65e93a5bdae2db14af6f
   '@types/react': 17.0.34
   '@visx/curve': 2.1.0
   '@visx/event': 2.1.2
@@ -486,11 +486,11 @@ packages:
       picomatch: 2.3.0
     dev: false
 
-  /@snowstorm/cli/0.6.1--canary.22.b2f462e.0_42ede92b34be65e93a5bdae2db14af6f:
-    resolution: {integrity: sha512-hYDciGiU9K5WVGavcoOi0MJN5nAKgJkQsQnuPZG5IAFFEm0rTH5mKdLNJGkZkZafrK1/UsKK8RoKgDEk7y8xxw==}
+  /@snowstorm/cli/0.6.1--canary.22.d586580.0_42ede92b34be65e93a5bdae2db14af6f:
+    resolution: {integrity: sha512-m/NXzYYRTksbzb5nXxwBjMte8cyWTVN8oLfbGq0uWmG0rB3pLsj3a0EWpK1vxoeOkCygku1WAuP0Z1ENHZlPIQ==}
     hasBin: true
     dependencies:
-      '@snowstorm/core': 0.6.1--canary.22.b2f462e.0_42ede92b34be65e93a5bdae2db14af6f
+      '@snowstorm/core': 0.6.1--canary.22.d586580.0_42ede92b34be65e93a5bdae2db14af6f
       meow: 10.1.1
       yargs: 17.2.1
     transitivePeerDependencies:
@@ -502,15 +502,15 @@ packages:
       - supports-color
     dev: false
 
-  /@snowstorm/core/0.6.1--canary.22.b2f462e.0_42ede92b34be65e93a5bdae2db14af6f:
-    resolution: {integrity: sha512-EYNstl0SY2qJir9fmDn0jmDe48Z9isQs6/UL5U+ZJat6rIg9T/sqGtEXu8sY3TDn2HVPJPCOlFrXFurXQfhjQw==}
+  /@snowstorm/core/0.6.1--canary.22.d586580.0_42ede92b34be65e93a5bdae2db14af6f:
+    resolution: {integrity: sha512-uwGUuB9X45lUtHgiz3aH2+pHHMfdzRZ3eLBzMFdZrxj126hwJGpa2PajlwG8lHeL1kpWa+BnugsjeKcnKNjBgg==}
     peerDependencies:
       react: 18.0.0-alpha-f6abf4b40-20211020
       react-dom: 18.0.0-alpha-f6abf4b40-20211020
     dependencies:
       '@rollup/pluginutils': 4.1.1
-      '@snowstorm/head': 0.6.1--canary.22.b2f462e.0_80fece01532a6a88de2a5f2ea69a2a75
-      '@snowstorm/serverprops': 0.6.1--canary.22.b2f462e.0
+      '@snowstorm/head': 0.6.1--canary.22.d586580.0_80fece01532a6a88de2a5f2ea69a2a75
+      '@snowstorm/serverprops': 0.6.1--canary.22.d586580.0
       '@vitejs/plugin-react-refresh': 1.3.6
       react: 18.0.0-alpha-f6abf4b40-20211020
       react-dom: 18.0.0-alpha-f6abf4b40-20211020_c83590f482eb09d09737f3f1a7f6e69b
@@ -525,8 +525,8 @@ packages:
       - supports-color
     dev: false
 
-  /@snowstorm/head/0.6.1--canary.22.b2f462e.0_80fece01532a6a88de2a5f2ea69a2a75:
-    resolution: {integrity: sha512-FWi6oz8TI1VgmBeIyUxJ7jfz56St5ttNBAUdbTm9oYukueSLdLR6rNKONCEoqWtanQt1x7Q8JJZ68JCRBdkbJA==}
+  /@snowstorm/head/0.6.1--canary.22.d586580.0_80fece01532a6a88de2a5f2ea69a2a75:
+    resolution: {integrity: sha512-Xc2B/k1QZXB2vNg/xfWD/WJpwuCNL6FzU1fsyle+5EQiRACDJgGozNKnQIHGS/k+rTBU+2mEB6xks+WzzO8wmQ==}
     peerDependencies:
       react: 18.0.0-alpha-f6abf4b40-20211020
       react-dom: 18.0.0-alpha-f6abf4b40-20211020
@@ -535,8 +535,8 @@ packages:
       react-dom: 18.0.0-alpha-f6abf4b40-20211020_c83590f482eb09d09737f3f1a7f6e69b
     dev: false
 
-  /@snowstorm/serverprops/0.6.1--canary.22.b2f462e.0:
-    resolution: {integrity: sha512-PDHIF8N+6zYXExS7TyMaAYxhzUbE6k/apvxOlyaKduXSd8MSdHM2zr6g9JWN3gi4mjP6HNu83eh/nTYgK7HESw==}
+  /@snowstorm/serverprops/0.6.1--canary.22.d586580.0:
+    resolution: {integrity: sha512-kDDwwlvLdhm/Rfpd/gvaHzEOn35d/J/pi51n/6wZ67P0EhF+0xHEjrVEAGLotGvFsP8pbQqOyGQKch+1hzED8w==}
     dev: false
 
   /@types/d3-array/3.0.2:
