@@ -1,4 +1,3 @@
 dist/*
-!dist/_headers
 node_modules
 .snowstorm
