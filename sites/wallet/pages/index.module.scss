@@ -21,7 +21,8 @@
 
 .hero {
   > img {
-    width: 50rem;
+    aspect-ratio: 1/1.11;
+    width: 40rem;
     max-width: calc(100vw - 10rem);
     filter: drop-shadow(2px 51px 71px #2d50aa);
 

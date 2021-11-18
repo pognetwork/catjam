@@ -90,16 +90,11 @@ export const AdminProvider: FC = ({ children }) => {
 				return;
 			}
 
-			return api.current.user
-				?.Login({ password, username })
-				.then(async jwt => {
-					setStatus('loading');
-					setJwt(jwt.token);
-					return setStatus('logged-in');
-				})
-				.catch(e => {
-					setStatus('unauthenticated');
-				});
+			return api.current.user?.Login({ password, username }).then(async jwt => {
+				setStatus('loading');
+				setJwt(jwt.token);
+				return setStatus('logged-in');
+			});
 		},
 		[setStatus, setJwt],
 	);
