@@ -33,6 +33,7 @@
     "react-cool-dimensions": "^2.0.7",
     "react-dom": "18.0.0-alpha-f6abf4b40-20211020",
     "sass": "^1.43.4",
+    "swr": "^1.0.1",
     "vite-plugin-fonts": "^0.2.2",
     "wouter": "2.7.5"
   },

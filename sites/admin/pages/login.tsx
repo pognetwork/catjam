@@ -18,8 +18,10 @@ export const Login = () => {
 	const [username, setUsername] = useState('');
 
 	const onChange =
-		(func: (str: string) => void) => (e: ChangeEvent<HTMLInputElement>) =>
+		(func: (str: string) => void) => (e: ChangeEvent<HTMLInputElement>) => {
+			if (error) setError(false);
 			func(e.target.value);
+		};
 
 	const onLogin = () => {
 		setLoading(true);
@@ -59,9 +61,8 @@ export const Login = () => {
 						autoComplete="current-password"
 					/>
 				</div>
-				<button onClick={onLogin} type="submit">
-					Login
-				</button>
+				<button type="submit">Login</button>
+				{error && <p>Failed to log in!</p>}
 			</form>
 		</Layout>
 	);

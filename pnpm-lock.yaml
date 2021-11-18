@@ -30,6 +30,7 @@ specifiers:
   react-cool-dimensions: ^2.0.7
   react-dom: 18.0.0-alpha-f6abf4b40-20211020
   sass: ^1.43.4
+  swr: ^1.0.1
   vite-plugin-fonts: ^0.2.2
   wouter: 2.7.5
 
@@ -57,6 +58,7 @@ dependencies:
   react-cool-dimensions: 2.0.7_c83590f482eb09d09737f3f1a7f6e69b
   react-dom: 18.0.0-alpha-f6abf4b40-20211020_c83590f482eb09d09737f3f1a7f6e69b
   sass: 1.43.4
+  swr: 1.0.1_c83590f482eb09d09737f3f1a7f6e69b
   vite-plugin-fonts: 0.2.2
   wouter: 2.7.5_c83590f482eb09d09737f3f1a7f6e69b
 
@@ -1314,6 +1316,11 @@ packages:
     dependencies:
       object-keys: 1.1.1
     dev: true
+
+  /dequal/2.0.2:
+    resolution: {integrity: sha512-q9K8BlJVxK7hQYqa6XISGmBZbtQQWVXSrRrWreHC94rMt1QL/Impruc+7p2CYSYuVIUr+YCt6hjrs1kkdJRTug==}
+    engines: {node: '>=6'}
+    dev: false
 
   /dir-glob/3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
@@ -3260,6 +3267,15 @@ packages:
       has-flag: 4.0.0
       supports-color: 7.2.0
     dev: true
+
+  /swr/1.0.1_c83590f482eb09d09737f3f1a7f6e69b:
+    resolution: {integrity: sha512-EPQAxSjoD4IaM49rpRHK0q+/NzcwoT8c0/Ylu/u3/6mFj/CWnQVjNJ0MV2Iuw/U+EJSd2TX5czdAwKPYZIG0YA==}
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0
+    dependencies:
+      dequal: 2.0.2
+      react: 18.0.0-alpha-f6abf4b40-20211020
+    dev: false
 
   /table/6.7.3:
     resolution: {integrity: sha512-5DkIxeA7XERBqMwJq0aHZOdMadBx4e6eDoFRuyT5VR82J0Ycg2DwM6GfA/EQAhJ+toRTaS1lIdSQCqgrmhPnlw==}
