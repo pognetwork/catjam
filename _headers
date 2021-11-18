@@ -3,7 +3,7 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
   Permissions-Policy: document-domain=()
-  Content-Security-Policy: default-src 'self'; script-src 'unsafe-eval'; style-src * https; font-src *; upgrade-insecure-requests; block-all-mixed-content; disown-opener; sandbox
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval'; style-src * 'unsafe-inline' https; font-src *; upgrade-insecure-requests; block-all-mixed-content; disown-opener; sandbox allow-same-origin allow-scripts
   Cross-Origin-Embedder-Policy: require-corp
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-site
