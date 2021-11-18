@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "snowstorm dev",
     "start": "snowstorm start",
-    "export": "snowstorm export && cp _headers dist"
+    "export": "snowstorm export && cp _headers dist/wallet"
   },
   "author": "<mail@henrygressmann.de>",
   "license": "MIT",
