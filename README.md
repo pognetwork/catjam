@@ -1,6 +1,6 @@
 <h1>
 <img align="left" width="60" src="https://cdn.betterttv.net/emote/5f1b0186cf6d2144653d2970/3x">
- &nbsp;catJAM <a href="https://wallet.pog.network"><img src="https://img.shields.io/website?label=wallet&url=http%3A%2F%2Fwallet.pog.network"></a>&nbsp;<a href="https://img.shields.io/security-headers?url=http%3A%2F%2Fwallet.pog.network%2F"><img src="https://img.shields.io/security-headers?url=https%3A%2F%2wallet.pog.network%2F&followRedirects=on"></a>&nbsp;<a href="https://observatory.mozilla.org/analyze/develop--wallet.pog.network"><img src="https://img.shields.io/mozilla-observatory/grade/wallet.pog.network?publish"></a>
+ &nbsp;catJAM <a href="https://wallet.pog.network"><img src="https://img.shields.io/website?label=wallet&url=https%3A%2F%2Fwallet.pog.network"></a>&nbsp;<a href="https://securityheaders.com/?q=https%3A%2F%2Fwallet.pog.network"><img src="https://img.shields.io/security-headers?url=https%3A%2F%2wallet.pog.network"></a>&nbsp;<a href="https://observatory.mozilla.org/analyze/wallet.pog.network"><img src="https://img.shields.io/mozilla-observatory/grade/wallet.pog.network?publish"></a>
 </h1>
 <br/>
 

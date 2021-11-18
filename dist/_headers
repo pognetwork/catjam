@@ -8,5 +8,5 @@
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-site
 
-https://pogwallet.pages.dev/*
+https://:project.pages.dev/*
   X-Robots-Tag: noindex
