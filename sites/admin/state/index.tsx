@@ -34,7 +34,7 @@ export interface JWT {
 }
 
 const defaultContextValue: AdminState = {
-	endpoint: 'http://localhost:50051/',
+	endpoint: 'https://pog-grpc.explodingcamera.com',
 	jwt: undefined,
 	status: 'loading',
 	login: async () => Promise.reject(new Error('endpoint not loaded')),
@@ -56,7 +56,7 @@ export const AdminProvider: FC = ({ children }) => {
 
 	const [jwt, setJwt] = useSessionStorage<string | undefined>('jwt');
 	const [status, setStatus] = useState<Status>('loading');
-	const [endpoint] = useState('http://localhost:50051');
+	const [endpoint] = useState(defaultContextValue.endpoint);
 	const api = useRef<API>({});
 
 	useEffect(() => {
