@@ -12,6 +12,7 @@ import {
 	settingsIcon,
 } from './../../../../assets/icons';
 import { useAdmin } from '../../state';
+import { NoSSR } from '../../../../utils/no-ssr';
 
 const sidebarLinks = [
 	{
@@ -34,9 +35,11 @@ const sidebarLinks = [
 export const Layout = ({
 	children,
 	className,
+	noSSR = false,
 }: {
 	className?: string;
 	children: ReactNode;
+	noSSR?: boolean;
 }) => {
 	const [loc] = useLocation();
 	const { logout } = useAdmin();
@@ -72,7 +75,9 @@ export const Layout = ({
 			</div>
 			<div className={styles.main}>
 				<div className={styles.header} />
-				<div className={`${styles.children} ${className}`}>{children}</div>
+				<div className={`${styles.children} ${className}`}>
+					{noSSR ? <NoSSR>{children}</NoSSR> : children}
+				</div>
 			</div>
 		</div>
 	);
