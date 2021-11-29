@@ -12,27 +12,27 @@
   "dependencies": {
     "@improbable-eng/grpc-web": "^0.15.0",
     "@pognetwork/proto": "0.2.0-alpha.5",
-    "@snowstorm/cli": "0.6.1--canary.22.d586580.0",
-    "@snowstorm/core": "0.6.1--canary.22.d586580.0",
-    "@types/react": "^17.0.34",
+    "@snowstorm/cli": "0.6.1",
+    "@snowstorm/core": "0.6.1",
+    "@types/react": "^17.0.37",
     "@visx/curve": "^2.1.0",
     "@visx/event": "^2.1.2",
     "@visx/gradient": "^2.1.0",
-    "@visx/grid": "^2.2.2",
+    "@visx/grid": "^2.4.0",
     "@visx/mock-data": "^2.1.2",
     "@visx/scale": "^2.2.2",
-    "@visx/shape": "^2.2.2",
+    "@visx/shape": "^2.4.0",
     "@visx/tooltip": "^2.2.2",
     "browser-headers": "^0.4.1",
     "champ-wasm": "0.0.9",
     "d3-array": "^3.1.1",
     "d3-time-format": "^4.0.0",
-    "long": "^5.1.0",
+    "long": "^5.2.0",
     "protobufjs": "^6.11.2",
     "react": "18.0.0-alpha-f6abf4b40-20211020",
     "react-cool-dimensions": "^2.0.7",
     "react-dom": "18.0.0-alpha-f6abf4b40-20211020",
-    "sass": "^1.43.4",
+    "sass": "^1.43.5",
     "swr": "^1.0.1",
     "vite-plugin-fonts": "^0.2.2",
     "wouter": "2.7.5"
@@ -43,6 +43,6 @@
     "@types/d3-array": "^3.0.2",
     "@types/d3-time-format": "^4.0.0",
     "eslint": "^7",
-    "prettier": "^2.4.1"
+    "prettier": "^2.5.0"
   }
 }

@@ -34,8 +34,8 @@ export interface JWT {
 }
 
 const defaultContextValue: AdminState = {
-	// endpoint: 'https://pog-grpc.explodingcamera.com',
-	endpoint: 'http://localhost:50051',
+	endpoint: 'https://pog-grpc.explodingcamera.com',
+	// endpoint: 'http://localhost:50051',
 	jwt: undefined,
 	status: 'loading',
 	login: async () => Promise.reject(new Error('endpoint not loaded')),
