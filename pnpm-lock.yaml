@@ -21,24 +21,23 @@ specifiers:
   browser-headers: ^0.4.1
   champ-wasm: 0.0.9
   d3-array: ^3.1.1
-  d3-time-format: ^4.0.0
+  d3-time-format: ^4.1.0
   eslint: ^7
   long: ^5.2.0
-  prettier: ^2.5.0
+  prettier: ^2.5.1
   protobufjs: ^6.11.2
   react: 18.0.0-alpha-f6abf4b40-20211020
   react-cool-dimensions: ^2.0.7
   react-dom: 18.0.0-alpha-f6abf4b40-20211020
-  sass: ^1.43.5
-  swr: ^1.0.1
+  sass: ^1.44.0
   vite-plugin-fonts: ^0.2.2
   wouter: 2.7.5
 
 dependencies:
   '@improbable-eng/grpc-web': 0.15.0
   '@pognetwork/proto': 0.2.0-alpha.5
-  '@snowstorm/cli': 0.6.1_eb687052719ea31b3f39747bc174f7ee
-  '@snowstorm/core': 0.6.1_eb687052719ea31b3f39747bc174f7ee
+  '@snowstorm/cli': 0.6.1_cc395fe65cac51fecd8052d0222d2293
+  '@snowstorm/core': 0.6.1_cc395fe65cac51fecd8052d0222d2293
   '@types/react': 17.0.37
   '@visx/curve': 2.1.0
   '@visx/event': 2.1.2
@@ -51,14 +50,13 @@ dependencies:
   browser-headers: 0.4.1
   champ-wasm: 0.0.9
   d3-array: 3.1.1
-  d3-time-format: 4.0.0
+  d3-time-format: 4.1.0
   long: 5.2.0
   protobufjs: 6.11.2
   react: 18.0.0-alpha-f6abf4b40-20211020
   react-cool-dimensions: 2.0.7_c83590f482eb09d09737f3f1a7f6e69b
   react-dom: 18.0.0-alpha-f6abf4b40-20211020_c83590f482eb09d09737f3f1a7f6e69b
-  sass: 1.43.5
-  swr: 1.0.1_c83590f482eb09d09737f3f1a7f6e69b
+  sass: 1.44.0
   vite-plugin-fonts: 0.2.2
   wouter: 2.7.5_c83590f482eb09d09737f3f1a7f6e69b
 
@@ -68,7 +66,7 @@ devDependencies:
   '@types/d3-array': 3.0.2
   '@types/d3-time-format': 4.0.0
   eslint: 7.32.0
-  prettier: 2.5.0
+  prettier: 2.5.1
 
 packages:
 
@@ -505,11 +503,11 @@ packages:
       picomatch: 2.3.0
     dev: false
 
-  /@snowstorm/cli/0.6.1_eb687052719ea31b3f39747bc174f7ee:
+  /@snowstorm/cli/0.6.1_cc395fe65cac51fecd8052d0222d2293:
     resolution: {integrity: sha512-Lz9BNWZcOyBUumzxg6jutcar9X+Bc4HH6XwF8Xd1fBweXBfHYkwFUecF4vPBtXIs2GEyhALIADfqyhoHsH3BJQ==}
     hasBin: true
     dependencies:
-      '@snowstorm/core': 0.6.1_eb687052719ea31b3f39747bc174f7ee
+      '@snowstorm/core': 0.6.1_cc395fe65cac51fecd8052d0222d2293
       meow: 10.1.2
       yargs: 17.2.1
     transitivePeerDependencies:
@@ -521,7 +519,7 @@ packages:
       - supports-color
     dev: false
 
-  /@snowstorm/core/0.6.1_eb687052719ea31b3f39747bc174f7ee:
+  /@snowstorm/core/0.6.1_cc395fe65cac51fecd8052d0222d2293:
     resolution: {integrity: sha512-Vz+N1TWRUj8bGT+/CK1OGyl719w3ShRp4FIJoJnnjwTXbcvOKJvEfJnTvKG1sfkQF1s3kou2wHk5j6YT0JGsLA==}
     peerDependencies:
       react: 18.0.0-alpha-f6abf4b40-20211020
@@ -535,7 +533,7 @@ packages:
       react-dom: 18.0.0-alpha-f6abf4b40-20211020_c83590f482eb09d09737f3f1a7f6e69b
       tslog: 3.2.2
       typescript: 4.5.2
-      vite: 2.6.14_sass@1.43.5
+      vite: 2.6.14_sass@1.44.0
       wouter: 2.7.5_c83590f482eb09d09737f3f1a7f6e69b
     transitivePeerDependencies:
       - less
@@ -1258,8 +1256,8 @@ packages:
       d3-time: 2.1.1
     dev: false
 
-  /d3-time-format/4.0.0:
-    resolution: {integrity: sha512-nzaCwlj+ZVBIlFuVOT1RmU+6xb/7D5IcnhHzHQcBgS/aTa5K9fWZNN5LCXA27LgF5WxoSNJqKBbLcGMtM6Ca6A==}
+  /d3-time-format/4.1.0:
+    resolution: {integrity: sha512-dJxPBlzC7NugB2PDLwo9Q8JiTR3M3e4/XANkreKSUxF8vvXKqm1Yfq4Q5dl8budlunRVlUUaDUgFt7eA8D6NLg==}
     engines: {node: '>=12'}
     dependencies:
       d3-time: 3.0.0
@@ -1345,11 +1343,6 @@ packages:
     dependencies:
       object-keys: 1.1.1
     dev: true
-
-  /dequal/2.0.2:
-    resolution: {integrity: sha512-q9K8BlJVxK7hQYqa6XISGmBZbtQQWVXSrRrWreHC94rMt1QL/Impruc+7p2CYSYuVIUr+YCt6hjrs1kkdJRTug==}
-    engines: {node: '>=6'}
-    dev: false
 
   /dir-glob/3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
@@ -2183,6 +2176,10 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
+  /immutable/4.0.0:
+    resolution: {integrity: sha512-zIE9hX70qew5qTUjSS7wi1iwj/l7+m54KWU247nhM3v806UdGj1yDndXj+IOYxxtW9zyLI+xqFNZjTuDaLUqFw==}
+    dev: false
+
   /import-fresh/3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -2872,8 +2869,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier/2.5.0:
-    resolution: {integrity: sha512-FM/zAKgWTxj40rH03VxzIPdXmj39SwSjwG0heUcNFwI+EMZJnY93yAiKXM3dObIKAM5TA88werc8T/EwhB45eg==}
+  /prettier/2.5.1:
+    resolution: {integrity: sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
@@ -3109,12 +3106,13 @@ packages:
       regexp-tree: 0.1.24
     dev: true
 
-  /sass/1.43.5:
-    resolution: {integrity: sha512-WuNm+eAryMgQluL7Mbq9M4EruyGGMyal7Lu58FfnRMVWxgUzIvI7aSn60iNt3kn5yZBMR7G84fAGDcwqOF5JOg==}
+  /sass/1.44.0:
+    resolution: {integrity: sha512-0hLREbHFXGQqls/K8X+koeP+ogFRPF4ZqetVB19b7Cst9Er8cOR0rc6RU7MaI4W1JmUShd1BPgPoeqmmgMMYFw==}
     engines: {node: '>=8.9.0'}
     hasBin: true
     dependencies:
       chokidar: 3.5.2
+      immutable: 4.0.0
     dev: false
 
   /scheduler/0.21.0-alpha-f6abf4b40-20211020:
@@ -3303,15 +3301,6 @@ packages:
       supports-color: 7.2.0
     dev: true
 
-  /swr/1.0.1_c83590f482eb09d09737f3f1a7f6e69b:
-    resolution: {integrity: sha512-EPQAxSjoD4IaM49rpRHK0q+/NzcwoT8c0/Ylu/u3/6mFj/CWnQVjNJ0MV2Iuw/U+EJSd2TX5czdAwKPYZIG0YA==}
-    peerDependencies:
-      react: ^16.11.0 || ^17.0.0
-    dependencies:
-      dequal: 2.0.2
-      react: 18.0.0-alpha-f6abf4b40-20211020
-    dev: false
-
   /table/6.7.3:
     resolution: {integrity: sha512-5DkIxeA7XERBqMwJq0aHZOdMadBx4e6eDoFRuyT5VR82J0Ycg2DwM6GfA/EQAhJ+toRTaS1lIdSQCqgrmhPnlw==}
     engines: {node: '>=10.0.0'}
@@ -3445,7 +3434,7 @@ packages:
       vite: ^2.0.0
     dev: false
 
-  /vite/2.6.14_sass@1.43.5:
+  /vite/2.6.14_sass@1.44.0:
     resolution: {integrity: sha512-2HA9xGyi+EhY2MXo0+A2dRsqsAG3eFNEVIo12olkWhOmc8LfiM+eMdrXf+Ruje9gdXgvSqjLI9freec1RUM5EA==}
     engines: {node: '>=12.2.0'}
     hasBin: true
@@ -3465,7 +3454,7 @@ packages:
       postcss: 8.4.4
       resolve: 1.20.0
       rollup: 2.60.1
-      sass: 1.43.5
+      sass: 1.44.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: false
