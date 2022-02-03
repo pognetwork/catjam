@@ -1,18 +1,28 @@
 import { SnowstormConfig } from '@snowstorm/core/server';
-import vitePluginFonts from 'vite-plugin-fonts';
+import { Plugin as VitePluginFonts } from 'vite-plugin-fonts';
 import vitePluginWasmPack from '@pognetwork/vite-plugin-wasm-pack';
 
 export const Config: SnowstormConfig = {
 	sitesFolder: 'sites',
 	site: {
 		build: {
-			vitePlugins: [
-				vitePluginFonts({
+			forcePrebundle: ['@pognetwork/proto'],
+			noExternal: [
+				'@pognetwork/proto',
+				'champ-wasm',
+				'd3-array',
+				'd3-time-format',
+			],
+			plugins: [
+				VitePluginFonts({
 					google: {
 						families: ['Inter'],
 					},
 				}),
-				vitePluginWasmPack([], ['champ-wasm']),
+				((vitePluginWasmPack as any).default as typeof vitePluginWasmPack)(
+					[],
+					['champ-wasm'],
+				),
 			],
 		},
 	},
