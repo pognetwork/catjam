@@ -13,8 +13,8 @@
   "dependencies": {
     "@improbable-eng/grpc-web": "^0.15.0",
     "@pognetwork/proto": "0.2.0-b566fd1",
-    "@snowstorm/cli": "0.14.2",
-    "@snowstorm/core": "0.14.2",
+    "@snowstorm/cli": "0.15.0",
+    "@snowstorm/core": "0.15.0",
     "@types/react": "^17.0.39",
     "@visx/curve": "^2.1.0",
     "@visx/event": "^2.6.0",

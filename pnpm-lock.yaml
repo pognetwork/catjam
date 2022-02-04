@@ -5,8 +5,8 @@ specifiers:
   '@improbable-eng/grpc-web': ^0.15.0
   '@pognetwork/proto': 0.2.0-b566fd1
   '@pognetwork/vite-plugin-wasm-pack': ^0.1.8
-  '@snowstorm/cli': 0.14.2
-  '@snowstorm/core': 0.14.2
+  '@snowstorm/cli': 0.15.0
+  '@snowstorm/core': 0.15.0
   '@types/d3-array': ^3.0.2
   '@types/d3-time-format': ^4.0.0
   '@types/react': ^17.0.39
@@ -35,8 +35,8 @@ specifiers:
 dependencies:
   '@improbable-eng/grpc-web': 0.15.0
   '@pognetwork/proto': 0.2.0-b566fd1
-  '@snowstorm/cli': 0.14.2_5c6c267a443f74a6c367752e974f4361
-  '@snowstorm/core': 0.14.2_5c6c267a443f74a6c367752e974f4361
+  '@snowstorm/cli': 0.15.0_5c6c267a443f74a6c367752e974f4361
+  '@snowstorm/core': 0.15.0_5c6c267a443f74a6c367752e974f4361
   '@types/react': 17.0.39
   '@visx/curve': 2.1.0
   '@visx/event': 2.6.0
@@ -507,11 +507,11 @@ packages:
       picomatch: 2.3.1
     dev: false
 
-  /@snowstorm/cli/0.14.2_5c6c267a443f74a6c367752e974f4361:
-    resolution: {integrity: sha512-C8mSMvU6t/wUKLi4XiyBwaZPGc8POCdvICMMKPb9zdpheGiHUkJSklAPEFWTKydJAAO9e2F2DXX8ZMT/W83DJg==}
+  /@snowstorm/cli/0.15.0_5c6c267a443f74a6c367752e974f4361:
+    resolution: {integrity: sha512-Cxr1QaBXOLTR8Jx4j9G+kSOFaO4qMdl+LThywnCKN9LtBqcvn7g66QL1yYwNTldqP54oe+s2qu268pBXOIBR0g==}
     hasBin: true
     dependencies:
-      '@snowstorm/core': 0.14.2_5c6c267a443f74a6c367752e974f4361
+      '@snowstorm/core': 0.15.0_5c6c267a443f74a6c367752e974f4361
       meow: 10.1.2
       yargs: 17.3.1
     transitivePeerDependencies:
@@ -523,8 +523,8 @@ packages:
       - supports-color
     dev: false
 
-  /@snowstorm/core/0.14.2_5c6c267a443f74a6c367752e974f4361:
-    resolution: {integrity: sha512-P5qbs3ZNhb6y/oCW415ihr2jVhEbHDMhcBUz44re9lUfkGS8wQUfYQvEVyW64gZ1Wcrpuan2YcXLjnzIYxNLAQ==}
+  /@snowstorm/core/0.15.0_5c6c267a443f74a6c367752e974f4361:
+    resolution: {integrity: sha512-UPYRHZOc3oUcRv24I3IB5Yk1m+h7Z7zRb2OIdBayaKoRHxXccUc7E5K+CILpjb3DOa/aazRe3BWctp0U/T5tww==}
     peerDependencies:
       react: 18.0.0-rc.0
       react-dom: 18.0.0-rc.0
@@ -535,8 +535,8 @@ packages:
     dependencies:
       '@explodingcamera/youch': 3.1.0-fix
       '@rollup/pluginutils': 4.1.2
-      '@snowstorm/head': 0.14.2_757a802188413a36d4f24237d13b8e90
-      '@snowstorm/router': 0.14.2_react@18.0.0-rc.0
+      '@snowstorm/head': 0.15.0_757a802188413a36d4f24237d13b8e90
+      '@snowstorm/router': 0.15.0_react@18.0.0-rc.0
       '@types/write-file-atomic': 3.0.3
       '@vitejs/plugin-react': 1.1.4
       react: 18.0.0-rc.0
@@ -554,8 +554,8 @@ packages:
       - supports-color
     dev: false
 
-  /@snowstorm/head/0.14.2_757a802188413a36d4f24237d13b8e90:
-    resolution: {integrity: sha512-gSouWFyQ/Y+4GXS289Hanh3/XhowXQS73l1tKpFEsajSNINNTsSxZIMeX5upkhmxU5MKLXqyCDr7USG3N5fKfQ==}
+  /@snowstorm/head/0.15.0_757a802188413a36d4f24237d13b8e90:
+    resolution: {integrity: sha512-0F9r9OUNHUW0K99yTqN+k1AbFExmcwa9Oh/l3MtjhzjrKsig3IxkaFUrGnlnIQtlpZHT3GlxbQATgPF1TcVS7w==}
     peerDependencies:
       react: 18.0.0-rc.0
       react-dom: 18.0.0-rc.0
@@ -564,8 +564,8 @@ packages:
       react-dom: 18.0.0-rc.0_react@18.0.0-rc.0
     dev: false
 
-  /@snowstorm/router/0.14.2_react@18.0.0-rc.0:
-    resolution: {integrity: sha512-8alnRvB2vRh9RKBu6MNRPHWiKwQcxdFOSI0Rhw54i80b989rogxXvFnVfTr7/5cKceF1+0ogfTVYks8aPJz+fA==}
+  /@snowstorm/router/0.15.0_react@18.0.0-rc.0:
+    resolution: {integrity: sha512-aMb52qnBSyKP7MiDOPcMT+P+Wo+akSx0LZSxUNOnodwXCRgnxgw85gvwDXUfDgpysF1ADg35u7dFG2/QdM82pg==}
     peerDependencies:
       react: '>=18.0.0'
     dependencies:
