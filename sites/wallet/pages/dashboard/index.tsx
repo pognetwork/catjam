@@ -6,7 +6,7 @@ import useDimensions from 'react-cool-dimensions';
 
 const AccountBalanceGraph = () => {
 	const { observe, unobserve, width, height, entry } = useDimensions({
-		onResize: ({ observe, unobserve, width, height, entry }) => {
+		onResize({ observe, unobserve, width, height, entry }) {
 			// Triggered whenever the size of the target is changed...
 			// unobserve(); // To stop observing the current target element
 			// observe(); // To re-start observing the current target element

@@ -26,11 +26,13 @@ const IndexPage = () => {
 		useState<GetBlockPoolSizeReply>(undefined);
 
 	useEffect(() => {
-		admin.api.nodeAdmin?.GetVersion({}).then(v => setVersion(v));
-		admin.api.nodeAdmin?.GetChain({}).then(c => setChain(c));
-		admin.api.nodeAdmin?.GetMode({}).then(c => setMode(c));
-		admin.api.nodeAdmin?.GetNodeStatus({}).then(c => setStatus(c));
-		admin.api.nodeAdmin?.GetBlockPoolSize({}).then(c => setBlockPoolSize(c));
+		Promise.all([
+			admin.api.nodeAdmin?.getVersion({}).then(v => setVersion(v)),
+			admin.api.nodeAdmin?.getChain({}).then(c => setChain(c)),
+			admin.api.nodeAdmin?.getMode({}).then(c => setMode(c)),
+			admin.api.nodeAdmin?.getNodeStatus({}).then(c => setStatus(c)),
+			admin.api.nodeAdmin?.getBlockPoolSize({}).then(c => setBlockPoolSize(c)),
+		]).catch(console.error);
 	}, [setVersion, admin.api.nodeAdmin]);
 
 	return (

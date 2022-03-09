@@ -13,6 +13,7 @@ import {
 } from './../../../../assets/icons';
 import { useAdmin } from '../../state';
 import { NoSSR } from '../../../../utils/no-ssr';
+import { AuthenticatedLink } from '../authenticated-link';
 
 const sidebarLinks = [
 	{
@@ -47,12 +48,12 @@ export const Layout = ({
 	return (
 		<div className={styles.layout}>
 			<div className={styles.sidebar}>
-				<Link href="/">
+				<AuthenticatedLink href="/">
 					<img height="30" width="30" className={styles.logo} src={logo} />
-				</Link>
+				</AuthenticatedLink>
 				<div className={styles.sidebarTop}>
 					{sidebarLinks.map(sidebar => (
-						<Link
+						<AuthenticatedLink
 							key={sidebar.name}
 							className={`${styles.sidebarLink} ${
 								(loc.endsWith(sidebar.url) && styles.active) || ''
@@ -61,7 +62,7 @@ export const Layout = ({
 						>
 							{sidebar.icon}
 							<p>{sidebar.name}</p>
-						</Link>
+						</AuthenticatedLink>
 					))}
 					<Link
 						href="/login"

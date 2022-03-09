@@ -1,5 +1,6 @@
 import * as grpc from './../../../utils/grpc';
 import { useLocation } from '@snowstorm/core';
+
 import {
 	createContext,
 	FC,
@@ -10,10 +11,11 @@ import {
 	useRef,
 	useState,
 } from 'react';
-import { useSessionStorage } from '../../../utils/use-session-storage';
-import { parseJWT } from '../../../utils/jwt';
 
-export type Status = 'loading' | 'logged-in' | 'unauthenticated';
+import { parseJWT } from '../../../utils/jwt';
+import { useLocalStorage } from 'react-use';
+
+export type Status = 'authenticated' | 'unauthenticated' | 'loading';
 
 export interface AdminState {
 	endpoint: string;
@@ -33,9 +35,15 @@ export interface JWT {
 	username: string;
 }
 
+let endpoint = 'http://localhost:50051';
+if (!import.meta.env.SSR) {
+	endpoint = location.hostname.endsWith('localhost')
+		? 'http://localhost:50051'
+		: location.origin;
+}
+
 const defaultContextValue: AdminState = {
-	endpoint: 'https://pog-grpc.explodingcamera.com',
-	// endpoint: 'http://localhost:50051',
+	endpoint,
 	jwt: undefined,
 	status: 'loading',
 	login: async () => Promise.reject(new Error('endpoint not loaded')),
@@ -46,7 +54,7 @@ const defaultContextValue: AdminState = {
 
 interface API {
 	user?: grpc.NodeUserClientImpl;
-	block?: grpc.BlockClientImpl;
+	lattice?: grpc.LatticeClientImpl;
 	nodeAdmin?: grpc.NodeAdminClientImpl;
 	nodeWalletManager?: grpc.NodeWalletManagerClientImpl;
 }
@@ -54,35 +62,37 @@ interface API {
 const AdminContext = createContext<AdminState>(defaultContextValue);
 export const AdminProvider: FC = ({ children }) => {
 	const [loc, setLoc] = useLocation();
+	const [jwt, setJwt] = useLocalStorage<string | undefined>('jwt');
 
-	const [jwt, setJwt] = useSessionStorage<string | undefined>('jwt');
-	const [status, setStatus] = useState<Status>('loading');
-	const [endpoint] = useState(defaultContextValue.endpoint);
-	const api = useRef<API>({});
+	const [status, setStatus] = useState<Status>(
+		jwt ? 'authenticated' : 'unauthenticated',
+	);
+
+	const api = useRef<API>();
+
+	const updateEndpoint = useCallback(() => {
+		api.current = {
+			lattice: grpc.createLatticeClient(endpoint),
+			user: grpc.createUserClient(endpoint),
+		};
+
+		if (!jwt) return;
+		api.current.nodeAdmin = grpc.createAdminClient(endpoint, jwt);
+		api.current.nodeWalletManager = grpc.createWalletManagerClient(
+			endpoint,
+			jwt,
+		);
+	}, [jwt]);
+
+	if (!api.current) updateEndpoint();
 
 	useEffect(() => {
 		if (loc !== '/login' && status === 'unauthenticated') setLoc('/login');
 	}, [loc, status, setLoc]);
 
 	useEffect(() => {
-		if (jwt) return setStatus('logged-in');
-		setStatus('unauthenticated');
-	}, [jwt]);
-
-	useEffect(() => {
-		api.current.block = grpc.createBlockClient(endpoint);
-		api.current.user = grpc.createUserClient(endpoint);
-	}, [endpoint]);
-
-	useEffect(() => {
-		if (!jwt) return;
-
-		api.current.nodeAdmin = grpc.createAdminClient(endpoint, jwt);
-		api.current.nodeWalletManager = grpc.createWalletManagerClient(
-			endpoint,
-			jwt,
-		);
-	}, [endpoint, jwt]);
+		if (jwt) updateEndpoint();
+	}, [jwt, updateEndpoint]);
 
 	const login = useCallback(
 		async (username, password) => {
@@ -91,10 +101,9 @@ export const AdminProvider: FC = ({ children }) => {
 				return;
 			}
 
-			return api.current.user?.Login({ password, username }).then(async jwt => {
-				setStatus('loading');
+			return api.current.user?.login({ password, username }).then(async jwt => {
 				setJwt(jwt.token);
-				return setStatus('logged-in');
+				setStatus('authenticated');
 			});
 		},
 		[setStatus, setJwt],
@@ -122,7 +131,7 @@ export const AdminProvider: FC = ({ children }) => {
 			api: api.current,
 			jwtData: tokenContents,
 		}),
-		[jwt, status, login, logout, endpoint, tokenContents],
+		[jwt, status, login, logout, tokenContents],
 	);
 
 	return (

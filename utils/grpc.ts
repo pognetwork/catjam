@@ -3,7 +3,10 @@ import { grpc } from '@improbable-eng/grpc-web';
 // we need this import since vite doesn't prebundle proto otherwise
 import '@pognetwork/proto';
 
-import { GrpcWebImpl, BlockClientImpl } from '@pognetwork/proto/node/rpc/block';
+import {
+	GrpcWebImpl,
+	LatticeClientImpl,
+} from '@pognetwork/proto/node/rpc/lattice';
 import { NodeUserClientImpl } from '@pognetwork/proto/node/rpc/node_user';
 import { NodeAdminClientImpl } from '@pognetwork/proto/node/rpc/node_admin';
 import { NodeWalletManagerClientImpl } from '@pognetwork/proto/node/rpc/node_wallet_manager';
@@ -22,8 +25,8 @@ const authenticatedRPC = (endpoint: string, token: string) =>
 export const createUserClient = (endpoint: string) =>
 	new NodeUserClientImpl(unauthenticatedRPC(endpoint));
 
-export const createBlockClient = (endpoint: string) =>
-	new BlockClientImpl(unauthenticatedRPC(endpoint));
+export const createLatticeClient = (endpoint: string) =>
+	new LatticeClientImpl(unauthenticatedRPC(endpoint));
 
 export const createAdminClient = (endpoint: string, token: string) =>
 	new NodeAdminClientImpl(authenticatedRPC(endpoint, token));
@@ -33,7 +36,7 @@ export const createWalletManagerClient = (endpoint: string, token: string) =>
 
 export {
 	NodeUserClientImpl,
-	BlockClientImpl,
+	LatticeClientImpl,
 	NodeAdminClientImpl,
 	NodeWalletManagerClientImpl,
 };
