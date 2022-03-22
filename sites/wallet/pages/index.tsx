@@ -9,12 +9,11 @@ import init, { Wallet } from 'champ-wasm';
 
 if (!import.meta.env.SSR) {
 	void init().then(_x => {
-		console.log(Wallet.generate('test'));
+		const wallet = Wallet.generateJSON('test');
+		console.log(wallet.unlock('test'));
+		console.log(wallet.sign(new Uint8Array(100)));
 	});
 }
-
-// import pogchan from './../assets/pogchan.png';
-// import shiba from './../assets/shiba.png';
 
 export const Index = () => (
 	<Layout className={styles.layout}>
