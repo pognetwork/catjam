@@ -5,11 +5,14 @@ import {
 	FC,
 	useCallback,
 	useContext,
+	useEffect,
 	useMemo,
 	useRef,
+	useState,
 } from 'react';
 
 import { useLocalStorage } from 'react-use';
+import init, { Wallet } from 'champ-wasm';
 
 let endpoint = 'https://node.pog.network';
 if (!import.meta.env.SSR) {
@@ -21,6 +24,7 @@ if (!import.meta.env.SSR) {
 interface WalletState {
 	settings: WalletSettings;
 	setSettings: (newSettings: Partial<WalletSettings>) => void;
+	wasmReady: boolean;
 }
 
 interface API {
@@ -34,11 +38,23 @@ interface WalletSettings {
 const defaultWalletSettings: WalletSettings = { endpoint };
 const defaultContextValue: WalletState = {
 	settings: defaultWalletSettings,
+	wasmReady: false,
 	setSettings: () => undefined,
 };
 
 const WalletContext = createContext<WalletState>(defaultContextValue);
 export const WalletProvider: FC = ({ children }) => {
+	const [wasmReady, setWasmReady] = useState(false);
+	useEffect(() => {
+		if (!import.meta.env.SSR) {
+			void init()
+				.then(_x => {
+					setWasmReady(true);
+				})
+				.catch(e => console.error('Failed to load wasm module: ', e));
+		}
+	}, []);
+
 	const [_settings, _setSettings] = useLocalStorage<string>('{}');
 
 	const settings: WalletSettings = useMemo(() => {
@@ -74,10 +90,11 @@ export const WalletProvider: FC = ({ children }) => {
 	const value: WalletState = useMemo(
 		() => ({
 			settings,
+			wasmReady,
 			api: api.current,
 			setSettings,
 		}),
-		[settings, api, setSettings],
+		[settings, api, setSettings, wasmReady],
 	);
 
 	return (

@@ -3,23 +3,45 @@ import { Input } from '../../../../components/input';
 import styles from './wallet-create.module.scss';
 import buttonStyles from './../../../../components/button.module.scss';
 import { spinner } from '../../../../assets/icons';
+import { Wallet } from 'champ-wasm';
+import { storeAsFile } from '../../../../utils/store-as-file';
+import { useWallet } from '../../state';
 
 type STEPS = 'PASSWORD' | 'DOWNLOAD' | 'DONE';
 
 export const WalletCreate = () => {
-	const [step, _setStep] = useState<STEPS>('PASSWORD');
-	const setStep = (step: STEPS) => () => _setStep(step);
+	const ctx = useWallet();
+
+	const [error, setError] = useState<false | unknown>(false);
+	const [step, setStep] = useState<STEPS>('PASSWORD');
 
 	// STEP: PASSWORD
 	const [password, setPassword] = useState('');
 	const [passwordConfirmation, setPasswordConfirmation] = useState('');
 	const passwordMatches = password === passwordConfirmation;
 	const passwordValid = password.length > 10;
+	const [wallet, setWallet] = useState<Wallet | undefined>();
+
+	const generateWallet = password => {
+		try {
+			const w = Wallet.generateJSON(password);
+			setWallet(w);
+			setStep('DOWNLOAD');
+			console.log('set step to download');
+		} catch (error: unknown) {
+			console.error(error);
+			setError(error);
+			return false;
+		}
+
+		return true;
+	};
 
 	// STEP: DOWNLOAD
 	const [downloadReady, setDownloadReady] = useState(false);
 	const [downloadedWallet, setDownloadedWallet] = useState(false);
 	const downloadWallet = () => {
+		storeAsFile(wallet.json, `${wallet.address}.json`, 'application/json');
 		setDownloadedWallet(true);
 	};
 
@@ -28,6 +50,7 @@ export const WalletCreate = () => {
 
 	useEffect(() => {
 		if (step !== 'DOWNLOAD') return;
+		// we wait a second since it just "feels" to fast otherwise
 		const timeout = setTimeout(() => setDownloadReady(true), 1000);
 		return () => clearTimeout(timeout);
 	}, [step]);
@@ -36,11 +59,15 @@ export const WalletCreate = () => {
 		(func: (str: string) => void) => (e: ChangeEvent<HTMLInputElement>) =>
 			func(e.target.value);
 
+	if (!ctx.wasmReady) {
+		return <div>{spinner}</div>;
+	}
+
 	return (
 		<div className={styles.wrapper}>
 			<h1>Create a new Wallet File</h1>
 			<Steps step={step} />
-			{step === 'DOWNLOAD' && (
+			{step === 'DOWNLOAD' && !error && (
 				<div className={styles.download}>
 					{downloadReady ? (
 						<>
@@ -59,7 +86,7 @@ export const WalletCreate = () => {
 								<button
 									className={buttonStyles.button}
 									type="button"
-									onClick={setStep('DONE')}
+									onClick={() => setStep('DONE')}
 									disabled={!downloadedWallet}
 								>
 									Continue
@@ -75,7 +102,7 @@ export const WalletCreate = () => {
 				</div>
 			)}
 
-			{step === 'PASSWORD' && (
+			{step === 'PASSWORD' && !error && (
 				<div>
 					<h2>Create a password</h2>
 					<p>
@@ -97,7 +124,7 @@ export const WalletCreate = () => {
 					<button
 						className={buttonStyles.button}
 						type="button"
-						onClick={setStep('DOWNLOAD')}
+						onClick={() => generateWallet(password)}
 						disabled={!passwordMatches || !passwordValid}
 					>
 						Continue
@@ -109,7 +136,7 @@ export const WalletCreate = () => {
 				</div>
 			)}
 
-			{step === 'DONE' && (
+			{step === 'DONE' && !error && (
 				<div>
 					<h2>You're done!</h2>
 					<p>
@@ -125,6 +152,12 @@ export const WalletCreate = () => {
 					<button className={buttonStyles.button} type="button">
 						Decrypt Wallet
 					</button>
+				</div>
+			)}
+
+			{error && (
+				<div>
+					<h1>An unknown error occured. Sorry :( </h1>
 				</div>
 			)}
 		</div>

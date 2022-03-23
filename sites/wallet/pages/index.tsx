@@ -5,15 +5,6 @@ import { Layout } from '../components/layout';
 import styles from './index.module.scss';
 
 import astronaut from './../assets/astronaut.webp';
-import init, { Wallet } from 'champ-wasm';
-
-if (!import.meta.env.SSR) {
-	void init().then(_x => {
-		const wallet = Wallet.generateJSON('test');
-		console.log(wallet.unlock('test'));
-		console.log(wallet.sign(new Uint8Array(100)));
-	});
-}
 
 export const Index = () => (
 	<Layout className={styles.layout}>
