@@ -6,11 +6,13 @@ import { spinner } from '../../../../assets/icons';
 import { Wallet } from 'champ-wasm';
 import { storeAsFile } from '../../../../utils/store-as-file';
 import { useWallet } from '../../state';
+import { useLocation } from '@snowstorm/core';
 
 type STEPS = 'PASSWORD' | 'DOWNLOAD' | 'DONE';
 
 export const WalletCreate = () => {
 	const ctx = useWallet();
+	const [, setLocation] = useLocation();
 
 	const [error, setError] = useState<false | unknown>(false);
 	const [step, setStep] = useState<STEPS>('PASSWORD');
@@ -41,12 +43,17 @@ export const WalletCreate = () => {
 	const [downloadReady, setDownloadReady] = useState(false);
 	const [downloadedWallet, setDownloadedWallet] = useState(false);
 	const downloadWallet = () => {
-		storeAsFile(wallet.json, `${wallet.address}.json`, 'application/json');
+		storeAsFile(wallet.json, `pog-${wallet.address}.json`, 'application/json');
 		setDownloadedWallet(true);
 	};
 
 	// STEP: DONE
 	const [decryptionPassword, setDecryptionPassword] = useState('');
+	const decryptWallet = () => {
+		wallet.unlock(decryptionPassword);
+		ctx.currentWallet = wallet;
+		setLocation('/dashboard');
+	};
 
 	useEffect(() => {
 		if (step !== 'DOWNLOAD') return;
@@ -149,7 +156,11 @@ export const WalletCreate = () => {
 						onChange={onChange(setDecryptionPassword)}
 						placeholder="Enter Password"
 					/>
-					<button className={buttonStyles.button} type="button">
+					<button
+						onClick={decryptWallet}
+						className={buttonStyles.button}
+						type="button"
+					>
 						Decrypt Wallet
 					</button>
 				</div>

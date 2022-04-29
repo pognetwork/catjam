@@ -1,9 +1,9 @@
 <h1>
 <img align="left" width="60" src="https://cdn.betterttv.net/emote/5f1b0186cf6d2144653d2970/3x">
- &nbsp;catJAM <a href="https://wallet.pog.network"><img src="https://img.shields.io/website?label=wallet&url=https%3A%2F%2Fwallet.pog.network"></a>&nbsp;<a href="https://securityheaders.com/?q=https%3A%2F%2Fwallet.pog.network"><img src="https://img.shields.io/security-headers?url=https%3A%2F%2wallet.pog.network"></a>&nbsp;<a href="https://observatory.mozilla.org/analyze/wallet.pog.network"><img src="https://img.shields.io/mozilla-observatory/grade/wallet.pog.network?publish"></a>
+ &nbsp;catJAM <a href="https://wallet.pog.network"><img alt="Security Headers" src="https://img.shields.io/security-headers?url=https%3A%2F%2Fwallet.pog.network"></a>&nbsp;<a href="https://securityheaders.com/?q=https%3A%2F%2Fwallet.pog.network"><img src="https://img.shields.io/security-headers?url=https%3A%2F%2wallet.pog.network"></a>&nbsp;<a href="https://observatory.mozilla.org/analyze/wallet.pog.network"><img src="https://img.shields.io/mozilla-observatory/grade/wallet.pog.network?publish"></a>&nbsp;<img alt="GitHub" src="https://img.shields.io/github/license/pognetwork/catjam">
 </h1>
 <br/>
-
+ 
 > The catJAM project contains all JAM Stack based (Javascript-API-Markup) `React` applications used across all pog.network core projects.
 > Currently, this is the official Wallet and Node Webinterface (Specifically for our `champ` node implementation).
 

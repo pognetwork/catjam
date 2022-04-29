@@ -3,6 +3,7 @@ import * as grpc from './../../../utils/grpc';
 import {
 	createContext,
 	FC,
+	ReactElement,
 	useCallback,
 	useContext,
 	useEffect,
@@ -25,6 +26,7 @@ interface WalletState {
 	settings: WalletSettings;
 	setSettings: (newSettings: Partial<WalletSettings>) => void;
 	wasmReady: boolean;
+	currentWallet: Wallet | undefined;
 }
 
 interface API {
@@ -40,10 +42,15 @@ const defaultContextValue: WalletState = {
 	settings: defaultWalletSettings,
 	wasmReady: false,
 	setSettings: () => undefined,
+	currentWallet: undefined,
 };
 
 const WalletContext = createContext<WalletState>(defaultContextValue);
-export const WalletProvider: FC = ({ children }) => {
+export const WalletProvider: FC = ({
+	children,
+}: {
+	children: ReactElement;
+}) => {
 	const [wasmReady, setWasmReady] = useState(false);
 	useEffect(() => {
 		if (!import.meta.env.SSR) {
@@ -56,6 +63,7 @@ export const WalletProvider: FC = ({ children }) => {
 	}, []);
 
 	const [_settings, _setSettings] = useLocalStorage<string>('{}');
+	const currentWallet = useRef<Wallet | undefined>(undefined);
 
 	const settings: WalletSettings = useMemo(() => {
 		try {
@@ -93,6 +101,7 @@ export const WalletProvider: FC = ({ children }) => {
 			wasmReady,
 			api: api.current,
 			setSettings,
+			currentWallet: currentWallet.current,
 		}),
 		[settings, api, setSettings, wasmReady],
 	);

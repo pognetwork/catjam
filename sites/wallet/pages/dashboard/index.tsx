@@ -3,6 +3,9 @@ import { DemoGraph } from '../../components/dashboard/graphs/demo';
 import { Layout } from '../../components/layout';
 import styles from './index.module.scss';
 import useDimensions from 'react-cool-dimensions';
+import { useWallet } from '../../state';
+import { useLocation } from '@snowstorm/core';
+import { Wallet } from 'champ-wasm';
 
 const AccountBalanceGraph = () => {
 	const { observe, unobserve, width, height, entry } = useDimensions({
@@ -24,13 +27,11 @@ const AccountBalanceGraph = () => {
 	);
 };
 
-const Overview = () => (
+const Overview = ({ wallet }: { wallet: Wallet }) => (
 	<div className={`${styles.overview} ${styles.box}`}>
-		<div className={styles.address}>
-			pog-yy5xyknabqan31b8fkpyrd4nydtwpausi3kxgta
-		</div>
+		<div className={styles.address}>pog-{wallet.address}</div>
 		<div className={styles.ballance}>
-			10000 POG <span>124 USD</span>
+			0 POG <span>0 USD</span>
 		</div>
 		<div className={styles.actions}>
 			<div className={styles.action}>
@@ -49,32 +50,37 @@ const Overview = () => (
 	</div>
 );
 
-const Stats = () => (
+const Stats: React.FC<{
+	rep?: string;
+	power: number;
+	txCount: number;
+	unclaimedBal: number;
+}> = ({ power, txCount, unclaimedBal, rep }) => (
 	<div className={`${styles.rightstuff} ${styles.box} ${styles.stats}`}>
 		<table>
 			<tbody>
 				<tr>
 					<td>Representative</td>
-					<td>-</td>
+					<td>{rep ? rep : '-'}</td>
 				</tr>
 				<tr>
 					<td>Voting Power</td>
 					<td>
 						{new Intl.NumberFormat('en-US', {
 							minimumFractionDigits: 2,
-						}).format(133123123.12)}
+						}).format(power)}
 					</td>
 				</tr>
 				<tr>
 					<td>Transactions</td>
-					<td>200</td>
+					<td>{txCount}</td>
 				</tr>
 				<tr>
 					<td>Unclaimed Balance</td>
 					<td>
 						{new Intl.NumberFormat('en-US', {
 							minimumFractionDigits: 2,
-						}).format(1000)}{' '}
+						}).format(unclaimedBal)}{' '}
 						POG
 					</td>
 				</tr>
@@ -174,11 +180,22 @@ const Transactions = () => (
 	</div>
 );
 
-export const Index = () => (
-	<Layout className={styles.layout}>
-		<Overview />
-		<Stats />
-		<AccountBalanceGraph />
-		<Transactions />
-	</Layout>
-);
+export const Index = () => {
+	const ctx = useWallet();
+	const [, setLocation] = useLocation();
+	if (!ctx.currentWallet) {
+		setLocation('/');
+		return <div />;
+	}
+
+	return (
+		<Layout className={styles.layout}>
+			<>
+				<Overview wallet={ctx.currentWallet} />
+				<Stats power={0} txCount={0} unclaimedBal={0} rep={undefined} />
+				<AccountBalanceGraph />
+				<Transactions />
+			</>
+		</Layout>
+	);
+};

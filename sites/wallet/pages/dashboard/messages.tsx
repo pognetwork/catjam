@@ -1,4 +1,15 @@
+import { useLocation } from '@snowstorm/core';
 import { Layout } from '../../components/layout';
-import styles from './messages.module.scss';
+import { useWallet } from '../../state';
+import styles from './tx.module.scss';
 
-export const Messages = () => <Layout className={styles.layout} />;
+export const Messages = () => {
+	const ctx = useWallet();
+	const [, setLocation] = useLocation();
+	if (!ctx.currentWallet) {
+		setLocation('/');
+		return <div />;
+	}
+
+	return <Layout className={styles.layout} />;
+};

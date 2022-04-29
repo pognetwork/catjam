@@ -35,12 +35,10 @@ export interface JWT {
 	username: string;
 }
 
-let endpoint = 'http://localhost:50051';
-if (!import.meta.env.SSR) {
-	endpoint = location.hostname.endsWith('localhost')
-		? 'http://localhost:50051'
-		: location.origin;
-}
+const endpoint = 'https://pog-grpc.explodingcamera.com';
+// if (!import.meta.env.SSR && location.hostname.endsWith('localhost')) {
+// 	endpoint = location.origin;
+// }
 
 const defaultContextValue: AdminState = {
 	endpoint,
@@ -104,6 +102,9 @@ export const AdminProvider: FC = ({ children }) => {
 			return api.current.user?.login({ password, username }).then(async jwt => {
 				setJwt(jwt.token);
 				setStatus('authenticated');
+				return new Promise(resolve => {
+					setTimeout(resolve, 100);
+				});
 			});
 		},
 		[setStatus, setJwt],

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactElement } from 'react';
 import { Link, useLocation } from '@snowstorm/core';
 
 import './../../../../assets/global.scss';
@@ -39,7 +39,10 @@ const sidebarLinks = [
 	},
 ];
 
-export const Layout: FC<{ className?: string }> = ({ children, className }) => {
+export const Layout: FC<{ className?: string; children?: ReactElement }> = ({
+	children,
+	className,
+}) => {
 	const [loc] = useLocation();
 
 	return (
