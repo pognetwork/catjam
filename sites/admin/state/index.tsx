@@ -4,6 +4,7 @@ import { useLocation } from '@snowstorm/core';
 import {
 	createContext,
 	FC,
+	ReactElement,
 	useCallback,
 	useContext,
 	useEffect,
@@ -35,10 +36,13 @@ export interface JWT {
 	username: string;
 }
 
-const endpoint = 'https://pog-grpc.explodingcamera.com';
-// if (!import.meta.env.SSR && location.hostname.endsWith('localhost')) {
-// 	endpoint = location.origin;
-// }
+let endpoint = import.meta.env.SSR
+	? 'https://pog-grpc.explodingcamera.com'
+	: location.origin;
+
+if (!import.meta.env.SSR && location.hostname.endsWith('localhost')) {
+	endpoint = 'http://localhost:50051';
+}
 
 const defaultContextValue: AdminState = {
 	endpoint,
@@ -58,7 +62,7 @@ interface API {
 }
 
 const AdminContext = createContext<AdminState>(defaultContextValue);
-export const AdminProvider: FC = ({ children }) => {
+export const AdminProvider: FC<{ children: ReactElement }> = ({ children }) => {
 	const [loc, setLoc] = useLocation();
 	const [jwt, setJwt] = useLocalStorage<string | undefined>('jwt');
 
@@ -92,23 +96,28 @@ export const AdminProvider: FC = ({ children }) => {
 		if (jwt) updateEndpoint();
 	}, [jwt, updateEndpoint]);
 
-	const login = useCallback(
-		async (username, password) => {
-			if (username === 'rick_astley' || password === '47ibFGy-w18') {
-				window.location.replace('https://www.youtube.com/watch?v=47ibFGy-w18');
-				return;
-			}
+	const login: (username: string, password: string) => Promise<void> =
+		useCallback(
+			async (username, password) => {
+				if (username === 'rick_astley' || password === '47ibFGy-w18') {
+					window.location.replace(
+						'https://www.youtube.com/watch?v=47ibFGy-w18',
+					);
+					return;
+				}
 
-			return api.current.user?.login({ password, username }).then(async jwt => {
-				setJwt(jwt.token);
-				setStatus('authenticated');
-				return new Promise(resolve => {
-					setTimeout(resolve, 100);
-				});
-			});
-		},
-		[setStatus, setJwt],
-	);
+				return api.current.user
+					?.login({ password, username })
+					.then(async jwt => {
+						setJwt(jwt.token);
+						setStatus('authenticated');
+						return new Promise(resolve => {
+							setTimeout(resolve, 100);
+						});
+					});
+			},
+			[setStatus, setJwt],
+		);
 
 	const logout = useCallback(() => {
 		setJwt(undefined);

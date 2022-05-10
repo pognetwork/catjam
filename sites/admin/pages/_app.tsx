@@ -1,6 +1,11 @@
 import React from 'react';
 import { AdminProvider } from '../state';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-export default ({ children }: { children: React.ReactNode }) => (
-	<AdminProvider>{children}</AdminProvider>
+const queryClient = new QueryClient();
+
+export default ({ children }: { children: React.ReactElement }) => (
+	<QueryClientProvider client={queryClient}>
+		<AdminProvider>{children}</AdminProvider>
+	</QueryClientProvider>
 );

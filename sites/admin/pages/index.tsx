@@ -1,13 +1,6 @@
 import { Layout } from '../components/layout';
 import { useAdmin } from '../state';
-import {
-	GetBlockPoolSizeReply,
-	GetChainReply,
-	GetModeReply,
-	GetNodeStatusReply,
-	GetVersionResponse,
-} from '@pognetwork/proto/node/rpc/node_admin';
-import { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 
 export const Index = () => (
 	<Layout noSSR>
@@ -18,22 +11,17 @@ export const Index = () => (
 const IndexPage = () => {
 	const admin = useAdmin();
 
-	const [version, setVersion] = useState<GetVersionResponse>(undefined);
-	const [chain, setChain] = useState<GetChainReply>(undefined);
-	const [mode, setMode] = useState<GetModeReply>(undefined);
-	const [status, setStatus] = useState<GetNodeStatusReply>(undefined);
-	const [blockPoolSize, setBlockPoolSize] =
-		useState<GetBlockPoolSizeReply>(undefined);
-
-	useEffect(() => {
+	const { isLoading, error, data } = useQuery('nodeStats', async () =>
 		Promise.all([
-			admin.api.nodeAdmin?.getVersion({}).then(v => setVersion(v)),
-			admin.api.nodeAdmin?.getChain({}).then(c => setChain(c)),
-			admin.api.nodeAdmin?.getMode({}).then(c => setMode(c)),
-			admin.api.nodeAdmin?.getNodeStatus({}).then(c => setStatus(c)),
-			admin.api.nodeAdmin?.getBlockPoolSize({}).then(c => setBlockPoolSize(c)),
-		]).catch(console.error);
-	}, [setVersion, admin.api.nodeAdmin]);
+			admin.api.nodeAdmin?.getVersion({}).then(v => v.version),
+			admin.api.nodeAdmin?.getChain({}).then(c => c.currentChain),
+			admin.api.nodeAdmin?.getMode({}).then(m => m.currentMode),
+			admin.api.nodeAdmin?.getNodeStatus({}).then(s => s.status),
+			admin.api.nodeAdmin?.getBlockPoolSize({}).then(b => b.length),
+		]).catch(console.error),
+	);
+
+	const [version, chain, mode, status, poolSize] = data || [];
 
 	return (
 		<div>
@@ -44,40 +32,30 @@ const IndexPage = () => {
 				<tbody>
 					<tr>
 						<td>Version</td>
-						<td>
-							{version?.version
-								? `champ v${version.version}`
-								: 'failed to get version'}
-						</td>
+						<td>{version ? `champ v${version}` : 'failed to get version'}</td>
 					</tr>
 					<tr>
 						<td>Chain</td>
-						<td>
-							{chain?.currentChain
-								? chain?.currentChain
-								: 'failed to get chain'}
-						</td>
+						<td>{chain ? chain : 'failed to get chain'}</td>
 					</tr>
 					<tr>
 						<td>Mode</td>
-						<td>
-							{mode?.currentMode
-								? modes[mode?.currentMode]
-								: 'failed to get mode'}
-						</td>
+						<td>{mode ? modes[mode] : 'failed to get mode'}</td>
 					</tr>
 					<tr>
 						<td>Status</td>
 						<td>
-							{status ? statusList[status?.status] : 'failed to get status'}
+							{typeof status === undefined
+								? 'failed to get status'
+								: statusList[status]}
 						</td>
 					</tr>
 					<tr>
 						<td>BlockPool Size&nbsp;&nbsp;</td>
 						<td>
-							{blockPoolSize
-								? blockPoolSize.length
-								: 'failed to get block pool size'}
+							{typeof poolSize === undefined
+								? 'failed to get block pool size'
+								: poolSize}
 						</td>
 					</tr>
 				</tbody>
