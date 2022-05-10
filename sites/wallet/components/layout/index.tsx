@@ -37,6 +37,12 @@ const sidebarLinks = [
 		icon: codeIcon,
 		mobile: false,
 	},
+	{
+		name: 'Debug',
+		url: '/dashboard/debug',
+		icon: codeIcon,
+		mobile: false,
+	},
 ];
 
 export const Layout: FC<{ className?: string; children?: ReactElement }> = ({

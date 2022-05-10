@@ -14,12 +14,6 @@ import {
 
 import { useLocalStorage } from 'react-use';
 import init, { Wallet } from 'champ-wasm';
-import {
-	BlockData,
-	BlockVersion,
-	SigType,
-	Transaction,
-} from '@pognetwork/proto';
 
 let endpoint = 'https://node.pog.network';
 if (!import.meta.env.SSR) {
@@ -33,8 +27,7 @@ interface WalletState {
 	setSettings: (newSettings: Partial<WalletSettings>) => void;
 	wasmReady: boolean;
 	currentWallet: Wallet | undefined;
-	createBlock: (block: CreateBlockArgs) => Uint8Array;
-	claimGenesisBalance: (amount: number) => void;
+	api: API;
 }
 
 interface API {
@@ -51,16 +44,8 @@ const defaultContextValue: WalletState = {
 	wasmReady: false,
 	setSettings: () => undefined,
 	currentWallet: undefined,
-	createBlock: () => new Uint8Array(),
-	claimGenesisBalance: () => undefined,
+	api: {},
 };
-
-export interface CreateBlockArgs {
-	transactions: Transaction[];
-	newBal: number;
-	height: number;
-	previous: Uint8Array;
-}
 
 const WalletContext = createContext<WalletState>(defaultContextValue);
 export const WalletProvider: FC = ({
@@ -112,52 +97,6 @@ export const WalletProvider: FC = ({
 
 	if (!api.current) updateEndpoint();
 
-	const createBlock = useCallback(
-		({ transactions, newBal, height, previous }: CreateBlockArgs) => {
-			const block = BlockData.encode({
-				balance: newBal,
-				height,
-				previous,
-				signatureType: SigType.Ed25519,
-				transactions,
-				version: BlockVersion.V1,
-			});
-
-			return block.finish();
-		},
-		[],
-	);
-
-	const claimGenesisBalance = useCallback(
-		(amount: number) => {
-			const block = createBlock({
-				height: 0,
-				newBal: amount,
-				previous: new Uint8Array(),
-				transactions: [
-					{
-						txClaim: { sendTransactionID: new Uint8Array() },
-						txDelegate: undefined,
-						txOpen: undefined,
-						txSend: undefined,
-					},
-				],
-			});
-
-			const signature = currentWallet.current.sign(block);
-
-			void api.current.lattice.submitBlock({
-				data: block,
-				header: {
-					publicKey: currentWallet.current.publicKey,
-					signature,
-					timestamp: Date.now(),
-				},
-			});
-		},
-		[createBlock],
-	);
-
 	const value: WalletState = useMemo(
 		() => ({
 			settings,
@@ -165,10 +104,8 @@ export const WalletProvider: FC = ({
 			api: api.current,
 			setSettings,
 			currentWallet: currentWallet.current,
-			createBlock,
-			claimGenesisBalance,
 		}),
-		[settings, api, setSettings, wasmReady, createBlock, claimGenesisBalance],
+		[settings, api, setSettings, wasmReady],
 	);
 
 	return (

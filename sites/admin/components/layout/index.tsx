@@ -31,6 +31,11 @@ const sidebarLinks = [
 		url: '/wallets',
 		icon: sendIcon,
 	},
+	{
+		name: 'Blocks',
+		url: '/blocks',
+		icon: sendIcon,
+	},
 ];
 
 export const Layout = ({

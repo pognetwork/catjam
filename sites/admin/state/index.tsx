@@ -15,6 +15,7 @@ import {
 
 import { parseJWT } from '../../../utils/jwt';
 import { useLocalStorage } from 'react-use';
+import init from 'champ-wasm';
 
 export type Status = 'authenticated' | 'unauthenticated' | 'loading';
 
@@ -26,6 +27,7 @@ export interface AdminState {
 	login: (username: string, password: string) => Promise<void>;
 	logout: () => void;
 	api: API;
+	wasmReady: boolean;
 }
 
 export interface JWT {
@@ -52,6 +54,7 @@ const defaultContextValue: AdminState = {
 	logout: () => undefined,
 	api: {},
 	jwtData: undefined,
+	wasmReady: false,
 };
 
 interface API {
@@ -65,6 +68,17 @@ const AdminContext = createContext<AdminState>(defaultContextValue);
 export const AdminProvider: FC<{ children: ReactElement }> = ({ children }) => {
 	const [loc, setLoc] = useLocation();
 	const [jwt, setJwt] = useLocalStorage<string | undefined>('jwt');
+
+	const [wasmReady, setWasmReady] = useState(false);
+	useEffect(() => {
+		if (!import.meta.env.SSR) {
+			void init()
+				.then(_x => {
+					setWasmReady(true);
+				})
+				.catch(e => console.error('Failed to load wasm module: ', e));
+		}
+	}, []);
 
 	const [status, setStatus] = useState<Status>(
 		jwt ? 'authenticated' : 'unauthenticated',
@@ -140,8 +154,9 @@ export const AdminProvider: FC<{ children: ReactElement }> = ({ children }) => {
 			logout,
 			api: api.current,
 			jwtData: tokenContents,
+			wasmReady,
 		}),
-		[jwt, status, login, logout, tokenContents],
+		[jwt, status, login, logout, tokenContents, wasmReady],
 	);
 
 	return (

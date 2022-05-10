@@ -188,6 +188,8 @@ export const Index = () => {
 		return <div />;
 	}
 
+	console.log(ctx.currentWallet);
+
 	return (
 		<Layout className={styles.layout}>
 			<>
