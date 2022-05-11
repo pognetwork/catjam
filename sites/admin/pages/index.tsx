@@ -2,6 +2,8 @@ import { Layout } from '../components/layout';
 import { useAdmin } from '../state';
 import { useQuery } from 'react-query';
 
+import styles from './index.module.scss';
+
 export const Index = () => (
 	<Layout noSSR>
 		<IndexPage />
@@ -24,11 +26,11 @@ const IndexPage = () => {
 	const [version, chain, mode, status, poolSize] = data || [];
 
 	return (
-		<div>
+		<div className={styles.index}>
 			<h1>
 				Welcome <span>{admin.jwtData?.username}</span>!
 			</h1>
-			<table>
+			<table className={styles.stats}>
 				<tbody>
 					<tr>
 						<td>Version</td>

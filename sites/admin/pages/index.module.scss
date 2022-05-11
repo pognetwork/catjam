@@ -1,0 +1,53 @@
+.index {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+
+  h1 {
+    font-weight: 200;
+    span {
+      font-weight: 600;
+    }
+  }
+}
+
+table.stats {
+  background: linear-gradient(45deg, #0399f0, #371ec4);
+  color: rgb(255, 255, 255);
+  display: flex;
+  padding: 0;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  width: fit-content;
+  border-collapse: collapse;
+
+  tr {
+    height: 2.2rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.212);
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+
+  td {
+    padding: 0.5rem 0;
+    padding-right: 0;
+    padding-left: 1rem;
+    word-break: break-all;
+
+    &:last-of-type {
+      padding-right: 1rem;
+      padding-left: 0;
+      text-align: end;
+    }
+  }
+
+  td:first-of-type {
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+}
