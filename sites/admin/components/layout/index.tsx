@@ -6,6 +6,7 @@ import logo from '../../../../assets/pog.svg';
 import styles from './index.module.scss';
 
 import {
+	boxIcon,
 	globeIcon,
 	logoutIcon,
 	sendIcon,
@@ -34,7 +35,7 @@ const sidebarLinks = [
 	{
 		name: 'Blocks',
 		url: '/blocks',
-		icon: sendIcon,
+		icon: boxIcon,
 	},
 ];
 

@@ -1,0 +1,46 @@
+.block {
+  background: linear-gradient(45deg, #915ec1, #aeaeff);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80rem;
+  padding: 0;
+  max-width: 40rem;
+  margin: 0 auto;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+
+  table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+
+    tr {
+      height: 2.2rem;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.212);
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+    }
+
+    td {
+      padding: 0.5rem 0;
+      padding-right: 0;
+      padding-left: 1rem;
+      word-break: break-all;
+
+      &:last-of-type {
+        padding-right: 1rem;
+        padding-left: 0;
+        text-align: end;
+      }
+    }
+
+    td:first-of-type {
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+  }
+}

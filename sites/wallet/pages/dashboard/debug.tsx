@@ -1,7 +1,7 @@
 import { useLocation } from '@snowstorm/core';
 import { Layout } from '../../components/layout';
 import { useWallet } from '../../state';
-import styles from './tx.module.scss';
+import styles from './debug.module.scss';
 import buttonStyles from './../../../../components/button.module.scss';
 import { createGenesisBalanceClaimBlock } from '../../state/api';
 
