@@ -5,7 +5,9 @@ import styles from './index.module.scss';
 import useDimensions from 'react-cool-dimensions';
 import { useWallet } from '../../state';
 import { useLocation } from '@snowstorm/core';
-import { Wallet } from 'champ-wasm';
+import { Util, Wallet, Zbase } from 'champ-wasm';
+import { useQuery } from 'react-query';
+import { Block, Transaction } from '@pognetwork/proto/node/api';
 
 const AccountBalanceGraph = () => {
 	const { observe, unobserve, width, height, entry } = useDimensions({
@@ -27,11 +29,11 @@ const AccountBalanceGraph = () => {
 	);
 };
 
-const Overview = ({ wallet }: { wallet: Wallet }) => (
+const Overview = ({ wallet, balance }: { wallet: Wallet; balance: number }) => (
 	<div className={`${styles.overview} ${styles.box}`}>
 		<div className={styles.address}>pog-{wallet.address}</div>
 		<div className={styles.ballance}>
-			0 POG <span>0 USD</span>
+			{balance} POG <span>0 USD</span>
 		</div>
 		<div className={styles.actions}>
 			<div className={styles.action}>
@@ -101,7 +103,7 @@ const demoTransactions = [
 		date: 1636562281091,
 	},
 	{
-		id: 1,
+		id: 2,
 		from: {
 			name: 'Unknown Account',
 			address: 'pog-yy5xyknabqan31b8fkpyrd4nydtwpausi3kxgta',
@@ -111,7 +113,7 @@ const demoTransactions = [
 		date: 1636562281091,
 	},
 	{
-		id: 1,
+		id: 3,
 		from: {
 			name: 'Unknown Account',
 			address: 'pog-yy5xyknabqan31b8fkpyrd4nydtwpausi3kxgta',
@@ -121,7 +123,7 @@ const demoTransactions = [
 		date: 1636562281091,
 	},
 	{
-		id: 1,
+		id: 4,
 		from: {
 			name: 'Unknown Account',
 			address: 'pog-yy5xyknabqan31b8fkpyrd4nydtwpausi3kxgta',
@@ -132,7 +134,7 @@ const demoTransactions = [
 	},
 ];
 
-const Transactions = () => (
+const Transactions = ({ blocks }: { blocks: Block[] }) => (
 	<div className={`${styles.bigstuff} ${styles.box} ${styles.transactions}`}>
 		<h1>Recent Transactions</h1>
 		<table>
@@ -145,59 +147,152 @@ const Transactions = () => (
 				</tr>
 			</thead>
 			<tbody>
-				{demoTransactions.map(tx => (
-					<tr key={tx.id}>
-						<td>
-							{new Intl.DateTimeFormat('en-US', {
-								dateStyle: 'medium',
-								timeStyle: 'medium',
-							}).format(tx.date)}
-						</td>
-						<td>
-							<div className={styles.txfrom}>
-								<div>{tx.from.name}</div>
-								<div>{tx.from.address}</div>
-							</div>
-						</td>
-						<td>
-							<div>
-								{new Intl.NumberFormat('en-US', {
-									minimumFractionDigits: 2,
-								}).format(tx.amount)}{' '}
-								POG
-							</div>
-							<div>
-								{new Intl.NumberFormat('en-US', {
-									minimumFractionDigits: 2,
-								}).format(tx.amount / 10)}{' '}
-								USD
-							</div>
-						</td>
-					</tr>
-				))}
+				{blocks.map(block =>
+					Array.from(block.data.transactions.entries())
+						.filter(([_, t]) => t.txClaim !== undefined)
+						.map(([i, tx]) => {
+							const txid = Util.getTransactionID(block.blockId, i);
+							const stxid = Zbase.encode(txid);
+
+							return (
+								<Tx
+									key={stxid}
+									txid={txid}
+									stxid={stxid}
+									tx={tx}
+									block={block}
+								/>
+							);
+						}),
+				)}
 			</tbody>
 		</table>
 	</div>
 );
 
-export const Index = () => {
+const Tx = ({
+	tx,
+	block,
+	txid,
+	stxid,
+}: {
+	tx: Transaction;
+	block: Block;
+	txid: Uint8Array;
+	stxid: string;
+}) => {
 	const ctx = useWallet();
+	const {
+		isLoading,
+		error,
+		data: senddata,
+	} = useQuery(
+		`txsend-${stxid}`,
+		async () =>
+			ctx.api.lattice
+				.getTXByID({
+					transactionID: tx.txClaim.sendTransactionID,
+				})
+				.then(b => b),
+		{
+			enabled: Boolean(tx.txClaim?.sendTransactionID.length),
+		},
+	);
+
+	const isGenesis = tx.txClaim?.sendTransactionID.length === 0;
+
+	return (
+		<tr key={Zbase.encode(block.blockId)}>
+			<td>
+				{new Intl.DateTimeFormat('en-US', {
+					dateStyle: 'medium',
+					timeStyle: 'medium',
+				}).format(block.header.timestamp)}
+			</td>
+			<td>
+				<div className={styles.txfrom}>
+					{isGenesis ? (
+						<>
+							<div>Genesis Account</div>
+							<div>POG-0000000000000000000000</div>
+						</>
+					) : (
+						<>
+							<div>Unknown Account</div>
+							<div>POG-{Zbase.encode(senddata.address)}</div>
+						</>
+					)}
+				</div>
+			</td>
+			<td>
+				<div>
+					{new Intl.NumberFormat('en-US', {
+						minimumFractionDigits: 2,
+					}).format(
+						isGenesis
+							? block.data.balance
+							: senddata?.transaction.txSend.amount || 0,
+					)}{' '}
+					POG
+				</div>
+				<div>
+					{/* {new Intl.NumberFormat('en-US', {
+						minimumFractionDigits: 2,
+					}).format(data.transaction.txSend.amount / 10)}{' '} */}
+					0 USD
+				</div>
+			</td>
+		</tr>
+	);
+};
+
+export const Index = () => {
 	const [, setLocation] = useLocation();
+	const ctx = useWallet();
 	if (!ctx.currentWallet) {
 		setLocation('/');
 		return <div />;
 	}
 
-	console.log(ctx.currentWallet);
-
 	return (
 		<Layout className={styles.layout}>
-			<>
-				<Overview wallet={ctx.currentWallet} />
-				<Stats power={0} txCount={0} unclaimedBal={0} rep={undefined} />
-				<AccountBalanceGraph />
-				<Transactions />
-			</>
+			<IndexPage />
 		</Layout>
+	);
+};
+
+export const IndexPage = () => {
+	const ctx = useWallet();
+	const address = Zbase.decode(ctx.currentWallet.address);
+	const { isLoading, error, data } = useQuery('user', async () =>
+		Promise.all([
+			ctx.api.lattice
+				.getBalance({
+					address,
+				})
+				.then(b => b.balance),
+			ctx.api.lattice
+				.getBlocks({
+					limit: 100,
+					offset: 0,
+					address,
+				})
+				.then(b => b.blocks),
+		]),
+	);
+
+	const [balance, blocks] = data || [];
+	const txCount = blocks?.reduce(
+		(prev, curr) => prev + curr.data.transactions.length,
+		0,
+	);
+
+	return (
+		<>
+			<Overview wallet={ctx.currentWallet} balance={balance ?? 0} />
+			<Stats power={0} txCount={txCount} unclaimedBal={0} rep={undefined} />
+			<AccountBalanceGraph />
+			<Transactions blocks={blocks || []} />
+		</>
 	);
 };

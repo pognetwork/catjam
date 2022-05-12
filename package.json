@@ -13,7 +13,7 @@
   "dependencies": {
     "@chainsafe/varint": "^6.0.0",
     "@improbable-eng/grpc-web": "^0.15.0",
-    "@pognetwork/proto": "0.2.0-1582d3f",
+    "@pognetwork/proto": "0.2.0-56ee31c",
     "@snowstorm/cli": "0.18.0",
     "@snowstorm/core": "0.18.0",
     "@visx/curve": "^2.1.0",
@@ -25,7 +25,7 @@
     "@visx/shape": "^2.10.0",
     "@visx/tooltip": "^2.10.0",
     "browser-headers": "^0.4.1",
-    "champ-wasm": "0.0.9-dc348cb",
+    "champ-wasm": "0.0.9-f955f7b",
     "d3-array": "^3.1.6",
     "d3-time-format": "^4.1.0",
     "long": "^5.2.0",

@@ -1,6 +1,11 @@
 import React from 'react';
 import { WalletProvider } from '../state';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-export default ({ children }: { children: React.ReactNode }) => (
-	<WalletProvider>{children}</WalletProvider>
+const queryClient = new QueryClient();
+
+export default ({ children }: { children: React.ReactElement }) => (
+	<QueryClientProvider client={queryClient}>
+		<WalletProvider>{children}</WalletProvider>
+	</QueryClientProvider>
 );

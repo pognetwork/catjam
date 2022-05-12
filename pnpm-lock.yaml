@@ -4,7 +4,7 @@ specifiers:
   '@chainsafe/varint': ^6.0.0
   '@explodingcamera/eslint-config': ^21.3.1
   '@improbable-eng/grpc-web': ^0.15.0
-  '@pognetwork/proto': 0.2.0-1582d3f
+  '@pognetwork/proto': 0.2.0-56ee31c
   '@pognetwork/vite-plugin-wasm-pack': ^0.1.8
   '@snowstorm/cli': 0.18.0
   '@snowstorm/core': 0.18.0
@@ -20,7 +20,7 @@ specifiers:
   '@visx/shape': ^2.10.0
   '@visx/tooltip': ^2.10.0
   browser-headers: ^0.4.1
-  champ-wasm: 0.0.9-dc348cb
+  champ-wasm: 0.0.9-f955f7b
   d3-array: ^3.1.6
   d3-time-format: ^4.1.0
   eslint: ^8.15.0
@@ -39,7 +39,7 @@ specifiers:
 dependencies:
   '@chainsafe/varint': 6.0.0
   '@improbable-eng/grpc-web': 0.15.0
-  '@pognetwork/proto': 0.2.0-1582d3f
+  '@pognetwork/proto': 0.2.0-56ee31c
   '@snowstorm/cli': 0.18.0_e9ab1cdbc139d992b81f3ed4e4b6731a
   '@snowstorm/core': 0.18.0_e9ab1cdbc139d992b81f3ed4e4b6731a
   '@visx/curve': 2.1.0
@@ -51,7 +51,7 @@ dependencies:
   '@visx/shape': 2.10.0_react@18.1.0
   '@visx/tooltip': 2.10.0_react-dom@18.1.0+react@18.1.0
   browser-headers: 0.4.1
-  champ-wasm: 0.0.9-dc348cb
+  champ-wasm: 0.0.9-f955f7b
   d3-array: 3.1.6
   d3-time-format: 4.1.0
   long: 5.2.0
@@ -477,8 +477,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
-  /@pognetwork/proto/0.2.0-1582d3f:
-    resolution: {integrity: sha512-zHVFy0txV6YbU09xlLQhlpcUX/2LDdeXJYmqQIeboC7v7BgVOfpLx9BqSC0HWLGibHxGMa1X2DRbwkh76b28Gw==}
+  /@pognetwork/proto/0.2.0-56ee31c:
+    resolution: {integrity: sha512-2vEVzHmo3DX0ffExjoUz55+5DOqmbV10KgBCGyOAqe1k0vTEjhFq19UYK3iboJFqFrZjZ4DecIWl2ljGgd19tA==}
     dependencies:
       '@improbable-eng/grpc-web': 0.15.0_google-protobuf@3.20.1
       browser-headers: 0.4.1
@@ -1196,8 +1196,8 @@ packages:
       supports-color: 7.2.0
     dev: true
 
-  /champ-wasm/0.0.9-dc348cb:
-    resolution: {integrity: sha512-gppStu5/0Apjdzl5XkMRwmp5w00WWxTz2DnmvXxaNxj+QNsMhkAz3bRBxXlUoSrZ4SOAADCdpqJigezpimO+zQ==}
+  /champ-wasm/0.0.9-f955f7b:
+    resolution: {integrity: sha512-pH7dC8Eujo5UrG2ckesOqfdmvk9Nx4F+jgMaSZwomb5bRz1JcxRIDPgKOKHmoEfZxPfEas4T+ND5puPxvD6toA==}
     dev: false
 
   /chokidar/3.5.3:

@@ -48,11 +48,9 @@ const defaultContextValue: WalletState = {
 };
 
 const WalletContext = createContext<WalletState>(defaultContextValue);
-export const WalletProvider: FC = ({
-	children,
-}: {
+export const WalletProvider: FC<{
 	children: ReactElement;
-}) => {
+}> = ({ children }) => {
 	const [wasmReady, setWasmReady] = useState(false);
 	useEffect(() => {
 		if (!import.meta.env.SSR) {
