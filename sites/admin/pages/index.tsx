@@ -20,7 +20,7 @@ const IndexPage = () => {
 			admin.api.nodeAdmin?.getMode({}).then(m => m.currentMode),
 			admin.api.nodeAdmin?.getNodeStatus({}).then(s => s.status),
 			admin.api.nodeAdmin?.getBlockPoolSize({}).then(b => b.length),
-		]).catch(console.error),
+		]),
 	);
 
 	const [version, chain, mode, status, poolSize] = data || [];

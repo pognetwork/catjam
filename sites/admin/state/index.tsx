@@ -91,7 +91,6 @@ export const AdminProvider: FC<{ children: ReactElement }> = ({ children }) => {
 			lattice: grpc.createLatticeClient(endpoint),
 			user: grpc.createUserClient(endpoint),
 		};
-
 		if (!jwt) return;
 		api.current.nodeAdmin = grpc.createAdminClient(endpoint, jwt);
 		api.current.nodeWalletManager = grpc.createWalletManagerClient(
@@ -107,30 +106,20 @@ export const AdminProvider: FC<{ children: ReactElement }> = ({ children }) => {
 	}, [loc, status, setLoc]);
 
 	useEffect(() => {
-		if (jwt) updateEndpoint();
+		if (jwt) {
+			console.log('updating endppp');
+			updateEndpoint();
+		}
 	}, [jwt, updateEndpoint]);
 
 	const login: (username: string, password: string) => Promise<void> =
 		useCallback(
-			async (username, password) => {
-				if (username === 'rick_astley' || password === '47ibFGy-w18') {
-					window.location.replace(
-						'https://www.youtube.com/watch?v=47ibFGy-w18',
-					);
-					return;
-				}
-
-				return api.current.user
-					?.login({ password, username })
-					.then(async jwt => {
-						setJwt(jwt.token);
-						setStatus('authenticated');
-						return new Promise(resolve => {
-							setTimeout(resolve, 100);
-						});
-					});
-			},
-			[setStatus, setJwt],
+			async (username, password) =>
+				api.current.user?.login({ password, username }).then(async jwt => {
+					setJwt(jwt.token);
+					document.location = '/';
+				}), // 6AGcqxZP9wqyEfk
+			[setJwt],
 		);
 
 	const logout = useCallback(() => {
