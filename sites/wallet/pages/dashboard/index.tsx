@@ -8,6 +8,7 @@ import { useLocation } from '@snowstorm/core';
 import { Util, Wallet, Zbase } from 'champ-wasm';
 import { useQuery } from 'react-query';
 import { Block, Transaction } from '@pognetwork/proto/node/api';
+import { Tx } from '@pognetwork/proto/node/rpc/lattice';
 
 const AccountBalanceGraph = ({ data }: { data: Data[] }) => {
 	const { observe, width, height } = useDimensions({});
@@ -89,7 +90,13 @@ const Stats: React.FC<{
 	</div>
 );
 
-const Transactions = ({ blocks }: { blocks: Block[] }) => (
+const Transactions = ({
+	unclaimed,
+	blocks,
+}: {
+	unclaimed: Tx[];
+	blocks: Block[];
+}) => (
 	<div className={`${styles.bigstuff} ${styles.box} ${styles.transactions}`}>
 		<h1>Recent Transactions</h1>
 		<table>
@@ -102,6 +109,18 @@ const Transactions = ({ blocks }: { blocks: Block[] }) => (
 				</tr>
 			</thead>
 			<tbody>
+				{unclaimed.map(tx => {
+					const stxid = Zbase.encode(tx.transactionId);
+
+					return (
+						<Trx2
+							key={stxid}
+							txid={tx.transactionId}
+							stxid={stxid}
+							tx={tx.transaction}
+						/>
+					);
+				})}
 				{blocks.map(block =>
 					Array.from(block.data.transactions.entries())
 						.filter(
@@ -112,7 +131,7 @@ const Transactions = ({ blocks }: { blocks: Block[] }) => (
 							const stxid = Zbase.encode(txid);
 
 							return (
-								<Tx
+								<Trx
 									key={stxid}
 									txid={txid}
 									stxid={stxid}
@@ -127,14 +146,83 @@ const Transactions = ({ blocks }: { blocks: Block[] }) => (
 	</div>
 );
 
-const Tx = ({
+const Trx2 = ({
 	tx,
 	block,
 	txid,
 	stxid,
 }: {
 	tx: Transaction;
-	block: Block;
+	block?: Block;
+	txid: Uint8Array;
+	stxid: string;
+}) => {
+	const ctx = useWallet();
+	const type = Object.entries(tx).find(
+		([_, v]) => v !== undefined,
+	)[0] as keyof Transaction;
+
+	const {
+		isLoading,
+		error,
+		data: sendTx,
+	} = useQuery(
+		`txsend-${stxid}`,
+		async () =>
+			ctx.api.lattice
+				.getTXByID({
+					transactionID: txid,
+				})
+				.then(b => b),
+		{
+			enabled: type === 'txSend',
+		},
+	);
+
+	return (
+		<tr>
+			<td>unclaimed</td>
+			<td>
+				<div className={styles.txfrom}>
+					<div>Unknown Account</div>
+					<div>
+						POG-{sendTx?.address?.length ? Zbase.encode(sendTx.address) : ''}
+					</div>
+				</div>
+			</td>
+
+			<td>
+				<div className={styles.txto}>
+					<div>This Account</div>
+					<div className={styles.txto}>POG-{ctx.currentWallet?.address}</div>
+				</div>
+			</td>
+			<td>
+				<div>
+					{new Intl.NumberFormat('en-US', {
+						minimumFractionDigits: 2,
+					}).format(tx.txSend.amount)}{' '}
+					POG
+				</div>
+				<div>
+					{/* {new Intl.NumberFormat('en-US', {
+						minimumFractionDigits: 2,
+					}).format(data.transaction.txSend.amount / 10)}{' '} */}
+					0 USD
+				</div>
+			</td>
+		</tr>
+	);
+};
+
+const Trx = ({
+	tx,
+	block,
+	txid,
+	stxid,
+}: {
+	tx: Transaction;
+	block?: Block;
 	txid: Uint8Array;
 	stxid: string;
 }) => {
@@ -178,12 +266,13 @@ const Tx = ({
 	}
 
 	return (
-		<tr key={Zbase.encode(block.blockId)}>
+		<tr>
 			<td>
-				{new Intl.DateTimeFormat('en-US', {
-					dateStyle: 'medium',
-					timeStyle: 'medium',
-				}).format(block.header.timestamp)}
+				{block &&
+					new Intl.DateTimeFormat('en-US', {
+						dateStyle: 'medium',
+						timeStyle: 'medium',
+					}).format(block.header?.timestamp)}
 			</td>
 			<td>
 				<div className={styles.txfrom}>
@@ -204,9 +293,13 @@ const Tx = ({
 						<>
 							<div>This Account</div>
 							<div>
-								POG-
-								{Zbase.encode(
-									Util.account_id_from_public_key(block.header.publicKey),
+								{block && (
+									<>
+										POG-
+										{Zbase.encode(
+											Util.account_id_from_public_key(block.header.publicKey),
+										)}
+									</>
 								)}
 							</div>
 						</>
@@ -232,9 +325,13 @@ const Tx = ({
 						<>
 							<div>This Account</div>
 							<div>
-								POG-
-								{Zbase.encode(
-									Util.account_id_from_public_key(block.header.publicKey),
+								{block && (
+									<>
+										POG-
+										{Zbase.encode(
+											Util.account_id_from_public_key(block.header.publicKey),
+										)}
+									</>
 								)}
 							</div>
 						</>
@@ -280,6 +377,11 @@ export const IndexPage = () => {
 	const { isLoading, error, data } = useQuery('user', async () =>
 		Promise.all([
 			ctx.api.lattice
+				.getUnclaimedTransactions({
+					address,
+				})
+				.then(b => b.data),
+			ctx.api.lattice
 				.getBalance({
 					address,
 				})
@@ -294,7 +396,7 @@ export const IndexPage = () => {
 		]),
 	);
 
-	const [balance, blocks] = data || [];
+	const [transactions, balance, blocks] = data || [];
 	const txCount = blocks?.reduce(
 		(prev, curr) => prev + curr.data.transactions.length,
 		0,
@@ -311,7 +413,7 @@ export const IndexPage = () => {
 			<Overview wallet={ctx.currentWallet} balance={balance ?? 0} />
 			<Stats power={0} txCount={txCount} unclaimedBal={0} rep={undefined} />
 			<AccountBalanceGraph data={moneyData} />
-			<Transactions blocks={blocks || []} />
+			<Transactions unclaimed={transactions || []} blocks={blocks || []} />
 		</>
 	);
 };

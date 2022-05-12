@@ -13,12 +13,12 @@ import { NodeWalletManagerClientImpl } from '@pognetwork/proto/node/rpc/node_wal
 
 const unauthenticatedRPC = (endpoint: string) =>
 	new GrpcWebImpl(endpoint, {
-		debug: false,
+		debug: true,
 	});
 
 const authenticatedRPC = (endpoint: string, token: string) =>
 	new GrpcWebImpl(endpoint, {
-		debug: false,
+		debug: true,
 		metadata: new grpc.Metadata({ Authorization: token }),
 	});
 

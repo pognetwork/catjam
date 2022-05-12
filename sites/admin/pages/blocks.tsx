@@ -26,11 +26,9 @@ const BlocksPage = () => {
 		return null;
 	}
 
-	console.log(data[0].data.transactions);
-
 	return (
 		<div>
-			{data.map(block => (
+			{data?.map(block => (
 				<div className={styles.block} key={block.blockId.toString()}>
 					<table>
 						<tbody>
