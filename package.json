@@ -13,7 +13,7 @@
   "dependencies": {
     "@chainsafe/varint": "^6.0.0",
     "@improbable-eng/grpc-web": "^0.15.0",
-    "@pognetwork/proto": "0.2.0-56ee31c",
+    "@pognetwork/proto": "0.2.0-a6658c1",
     "@snowstorm/cli": "0.18.0",
     "@snowstorm/core": "0.18.0",
     "@visx/curve": "^2.1.0",

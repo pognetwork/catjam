@@ -183,7 +183,8 @@
     }
   }
 
-  .txfrom {
+  .txfrom,
+  .txto {
     > div:first-of-type {
       margin-bottom: 0.1rem;
       font-weight: bold;

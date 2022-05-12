@@ -4,7 +4,7 @@ specifiers:
   '@chainsafe/varint': ^6.0.0
   '@explodingcamera/eslint-config': ^21.3.1
   '@improbable-eng/grpc-web': ^0.15.0
-  '@pognetwork/proto': 0.2.0-56ee31c
+  '@pognetwork/proto': 0.2.0-a6658c1
   '@pognetwork/vite-plugin-wasm-pack': ^0.1.8
   '@snowstorm/cli': 0.18.0
   '@snowstorm/core': 0.18.0
@@ -39,7 +39,7 @@ specifiers:
 dependencies:
   '@chainsafe/varint': 6.0.0
   '@improbable-eng/grpc-web': 0.15.0
-  '@pognetwork/proto': 0.2.0-56ee31c
+  '@pognetwork/proto': 0.2.0-a6658c1
   '@snowstorm/cli': 0.18.0_e9ab1cdbc139d992b81f3ed4e4b6731a
   '@snowstorm/core': 0.18.0_e9ab1cdbc139d992b81f3ed4e4b6731a
   '@visx/curve': 2.1.0
@@ -477,8 +477,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.13.0
 
-  /@pognetwork/proto/0.2.0-56ee31c:
-    resolution: {integrity: sha512-2vEVzHmo3DX0ffExjoUz55+5DOqmbV10KgBCGyOAqe1k0vTEjhFq19UYK3iboJFqFrZjZ4DecIWl2ljGgd19tA==}
+  /@pognetwork/proto/0.2.0-a6658c1:
+    resolution: {integrity: sha512-o6FgVsnBMxZz3x4zSXreUZX2oWkt+EtK5U7ZiRVBJ01pxTcYvmTr3+Wt/YMlZrKv/zugnjS3L0YNHHVm8s1F3A==}
     dependencies:
       '@improbable-eng/grpc-web': 0.15.0_google-protobuf@3.20.1
       browser-headers: 0.4.1

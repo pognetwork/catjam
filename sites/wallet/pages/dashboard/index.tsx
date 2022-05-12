@@ -29,28 +29,32 @@ const AccountBalanceGraph = () => {
 	);
 };
 
-const Overview = ({ wallet, balance }: { wallet: Wallet; balance: number }) => (
-	<div className={`${styles.overview} ${styles.box}`}>
-		<div className={styles.address}>pog-{wallet.address}</div>
-		<div className={styles.ballance}>
-			{balance} POG <span>0 USD</span>
+const Overview = ({ wallet, balance }: { wallet: Wallet; balance: number }) => {
+	const [, setLocation] = useLocation();
+	const send = () => setLocation('/dashboard/tx');
+	return (
+		<div className={`${styles.overview} ${styles.box}`}>
+			<div className={styles.address}>pog-{wallet.address}</div>
+			<div className={styles.ballance}>
+				{balance} POG <span>0 USD</span>
+			</div>
+			<div className={styles.actions}>
+				<div onClick={send} className={styles.action}>
+					{sendIcon}
+					Send
+				</div>
+				<div className={styles.action}>
+					{arrowDownIcon}
+					Recieve
+				</div>
+				<div className={styles.action}>
+					{moneyIcon}
+					Buy
+				</div>
+			</div>
 		</div>
-		<div className={styles.actions}>
-			<div className={styles.action}>
-				{sendIcon}
-				Send
-			</div>
-			<div className={styles.action}>
-				{arrowDownIcon}
-				Recieve
-			</div>
-			<div className={styles.action}>
-				{moneyIcon}
-				Buy
-			</div>
-		</div>
-	</div>
-);
+	);
+};
 
 const Stats: React.FC<{
 	rep?: string;
@@ -91,49 +95,6 @@ const Stats: React.FC<{
 	</div>
 );
 
-const demoTransactions = [
-	{
-		id: 1,
-		from: {
-			name: 'Unknown Account',
-			address: 'pog-yy5xyknabqan31b8fkpyrd4nydtwpausi3kxgta',
-		},
-		to: '',
-		amount: 10000,
-		date: 1636562281091,
-	},
-	{
-		id: 2,
-		from: {
-			name: 'Unknown Account',
-			address: 'pog-yy5xyknabqan31b8fkpyrd4nydtwpausi3kxgta',
-		},
-		to: '',
-		amount: 10000,
-		date: 1636562281091,
-	},
-	{
-		id: 3,
-		from: {
-			name: 'Unknown Account',
-			address: 'pog-yy5xyknabqan31b8fkpyrd4nydtwpausi3kxgta',
-		},
-		to: '',
-		amount: 10000,
-		date: 1636562281091,
-	},
-	{
-		id: 4,
-		from: {
-			name: 'Unknown Account',
-			address: 'pog-yy5xyknabqan31b8fkpyrd4nydtwpausi3kxgta',
-		},
-		to: '',
-		amount: 10000,
-		date: 1636562281091,
-	},
-];
-
 const Transactions = ({ blocks }: { blocks: Block[] }) => (
 	<div className={`${styles.bigstuff} ${styles.box} ${styles.transactions}`}>
 		<h1>Recent Transactions</h1>
@@ -142,14 +103,16 @@ const Transactions = ({ blocks }: { blocks: Block[] }) => (
 				<tr>
 					<td>Date</td>
 					<td>From</td>
-					{/* <td>To</td> */}
+					<td>To</td>
 					<td>Amount</td>
 				</tr>
 			</thead>
 			<tbody>
 				{blocks.map(block =>
 					Array.from(block.data.transactions.entries())
-						.filter(([_, t]) => t.txClaim !== undefined)
+						.filter(
+							([_, t]) => t.txClaim !== undefined || t.txSend !== undefined,
+						)
 						.map(([i, tx]) => {
 							const txid = Util.getTransactionID(block.blockId, i);
 							const stxid = Zbase.encode(txid);
@@ -182,10 +145,14 @@ const Tx = ({
 	stxid: string;
 }) => {
 	const ctx = useWallet();
+	const type = Object.entries(tx).find(
+		([_, v]) => v !== undefined,
+	)[0] as keyof Transaction;
+
 	const {
 		isLoading,
 		error,
-		data: senddata,
+		data: claimData,
 	} = useQuery(
 		`txsend-${stxid}`,
 		async () =>
@@ -195,11 +162,26 @@ const Tx = ({
 				})
 				.then(b => b),
 		{
-			enabled: Boolean(tx.txClaim?.sendTransactionID.length),
+			enabled:
+				type === 'txClaim' && Boolean(tx.txClaim?.sendTransactionID.length),
 		},
 	);
 
-	const isGenesis = tx.txClaim?.sendTransactionID.length === 0;
+	const isGenesis =
+		type === 'txClaim'
+			? tx.txClaim?.sendTransactionID.length === 0
+			: tx.txSend.receiver.length === 0;
+
+	let amount = 0;
+	if (type === 'txClaim') {
+		amount = isGenesis
+			? block.data.balance
+			: claimData?.transaction.txSend.amount || 0;
+	}
+
+	if (type === 'txSend') {
+		amount = tx.txSend.amount;
+	}
 
 	return (
 		<tr key={Zbase.encode(block.blockId)}>
@@ -211,28 +193,65 @@ const Tx = ({
 			</td>
 			<td>
 				<div className={styles.txfrom}>
-					{isGenesis ? (
+					{type === 'txClaim' &&
+						(isGenesis ? (
+							<>
+								<div>Genesis Account</div>
+								<div>POG-0000000000000000000000</div>
+							</>
+						) : (
+							<>
+								<div>Unknown Account</div>
+								<div>POG-{Zbase.encode(claimData.address)}</div>
+							</>
+						))}
+
+					{type === 'txSend' && (
 						<>
-							<div>Genesis Account</div>
-							<div>POG-0000000000000000000000</div>
-						</>
-					) : (
-						<>
-							<div>Unknown Account</div>
-							<div>POG-{Zbase.encode(senddata.address)}</div>
+							<div>This Account</div>
+							<div>
+								POG-
+								{Zbase.encode(
+									Util.account_id_from_public_key(block.header.publicKey),
+								)}
+							</div>
 						</>
 					)}
+				</div>
+			</td>
+
+			<td>
+				<div className={styles.txto}>
+					{type === 'txSend' &&
+						(isGenesis ? (
+							<>
+								<div>Genesis Account</div>
+								<div>POG-0000000000000000000000</div>
+							</>
+						) : (
+							<>
+								<div>Unknown Account</div>
+								<div>POG-{Zbase.encode(tx.txSend.receiver)}</div>
+							</>
+						))}
+					{type === 'txClaim' && (
+						<>
+							<div>This Account</div>
+							<div>
+								POG-
+								{Zbase.encode(
+									Util.account_id_from_public_key(block.header.publicKey),
+								)}
+							</div>
+						</>
+					)}{' '}
 				</div>
 			</td>
 			<td>
 				<div>
 					{new Intl.NumberFormat('en-US', {
 						minimumFractionDigits: 2,
-					}).format(
-						isGenesis
-							? block.data.balance
-							: senddata?.transaction.txSend.amount || 0,
-					)}{' '}
+					}).format(amount)}{' '}
 					POG
 				</div>
 				<div>
