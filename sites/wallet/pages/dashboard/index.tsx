@@ -1,5 +1,5 @@
 import { arrowDownIcon, moneyIcon, sendIcon } from '../../../../assets/icons';
-import { DemoGraph } from '../../components/dashboard/graphs/demo';
+import { Data, DemoGraph } from '../../components/dashboard/graphs/demo';
 import { Layout } from '../../components/layout';
 import styles from './index.module.scss';
 import useDimensions from 'react-cool-dimensions';
@@ -9,14 +9,8 @@ import { Util, Wallet, Zbase } from 'champ-wasm';
 import { useQuery } from 'react-query';
 import { Block, Transaction } from '@pognetwork/proto/node/api';
 
-const AccountBalanceGraph = () => {
-	const { observe, unobserve, width, height, entry } = useDimensions({
-		onResize({ observe, unobserve, width, height, entry }) {
-			// Triggered whenever the size of the target is changed...
-			// unobserve(); // To stop observing the current target element
-			// observe(); // To re-start observing the current target element
-		},
-	});
+const AccountBalanceGraph = ({ data }: { data: Data[] }) => {
+	const { observe, width, height } = useDimensions({});
 
 	return (
 		<div
@@ -24,7 +18,7 @@ const AccountBalanceGraph = () => {
 			className={`${styles.bigstuff} ${styles.box} ${styles.balanceGraph}`}
 		>
 			<h1>Balance</h1>
-			<DemoGraph width={width} height={height} />
+			<DemoGraph data={data || []} width={width} height={height} />
 		</div>
 	);
 };
@@ -306,11 +300,17 @@ export const IndexPage = () => {
 		0,
 	);
 
+	const moneyData =
+		blocks?.map(b => ({
+			timestamp: b.header.timestamp,
+			balance: b.data.balance,
+		})) || [];
+
 	return (
 		<>
 			<Overview wallet={ctx.currentWallet} balance={balance ?? 0} />
 			<Stats power={0} txCount={txCount} unclaimedBal={0} rep={undefined} />
-			<AccountBalanceGraph />
+			<AccountBalanceGraph data={moneyData} />
 			<Transactions blocks={blocks || []} />
 		</>
 	);
